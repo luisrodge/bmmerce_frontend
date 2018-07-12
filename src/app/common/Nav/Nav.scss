@@ -1,0 +1,27 @@
+.logo {
+    span {
+        font-family: 'Oswald', sans-serif;
+    }
+}
+
+#main-nav {
+    margin-bottom: 60px;
+    background: #FFF;
+    .nav-link {
+        font-size: 17px;
+        color: #666666;
+        &:hover {
+            color: #000;
+        }
+    }
+    .home {
+        padding-left: 0;
+    }
+}
+
+#search-input {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+}
