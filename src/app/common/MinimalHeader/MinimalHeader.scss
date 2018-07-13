@@ -1,0 +1,16 @@
+
+#minimal-nav {
+    margin-bottom: 60px;
+    background: #FAFAFA;
+    .nav-link {
+        font-size: 17px;
+        color: #3a3a3a;
+        &:hover {
+            color: #000;
+        }
+    }
+}
+
+a#minimal-logo {
+    font-size: 24px;
+}

@@ -9,6 +9,7 @@ body {
   height: 190px;
   width: 100%;
   object-fit: cover;
+  background: #FAFAFA;
 }
 
 .card {
@@ -19,4 +20,25 @@ body {
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+.btn-light {
+  color: #212529;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+  &:hover {
+    background-color: #DBDBDB;
+  }
+}
+
+.alt-font {
+  font-family: 'Oswald', sans-serif;
+}
+
+.main-modal {
+  
+}
+
+.ReactModal__Body--open {
+  overflow-y: hidden;
 }

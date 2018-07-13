@@ -1,23 +1,18 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 // ConnectedRouter will use the store from the Provider automatically 
 import { ConnectedRouter } from 'connected-react-router';
 import history from '../utils/history';
 
-import { Nav } from '../common';
-import { Home } from '../views/index';
-import { About } from '../views/index';
-import { Footer } from '../common';
+import { Home, NewListing } from '../views';
+
+import { DefaultLayout, MinimalLayout } from '../layouts';
 
 export default () => (
     <ConnectedRouter history={history}>
-        <div>
-            <Nav />
-            <div className="container">
-                <Route exact path='/' component={Home}/>
-                <Route path='/about' component={About}/>
-            </div>
-            <Footer />
-        </div>
+        <Switch>
+            <Route exact path="/" render={() => <DefaultLayout><Home /></DefaultLayout>}/>
+            <Route path="/listings/new" render={() => <MinimalLayout><NewListing /></MinimalLayout>}/>
+        </Switch>
     </ConnectedRouter>
 );
