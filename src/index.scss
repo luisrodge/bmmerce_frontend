@@ -35,8 +35,14 @@ body {
   font-family: 'Oswald', sans-serif;
 }
 
-.main-modal {
-  
+.notice {
+  border: 1px solid #CBE1FF;
+  border-radius: 3px;
+  padding: 5px 8px;
+  p {
+    font-size: 14px;
+    margin:  0;
+  }
 }
 
 .ReactModal__Body--open {

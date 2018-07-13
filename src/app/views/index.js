@@ -1,9 +1,11 @@
 import Home from './Home';
 import About from './About';
 import NewListing from './NewListing';
+import RentListing from './RentListing';
 
 export {
     Home,
     About,
-    NewListing
+    NewListing,
+    RentListing
 }

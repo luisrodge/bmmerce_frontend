@@ -130,7 +130,7 @@ class Home extends Component {
             <div className="row">
               <div className="col-md-6">
                 <h4 className="m-0">Subaru model 2009</h4>
-                <p className="text-muted">San Ignacio, Cayo</p>
+                <p className="text-muted">#2 Bishop St, San Ignacio, Cayo</p>
               </div>
               <div className="col-md-6 text-right">
                 <h5 className="text-success m-0">$56 per day</h5>
