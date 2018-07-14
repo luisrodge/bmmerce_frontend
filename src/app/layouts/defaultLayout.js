@@ -1,9 +1,9 @@
 import React from 'react';
-import { Nav, Footer } from '../common';
+import { Header, Footer } from '../common';
 
 const DefaultLayout = ({ children }) => (                       
     <div>
-      <Nav />
+      <Header />
       <div className="container">
         {children}    
       </div>    

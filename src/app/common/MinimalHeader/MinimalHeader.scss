@@ -1,7 +1,7 @@
 
 #minimal-nav {
     margin-bottom: 60px;
-    background: #FAFAFA;
+    border-bottom: 1px solid #FAFAFA;
     padding: 0;
     .nav-link {
         font-size: 17px;
@@ -14,4 +14,8 @@
 
 a#minimal-logo {
     font-size: 24px;
+}
+
+.pointer {
+    cursor: pointer; 
 }

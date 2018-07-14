@@ -22,12 +22,9 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 import './index.scss';
 
-// import setAuthorizationToken from '../utils/setAuthorizationToken';
-// import jwt from 'jsonwebtoken';
-// import authenticateActions  from './app/common/authenticate/duck/actions';
-
-// import './include/bootstrap'
-// import './index.scss';
+import setAuthorizationToken from './app/utils/setAuthorizationToken';
+import jwt from 'jsonwebtoken';
+import authenticateActions  from './app/modules/auth/actions';
 
 // For redux-devtools extension to work
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -38,13 +35,13 @@ const routerMw = routerMiddleware(history)
 const middleware = composeEnhancers(applyMiddleware(thunk, logger, routerMw));
 const store = createStore(connectRouter(history)(rootReducer), middleware);
 
-// If token is stored locally, appy token headers and store state
-// if (localStorage.jwtToken) {
-//   // Apply token to request headers
-//   setAuthorizationToken(localStorage.jwtToken);
-//   //  Add decoded token payload to store state
-//   store.dispatch(authenticateActions.authenticateSuccess(jwt.decode(localStorage.jwtToken)));
-// }
+// If token is stored locally, appy token to headers and update store state
+if (localStorage.jwtToken) {
+  // Apply token to request headers
+  setAuthorizationToken(localStorage.jwtToken);
+  //  Add decoded token payload to store state
+  store.dispatch(authenticateActions.authenticateSuccess(jwt.decode(localStorage.jwtToken)));
+}
 
 ReactDOM.render(
   <Provider store={store}>

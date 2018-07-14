@@ -28,7 +28,7 @@ class RentListing extends Component {
                     <textarea name="description" className="form-control"></textarea>
                 </div>
                 <br/>
-                <button className="btn btn-light btn-block">Place Rent Inquiry</button>
+                <button className="btn btn-light btn-block">Send Rent Request</button>
             </form>
         </div>
         <div className="col-md-4 ml-auto">

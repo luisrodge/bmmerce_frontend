@@ -1,9 +1,9 @@
-import Nav from './Nav';
+import Header from './Header';
 import Footer from './Footer';
 import MinimalHeader from './MinimalHeader';
 
 export {
-    Nav,
+    Header,
     MinimalHeader,
     Footer
 }

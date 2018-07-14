@@ -5,7 +5,7 @@ class NewListing extends Component {
     return (
       <div className="row">
         <div className="col-md-5 mx-auto">
-            <h4>Add A New Rental Listing</h4>
+            <h4 className="text-center">Add A New Rental Listing</h4>
             <br/>
             <form action="">
                 <div className="form-group">
@@ -19,6 +19,10 @@ class NewListing extends Component {
                 <div className="form-group">
                     <label htmlFor="title">Address</label>
                     <input type="text" name="address" className="form-control"/>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="price-details">Additional Pricing Details</label>
+                    <textarea name="price-details" className="form-control"></textarea>
                 </div>
                 <div className="form-group">
                     <label htmlFor="description">Description</label>

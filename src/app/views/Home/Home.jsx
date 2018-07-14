@@ -43,7 +43,7 @@ class Home extends Component {
               <h4 className="pb-3">Featured Rentals</h4>
             </div>
             <div className="col-md-3">
-              <div className="card" onClick={() => this.openModal()}>
+              <div className="card pointer" onClick={() => this.openModal()}>
                 <img class="img-fh" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap"/>
                 <div className="card-body">
                   <h5 class="card-title">Subaru model 2009</h5>
@@ -133,7 +133,7 @@ class Home extends Component {
                 <p className="text-muted">#2 Bishop St, San Ignacio, Cayo</p>
               </div>
               <div className="col-md-6 text-right">
-                <h5 className="text-success m-0">$56 per day</h5>
+                <h5 className="text-success m-0">$56</h5>
                 <p className="text-muted">Listed by Cayo Rentals</p>
               </div>
             </div>
@@ -143,7 +143,7 @@ class Home extends Component {
               qui praesentium sunt! Voluptate cupiditate quidem dolores perferendis culpa vero suscipit?</p>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, fugiat dolores, inventore hic quaerat blanditiis cumque consequatur natus eveniet 
               qui praesentium sunt! Voluptate cupiditate quidem dolores perferendis culpa vero suscipit?</p>
-            <button onClick={this.closeModal} className="btn btn-default btn-block">Rent</button>
+            <button onClick={this.closeModal} className="btn btn-default btn-block">Rent Request</button>
           </Modal>
       </div>
     );

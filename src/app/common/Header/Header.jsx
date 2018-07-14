@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import './Nav.scss';
+import './Header.scss';
 
-class Nav extends Component {
+class Header extends Component {
   render() {
     return (
       <div>
@@ -43,14 +43,28 @@ class Nav extends Component {
                   <a className="nav-link" href="#">How It Works</a>
                 </li>
               </ul>
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item mr-3">
-                  <a className="nav-link" href="#">Sign In</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Register</a>
-                </li>
-              </ul>
+                {this.props.authenticated ? (
+                  <ul className="navbar-nav ml-auto">
+                  <li className="nav-item mr-3">
+                      <Link to="/listings/new" className="nav-link">New Listing</Link>
+                    </li>
+                    <li className="nav-item mr-3">
+                      <a className="nav-link" href="#">Dashboard</a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">Sign Out</a>
+                    </li>
+                  </ul>
+                ) : (
+                  <ul className="navbar-nav ml-auto">
+                    <li className="nav-item mr-3">
+                      <Link to="/login" className="nav-link">Sign In</Link>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">Register</a>
+                    </li>
+                  </ul>
+                )}
             </div>
           </div>
         </nav>
@@ -59,4 +73,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default Header;
