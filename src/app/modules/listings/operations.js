@@ -42,7 +42,35 @@ const createListing = (newListing) => {
   }
 };
 
+const getLatestListings = () => {
+  return dispatch => {
+    dispatch(getLatestListingsAction());
+    axios.get(`${API_ROOT}/listings?limit=4`)
+      .then(function (response) {
+          const responseData = response.data;
+          let data = [];
+          responseData.map(child => {
+            const childData = {
+              id: child.id,
+              title: child.title,
+              price: child.price,
+              address: child.address,
+              description: child.description,
+              priceDetails: child.price_details,
+              userId: child.user_id
+            };
+            data.push(childData);
+          });
+          dispatch(getLatestListingsSuccessAction(data))
+      })
+      .catch(function (error) {
+        //dispatch(getUsersFailureAction(error.response.data.data));
+      });
+  }
+}
+
 
 export default { 
   createListing, 
+  getLatestListings
 };

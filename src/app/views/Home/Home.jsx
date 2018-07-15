@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 
+import LatestListings from './LatestListings';
+
 const customStyles = {
   content : {
     top                   : '50%',
@@ -25,6 +27,10 @@ class Home extends Component {
     this.state = {
       modalIsOpen: false,
     };
+  }
+
+  componentDidMount() {
+    this.props.getLatestListings();
   }
 
   closeModal = () => {
@@ -79,47 +85,10 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          <div className="row mt-5">
-            <div className="col-md-12">
-              <h4 className="pb-3">Latest Rentals</h4>
-            </div>
-            <div className="col-md-3">
-              <div className="card">
-                <img class="img-fh" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap"/>
-                <div className="card-body">
-                  <h5 class="card-title">Subaru model 2009</h5>
-                  <p className="card-text">Some quick example text to build on the card title.</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div className="card">
-                <img class="img-fh" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap"/>
-                <div className="card-body">
-                  <h5 class="card-title">Subaru model 2009</h5>
-                  <p className="card-text">Some quick example text to build on the card title.</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div className="card">
-                <img class="img-fh" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap"/>
-                <div className="card-body">
-                  <h5 class="card-title">Subaru model 2009</h5>
-                  <p className="card-text">Some quick example text to build on the card title.</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div className="card">
-                <img class="img-fh" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap"/>
-                <div className="card-body">
-                  <h5 class="card-title">Subaru model 2009</h5>
-                  <p className="card-text">Some quick example text to build on the card title.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <LatestListings
+            latestListings={this.props.latestListings}
+            gettingLatestListings={this.props.gettingLatestListings}   
+          />
           <Modal
             isOpen={this.state.modalIsOpen}
             onRequestClose={this.closeModal}
@@ -143,7 +112,7 @@ class Home extends Component {
               qui praesentium sunt! Voluptate cupiditate quidem dolores perferendis culpa vero suscipit?</p>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, fugiat dolores, inventore hic quaerat blanditiis cumque consequatur natus eveniet 
               qui praesentium sunt! Voluptate cupiditate quidem dolores perferendis culpa vero suscipit?</p>
-            <button onClick={this.closeModal} className="btn btn-default btn-block">Rent Request</button>
+            <button onClick={this.closeModal} className="btn btn-default btn-lg btn-block">Rent Request</button>
           </Modal>
       </div>
     );
