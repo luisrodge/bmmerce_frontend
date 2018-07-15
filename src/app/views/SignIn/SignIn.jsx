@@ -21,7 +21,7 @@ class SignIn extends Component {
         return (
             <div className="row">
                 <div className="col-md-5 mx-auto">
-                    <h4 className="text-center">Sign In To Post A Listing To Rent</h4>
+                    <h4 className="text-center">Sign In To Post A Listing</h4>
                     <br/>
                     <form onSubmit={e => this.handleSubmit(e)}>
                         <div className="form-group">

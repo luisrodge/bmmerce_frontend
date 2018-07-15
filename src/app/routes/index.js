@@ -8,7 +8,8 @@ import {
     Home, 
     NewListing, 
     RentListing,
-    SignIn
+    SignIn,
+    Dashboard
 } from '../views';
 
 import { DefaultLayout, MinimalLayout } from '../layouts';
@@ -20,6 +21,7 @@ export default () => (
             <Route path="/listings/new" render={() => <MinimalLayout><NewListing /></MinimalLayout>}/>
             <Route path="/:id/rent" render={() => <MinimalLayout><RentListing /></MinimalLayout>}/>
             <Route path="/login" render={() => <MinimalLayout><SignIn /></MinimalLayout>}/>
+            <Route path="/dashboard" render={() => <MinimalLayout><Dashboard /></MinimalLayout>}/>
         </Switch>
     </ConnectedRouter>
 );

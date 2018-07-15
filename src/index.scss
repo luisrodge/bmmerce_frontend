@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 16px;
 }
 
@@ -40,11 +40,32 @@ body {
   border-radius: 3px;
   padding: 5px 8px;
   p {
-    font-size: 14px;
     margin:  0;
   }
 }
 
 .ReactModal__Body--open {
   overflow-y: hidden;
+}
+
+.image-uploader {
+  .fileContainer {
+    box-shadow: none;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+  }
+  .chooseFileButton, .chooseFileButton:hover, .chooseFileButton:focus {
+    color: #212529;
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+    border-radius: .25rem;
+  }
+  .deleteImage {
+    background: #CCC;
+    font-size: 14px;
+    width: 25px;
+    height: 25px;
+    right: -16px;
+    line-height: 27px;
+  }
 }

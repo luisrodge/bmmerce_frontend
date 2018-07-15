@@ -1,4 +1,4 @@
-import authReducer from './reducers';
-export { default as authOperations } from './operations';
-export { default as authTypes } from './types';
-export default authReducer;
+import listingsReducer from './reducers';
+export { default as listingsOperations } from './operations';
+export { default as listingsTypes } from './types';
+export default listingsReducer;

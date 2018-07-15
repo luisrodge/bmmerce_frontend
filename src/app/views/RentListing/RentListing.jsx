@@ -5,7 +5,7 @@ class RentListing extends Component {
     return (
       <div className="row">
         <div className="col-md-6">
-            <h4>Rent Subaru model 2009</h4>
+            <h3>Rent Subaru model 2009</h3>
             <div className="notice">
                 <p>We will get back to you either through whatsapp or phone call in about 1 hour.</p>
             </div>

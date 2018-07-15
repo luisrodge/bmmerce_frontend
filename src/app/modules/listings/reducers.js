@@ -1,94 +1,53 @@
 import types from './types';
 
 const STATE = {
-  user: {},
-  signInError: '',
-  authenticated: false,
-  authenticating: false,
-  verifyingToken: true,
-  registering: false,
-  registerErrors: {}
+  latestListings: [],
+  gettingLatestListings: false,
+  listing: {},
+  creatingListing: false,
+  createListingErrors: []
 }
 
-const authReducer = (state=STATE, action) => {
+const listingsReducer = (state=STATE, action) => {
     switch(action.type) {
-        case types.AUTHENTICATE: {
+        case types.GET_LATEST_LISTINGS: {
           return {
             ...state,
-            authenticating: true,
+            gettingLatestListings: true,
           }
         }
         
-        case types.AUTHENTICATE_SUCCESS: {
-          const { user } = action;
+        case types.GET_LATEST_LISTINGS_SUCCESS: {
+          const { latestListings } = action;
           return {
             ...state,
-            user,
-            authenticated: true,
-            authenticating: false,
+            latestListings,
+            gettingLatestListings: false,
           }
         }
 
-        case types.AUTHENTICATE_FAILURE: {
-          const { signInError } = action;
+        case types.CREATE_LISTING: {
           return {
             ...state,
-            signInError,
-            authenticating: false,
-          }
-        }
-
-        case types.UNAUTHENTICATE: {
-          return {
-            ...state,
-            user: {},
-            authenticated: false,
-            verifyingToken: false
-          }
-        }
-
-        case types.REGISTER: {
-          return {
-            ...state,
-            registering: true,
+            creatingListing: true,
           }
         }
         
-        case types.REGISTER_SUCCESS: {
-          const { user } = action;
+        case types.CREATE_LISTING_SUCCESS: {
+          const { listing } = action;
           return {
             ...state,
-            user,
-            authenticated: true,
-            registering: false,
+            listing,
+            creatingListing: false,
           }
         }
 
-        case types.REGISTER_FAILURE: {
-          const { registerErrors } = action;
+        case types.CREATE_LISTING_FAILURE: {
+          const { createListingErrors } = action;
           return {
             ...state,
-            registerErrors,
-            registering: false,
-          }
-        }
-
-        case types.VERIFY_TOKEN_SUCCESS: {
-          const { user } = action;
-          return {
-            ...state,
-            user,
-            authenticated: true,
-            verifyingToken: false,
-          }
-        }
-
-        case types.VERIFY_TOKEN_FAILURE: {
-          return {
-            ...state,
-            user: {},
-            verifyingToken: false,
-            authenticated: false,
+            createListingErrors,
+            creatingListing: false,
           }
         }
 
@@ -96,9 +55,4 @@ const authReducer = (state=STATE, action) => {
     }
 }
 
-// const topicsReducer = combineReducers({
-//   getTopics: getTopicsReducer,
-//   addTopic: addTopicReducer
-// });
-
-export default authReducer;
+export default listingsReducer;

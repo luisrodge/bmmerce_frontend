@@ -1,56 +1,37 @@
 import types from './types.js';
 
-const authenticate = () => ({
-    type: types.AUTHENTICATE
+const getLatetsListings = () => ({
+    type: types.GET_LATEST_LISTINGS
 });
 
-const authenticateSuccess = (json) => ({
-    type: types.AUTHENTICATE_SUCCESS,
-    user: json
+const getLatestListingsSuccess = (json) => ({
+    type: types.GET_LATEST_LISTINGS_SUCCESS,
+    latestListings: json
 });
 
-const authenticateFailure = (json) => ({
-    type: types.AUTHENTICATE_FAILURE,
-    signInError: json
+const getLatestListingsFailure = (json) => ({
+    type: types.GET_LATEST_LISTINGS_FAILURE,
 });
 
-const unauthenticate = () => ({
-    type: types.UNAUTHENTICATE,
+const createListing = () => ({
+    type: types.CREATE_LISTING
 });
 
-
-const verifyTokenSuccess = (user) => ({
-    type: types.VERIFY_TOKEN_SUCCESS,
-    user: user
+const createListingSuccess = (listing) => ({
+    type: types.CREATE_LISTING_SUCCESS,
+    listing: listing
 });
 
-const verifyTokenFailure = (json) => ({
-    type: types.VERIFY_TOKEN_FAILURE,
-    signInError: json
-});
-
-const register = () => ({
-    type: types.REGISTER
-});
-
-const registerSuccess = (json) => ({
-    type: types.REGISTER_SUCCESS,
-    user: json
-});
-
-const registerFailure = (json) => ({
-    type: types.REGISTER_FAILURE,
-    registerErrors: json
+const createListingFailure = (json) => ({
+    type: types.CREATE_LISTING_FAILURE,
+    createListingErrors: json
 });
 
 export default { 
-    authenticate,
-    authenticateSuccess,
-    authenticateFailure,
-    unauthenticate,
-    verifyTokenSuccess,
-    verifyTokenFailure,
-    register,
-    registerSuccess,
-    registerFailure
+    getLatetsListings,
+    getLatestListingsSuccess,
+    getLatestListingsFailure,
+    createListing,
+    createListingSuccess,
+    createListingFailure
 };

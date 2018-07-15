@@ -1,3 +1,3 @@
-import NewListing from './NewListing';
+import NewListingContainer from './NewListingContainer';
 
-export default NewListing;
+export default NewListingContainer;

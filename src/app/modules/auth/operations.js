@@ -112,6 +112,8 @@ const unauthenticate = () => {
     localStorage.removeItem('jwtToken');
     setAuthorizationToken(false);
     dispatch(unauthenticateAction());   
+    // Redirect to home view
+    dispatch(push('/'));
   }
 };
 

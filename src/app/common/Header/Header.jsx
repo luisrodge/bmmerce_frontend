@@ -46,17 +46,20 @@ class Header extends Component {
                 {this.props.authenticated ? (
                   <ul className="navbar-nav ml-auto">
                   <li className="nav-item mr-3">
-                      <Link to="/listings/new" className="nav-link">New Listing</Link>
+                      <Link to="/listings/new" className="nav-link">Post Listing</Link>
                     </li>
                     <li className="nav-item mr-3">
-                      <a className="nav-link" href="#">Dashboard</a>
+                      <Link to="/dashboard" className="nav-link">Dashboard</Link>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="#">Sign Out</a>
+                      <p className="nav-link pointer" onClick={this.props.unauthenticate}>Sign Out</p>
                     </li>
                   </ul>
                 ) : (
                   <ul className="navbar-nav ml-auto">
+                    <li className="nav-item mr-3">
+                      <Link to="/listings/new" className="nav-link">Post Listing</Link>
+                    </li>
                     <li className="nav-item mr-3">
                       <Link to="/login" className="nav-link">Sign In</Link>
                     </li>
