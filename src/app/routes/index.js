@@ -9,7 +9,8 @@ import {
     NewListing, 
     RentListing,
     SignIn,
-    Dashboard
+    Dashboard,
+    Rent
 } from '../views';
 
 import { DefaultLayout, MinimalLayout } from '../layouts';
@@ -18,6 +19,7 @@ export default () => (
     <ConnectedRouter history={history}>
         <Switch>
             <Route exact path="/" render={() => <DefaultLayout><Home /></DefaultLayout>}/>
+            <Route path="/rent" render={() => <DefaultLayout><Rent /></DefaultLayout>}/>
             <Route path="/listings/new" render={() => <MinimalLayout><NewListing /></MinimalLayout>}/>
             <Route path="/:id/rent" render={() => <MinimalLayout><RentListing /></MinimalLayout>}/>
             <Route path="/login" render={() => <MinimalLayout><SignIn /></MinimalLayout>}/>

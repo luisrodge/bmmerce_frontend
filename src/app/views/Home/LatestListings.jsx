@@ -1,4 +1,5 @@
 import React from 'react';
+import { Listing } from '../../common'
 
 const LatestListings = (props) => {
     if (props.gettingLatestListings) { return null; }
@@ -9,13 +10,10 @@ const LatestListings = (props) => {
             </div>
             {props.latestListings.map((listing) =>
                 <div className="col-md-3">
-                    <div className="card">
-                    <img class="img-fh" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap"/>
-                    <div className="card-body">
-                        <h5 class="card-title">{listing.title}</h5>
-                        <p className="card-text">{listing.description}</p>
-                    </div>
-                    </div>
+                    <Listing 
+                        listing={listing}
+                        onOpenModal={props.onOpenModal}
+                    />
                 </div>
             )}
         </div>

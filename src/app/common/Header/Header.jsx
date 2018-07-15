@@ -37,7 +37,7 @@ class Header extends Component {
                   <Link to="/" className="nav-link home">Home</Link>
                 </li>
                 <li className="nav-item mr-3">
-                  <a className="nav-link" href="#">Rent</a>
+                  <Link to="rent/" className="nav-link home">Rent</Link>
                 </li>
                 <li className="nav-item mr-3">
                   <a className="nav-link" href="#">How It Works</a>

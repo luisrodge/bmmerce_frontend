@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 
 import LatestListings from './LatestListings';
+import FeaturedListings from './FeaturedListings';
 
 const customStyles = {
   content : {
@@ -26,68 +27,41 @@ class Home extends Component {
     super();
     this.state = {
       modalIsOpen: false,
+      selectedListing: {}
     };
   }
 
   componentDidMount() {
     this.props.getLatestListings();
+    this.props.getFeaturedListings();
   }
 
   closeModal = () => {
-    this.setState({modalIsOpen: false});
+    this.setState({
+      modalIsOpen: false,
+      selectedListing: {}
+    });
   }
 
-  openModal = () => {
-    this.setState({modalIsOpen: true});
+  openModal = (listing) => {
+    this.setState({
+      modalIsOpen: true,
+      selectedListing: listing
+    });
   }
 
   render() {
     return (
       <div>
-          <div className="row">
-            <div className="col-md-12">
-              <h4 className="pb-3">Featured Rentals</h4>
-            </div>
-            <div className="col-md-3">
-              <div className="card pointer" onClick={() => this.openModal()}>
-                <img class="img-fh" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap"/>
-                <div className="card-body">
-                  <h5 class="card-title">Subaru model 2009</h5>
-                  <p className="card-text">Some quick example text to build on the card title.</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div className="card">
-                <img class="img-fh" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap"/>
-                <div className="card-body">
-                  <h5 class="card-title">Subaru model 2009</h5>
-                  <p className="card-text">Some quick example text to build on the card title.</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div className="card">
-                <img class="img-fh" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap"/>
-                <div className="card-body">
-                  <h5 class="card-title">Subaru model 2009</h5>
-                  <p className="card-text">Some quick example text to build on the card title.</p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3">
-              <div className="card">
-                <img class="img-fh" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap"/>
-                <div className="card-body">
-                  <h5 class="card-title">Subaru model 2009</h5>
-                  <p className="card-text">Some quick example text to build on the card title.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <FeaturedListings
+            featuredListings={this.props.featuredListings}
+            gettingLatestListings={this.props.gettingFeaturedListings}
+            onOpenModal={this.openModal}   
+          />
           <LatestListings
             latestListings={this.props.latestListings}
-            gettingLatestListings={this.props.gettingLatestListings}   
+            gettingLatestListings={this.props.gettingLatestListings}
+            onOpenModal={this.openModal}   
           />
           <Modal
             isOpen={this.state.modalIsOpen}
@@ -98,20 +72,25 @@ class Home extends Component {
           >
             <div className="row">
               <div className="col-md-6">
-                <h4 className="m-0">Subaru model 2009</h4>
-                <p className="text-muted">#2 Bishop St, San Ignacio, Cayo</p>
+                <h4 className="m-0">{this.state.selectedListing.title}</h4>
+                <p className="text-muted">{this.state.selectedListing.address}</p>
               </div>
               <div className="col-md-6 text-right">
-                <h5 className="text-success m-0">$56</h5>
+                <h5 className="text-success m-0">${this.state.selectedListing.price}</h5>
                 <p className="text-muted">Listed by Cayo Rentals</p>
               </div>
             </div>
             
             <img class="img-fluid mt-3 mb-3" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap"/>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, fugiat dolores, inventore hic quaerat blanditiis cumque consequatur natus eveniet 
-              qui praesentium sunt! Voluptate cupiditate quidem dolores perferendis culpa vero suscipit?</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, fugiat dolores, inventore hic quaerat blanditiis cumque consequatur natus eveniet 
-              qui praesentium sunt! Voluptate cupiditate quidem dolores perferendis culpa vero suscipit?</p>
+            {this.state.selectedListing.priceDetails && 
+              <div>
+                <p className="mb-0">Pricing Details:</p>
+                <p>{this.state.selectedListing.priceDetails}</p>
+                <hr/>
+              </div>
+            }
+            <p className=" mb-0">Description:</p>
+            <p>{this.state.selectedListing.description}</p>
             <button onClick={this.closeModal} className="btn btn-default btn-lg btn-block">Rent Request</button>
           </Modal>
       </div>

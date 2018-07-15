@@ -4,6 +4,7 @@ import NewListing from './NewListing';
 import RentListing from './RentListing';
 import SignIn from './SignIn';
 import Dashboard from './Dashboard';
+import Rent from './Rent';
 
 export {
     Home,
@@ -11,5 +12,6 @@ export {
     NewListing,
     RentListing,
     SignIn,
-    Dashboard
+    Dashboard,
+    Rent
 }
