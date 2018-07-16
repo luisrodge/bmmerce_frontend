@@ -23,21 +23,25 @@ const search = (query) => {
     axios.get(`${API_ROOT}/search?query=${query}`)
       .then(function (response) {
         const responseData = response.data;
-        console.log(responseData);
-        let data = [];
-        responseData.map(child => {
-          const childData = {
-            id: child.id,
-            title: child.title,
-            price: child.price,
-            address: child.address,
-            priceDetails: child.price_details,
-            description: child.description,
-            userId: child.user_id
-          };
-          data.push(childData);
-        });
-        dispatch(searchSuccessAction(data));
+        console.log("Hsds", response);
+        if (responseData !== "") {
+          let data = [];
+          responseData.map(child => {
+            const childData = {
+              id: child.id,
+              title: child.title,
+              price: child.price,
+              address: child.address,
+              priceDetails: child.price_details,
+              description: child.description,
+              userId: child.user_id
+            };
+            data.push(childData);
+          });
+          dispatch(searchSuccessAction(data));
+        } else {
+          dispatch(searchSuccessAction([]));
+        }
       })
       .catch(function (error) {
         //console.log("Errors", error.response.data.data);
