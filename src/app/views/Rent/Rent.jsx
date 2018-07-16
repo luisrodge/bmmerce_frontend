@@ -85,7 +85,7 @@ class Rent extends Component {
               <p className="text-muted">Listed by Cayo Rentals</p>
             </div>
           </div>
-          <Link to={`${this.state.selectedListing.id}/rent`} className="btn btn-light btn-lg btn-block mt-3 mb-4">
+          <Link to={{pathname: `/${this.state.selectedListing.id}/rent`, state: {listing: this.state.selectedListing}}} className="btn btn-light btn-lg btn-block mt-3 mb-4">
             Send Rent Request
           </Link>
           {this.state.selectedListing.priceDetails &&

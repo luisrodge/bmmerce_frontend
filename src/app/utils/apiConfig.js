@@ -3,8 +3,8 @@ const apiVersion = 'v1';
 
 const hostname = window && window.location && window.location.hostname;
 
-if(hostname === 'bnsthere.herokuapp.com') {
-  backendHost = 'https://bnsthere-api.herokuapp.com';
+if(hostname === 'belizerentify.herokuapp.com') {
+  backendHost = 'https://belizerentify-api.herokuapp.com';
 } else {
   backendHost = 'http://localhost:3000';
 }
