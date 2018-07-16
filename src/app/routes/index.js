@@ -15,13 +15,20 @@ import {
 
 import { DefaultLayout, MinimalLayout } from '../layouts';
 
-export default () => (
+export default (props) => (
     <ConnectedRouter history={history}>
         <Switch>
             <Route exact path="/" render={() => <DefaultLayout><Home /></DefaultLayout>}/>
             <Route path="/rent" render={() => <DefaultLayout><Rent /></DefaultLayout>}/>
             <Route path="/listings/new" render={() => <MinimalLayout><NewListing /></MinimalLayout>}/>
-            <Route path="/:id/rent" render={() => <MinimalLayout><RentListing /></MinimalLayout>}/>
+            <Route 
+                path="/:id/rent" 
+                render={({match}) => (
+                    <MinimalLayout>
+                        <RentListing listingId={match.params.id} />
+                    </MinimalLayout>
+                )}
+            />
             <Route path="/login" render={() => <MinimalLayout><SignIn /></MinimalLayout>}/>
             <Route path="/dashboard" render={() => <MinimalLayout><Dashboard /></MinimalLayout>}/>
         </Switch>

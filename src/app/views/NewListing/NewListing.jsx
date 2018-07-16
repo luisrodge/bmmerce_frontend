@@ -17,12 +17,12 @@ class NewListing extends Component {
 
     onDrop(pictureFiles, pictureDataURLs) {
         console.log(pictureFiles);
-		this.setState({
+        this.setState({
             pictures: this.state.pictures.concat(pictureFiles)
         });
         console.log('Picture', this.state.pictures);
-	}
-    
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         this.props.createListing({
@@ -36,13 +36,13 @@ class NewListing extends Component {
             <div className="row">
                 <div className="col-md-5 mx-auto">
                     <h4 className="text-center">Add A New Rental Listing</h4>
-                    <br/>
+                    <br />
                     <form onSubmit={e => this.handleSubmit(e)}>
                         <div className="form-group">
                             <label htmlFor="title">*Title</label>
-                            <input 
-                                type="text" 
-                                name="title" 
+                            <input
+                                type="text"
+                                name="title"
                                 className="form-control"
                                 value={this.state.title}
                                 onChange={e => this.setState({ title: e.target.value })}
@@ -50,28 +50,18 @@ class NewListing extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="title">*Price</label>
-                            <input 
-                                type="text" 
-                                name="price" 
+                            <input
+                                type="text"
+                                name="price"
                                 className="form-control"
                                 value={this.state.price}
                                 onChange={e => this.setState({ price: e.target.value })}
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="title">Address</label>
-                            <input 
-                                type="text" 
-                                name="address" 
-                                className="form-control"
-                                value={this.state.address}
-                                onChange={e => this.setState({ address: e.target.value })}
-                            />
-                        </div>
-                        <div className="form-group">
                             <label htmlFor="price-details">Additional Pricing Details</label>
-                            <textarea 
-                                name="price-details" 
+                            <textarea
+                                name="price-details"
                                 className="form-control"
                                 value={this.state.priceDetails}
                                 onChange={e => this.setState({ priceDetails: e.target.value })}
@@ -79,9 +69,19 @@ class NewListing extends Component {
                             </textarea>
                         </div>
                         <div className="form-group">
+                            <label htmlFor="title">Address</label>
+                            <input
+                                type="text"
+                                name="address"
+                                className="form-control"
+                                value={this.state.address}
+                                onChange={e => this.setState({ address: e.target.value })}
+                            />
+                        </div>
+                        <div className="form-group">
                             <label htmlFor="description">Description</label>
-                            <textarea 
-                                name="description" 
+                            <textarea
+                                name="description"
                                 className="form-control"
                                 value={this.state.description}
                                 onChange={e => this.setState({ description: e.target.value })}
@@ -89,7 +89,7 @@ class NewListing extends Component {
                             </textarea>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="images" className="m-0">*Images</label><br/>
+                            <label htmlFor="images" className="m-0">*Images</label><br />
                             <ImageUploader
                                 withIcon={true}
                                 buttonText='Choose Images'
@@ -100,7 +100,7 @@ class NewListing extends Component {
                                 className="image-uploader"
                             />
                         </div>
-                        <br/>
+                        <br />
                         <button className="btn btn-light btn-block">Create Listing</button>
                     </form>
                 </div>

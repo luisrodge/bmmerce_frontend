@@ -4,13 +4,14 @@ import {
 import types from './types';
 
 const STATE = {
+  gettingListing: false,
+  listing: {},
   listings: [],
   gettingListings: false,
   latestListings: [],
   gettingLatestListings: false,
   creatingListing: false,
   createListingErrors: [],
-  listing: {},
 }
 
 const FEATURED_STATE = {
@@ -20,6 +21,26 @@ const FEATURED_STATE = {
 
 const defaultReducer = (state = STATE, action) => {
   switch (action.type) {
+    case types.GET_LISTING:
+      {
+        return {
+          ...state,
+          gettingListing: true,
+        }
+      }
+
+    case types.GET_LISTING_SUCCESS:
+      {
+        const {
+          listing
+        } = action;
+        return {
+          ...state,
+          listing,
+          gettingListing: false,
+        }
+      }
+
     case types.GET_LISTINGS:
       {
         return {

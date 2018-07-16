@@ -1,3 +1,3 @@
-import RentListing from './RentListing';
+import RentListingContainer from './RentListingContainer';
 
-export default RentListing;
+export default RentListingContainer;

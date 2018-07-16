@@ -16,10 +16,10 @@ class Header extends Component {
             </div>
             <div className="row">
               <div className="input-group col-md-5 mx-auto">
-                <input className="form-control py-2 input-sm" type="search" placeholder="Search for something to rent..." id="example-search-input"/>
+                <input className="form-control py-2 input-sm" type="search" placeholder="Search for something to rent..." id="example-search-input" />
                 <span className="input-group-append">
                   <button className="btn btn-outline-secondary border-left-0 border" type="button">
-                      <i className="fa fa-search"></i>
+                    <i className="fa fa-search"></i>
                   </button>
                 </span>
               </div>
@@ -37,25 +37,22 @@ class Header extends Component {
                   <Link to="/" className="nav-link home">Home</Link>
                 </li>
                 <li className="nav-item mr-3">
-                  <Link to="rent/" className="nav-link home">Rent</Link>
-                </li>
-                <li className="nav-item mr-3">
-                  <a className="nav-link" href="#">How It Works</a>
+                  <Link to="/rent" className="nav-link home">Rent</Link>
                 </li>
               </ul>
-                {this.props.authenticated ? (
-                  <ul className="navbar-nav ml-auto">
+              {this.props.authenticated ? (
+                <ul className="navbar-nav ml-auto">
                   <li className="nav-item mr-3">
-                      <Link to="/listings/new" className="nav-link">Post Listing</Link>
-                    </li>
-                    <li className="nav-item mr-3">
-                      <Link to="/dashboard" className="nav-link">Dashboard</Link>
-                    </li>
-                    <li className="nav-item">
-                      <p className="nav-link pointer" onClick={this.props.unauthenticate}>Sign Out</p>
-                    </li>
-                  </ul>
-                ) : (
+                    <Link to="/listings/new" className="nav-link">Post Listing</Link>
+                  </li>
+                  <li className="nav-item mr-3">
+                    <Link to="/dashboard" className="nav-link">Dashboard</Link>
+                  </li>
+                  <li className="nav-item">
+                    <p className="nav-link pointer" onClick={this.props.unauthenticate}>Sign Out</p>
+                  </li>
+                </ul>
+              ) : (
                   <ul className="navbar-nav ml-auto">
                     <li className="nav-item mr-3">
                       <Link to="/listings/new" className="nav-link">Post Listing</Link>

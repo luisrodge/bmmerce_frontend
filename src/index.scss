@@ -69,3 +69,7 @@ body {
     line-height: 27px;
   }
 }
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+  background-color: rgba(21, 21, 21, 0.75)!important;
+}

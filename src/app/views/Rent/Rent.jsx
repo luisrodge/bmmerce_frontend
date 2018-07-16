@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
+import { Link } from 'react-router-dom';
+
 import { Listing } from '../../common'
 
 
@@ -83,18 +85,19 @@ class Rent extends Component {
               <p className="text-muted">Listed by Cayo Rentals</p>
             </div>
           </div>
-
-          <img class="img-fluid mt-3 mb-3" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap" />
+          <Link to={`${this.state.selectedListing.id}/rent`} className="btn btn-light btn-lg btn-block mt-3 mb-4">
+            Send Rent Request
+          </Link>
           {this.state.selectedListing.priceDetails &&
             <div>
-              <p className="mb-0">Pricing Details:</p>
+              <h5 className="mb-1">Pricing Details:</h5>
               <p>{this.state.selectedListing.priceDetails}</p>
               <hr />
             </div>
           }
-          <p className=" mb-0">Description:</p>
+         <h5 className=" mb-1">Other Information:</h5>
           <p>{this.state.selectedListing.description}</p>
-          <button onClick={this.closeModal} className="btn btn-light btn-lg btn-block">Rent Request</button>
+          <img class="img-fluid mt-3 mb-3" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap" />
         </Modal>
       </div>
     );

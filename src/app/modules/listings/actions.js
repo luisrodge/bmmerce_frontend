@@ -1,5 +1,18 @@
 import types from './types.js';
 
+const getListing = () => ({
+    type: types.GET_LISTING
+});
+
+const getListingSuccess = (json) => ({
+    type: types.GET_LISTING_SUCCESS,
+    listing: json
+});
+
+const getListingFailure = (json) => ({
+    type: types.GET_LISTING_FAILURE,
+});
+
 const getListings = () => ({
     type: types.GET_LISTINGS
 });
@@ -54,6 +67,9 @@ const createListingFailure = (json) => ({
 });
 
 export default {
+    getListing,
+    getListingSuccess,
+    getListingFailure,
     getListings,
     getListingsSuccess,
     getListingsFailure,
