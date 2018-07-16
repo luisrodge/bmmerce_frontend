@@ -19,6 +19,13 @@ const FEATURED_STATE = {
   gettingFeaturedListings: false,
 }
 
+const USER_LISTINGS_STATE = {
+  userListings: [],
+  gettingUserListings: false,
+  updatingListing: false,
+  updateListingErrors: [],
+}
+
 const defaultReducer = (state = STATE, action) => {
   switch (action.type) {
     case types.GET_LISTING:
@@ -144,9 +151,74 @@ const featuredReducer = (state = FEATURED_STATE, action) => {
   }
 }
 
+const userListingsReducer = (state = USER_LISTINGS_STATE, action) => {
+  switch (action.type) {
+    case types.GET_USER_LISTINGS:
+      {
+        return {
+          ...state,
+          gettingUserListings: true,
+        }
+      }
+
+    case types.GET_USER_LISTINGS_SUCCESS:
+      {
+        const {
+          userListings
+        } = action;
+        return {
+          ...state,
+          userListings,
+          gettingUserListings: false,
+        }
+      }
+
+    case types.UPDATE_LISTING:
+      {
+        return {
+          ...state,
+          updatingListing: true,
+        }
+      }
+
+    case types.UPDATE_LISTING_SUCCESS:
+      {
+        const {
+          updatedListing
+        } = action;
+        return {
+          ...state,
+          updatingListing: false,
+          userListings: state.userListings.map(listing => listing.id === updatedListing.id ?
+            // transform the one with a matching id
+            updatedListing : 
+            // otherwise return original todo
+            listing
+          ) 
+        }
+      }
+
+    case types.UPDATE_LISTING_FAILURE:
+      {
+        const {
+          updateListingErrors
+        } = action;
+        return {
+          ...state,
+          updateListingErrors,
+          updatingListing: false,
+        }
+      }
+
+    default:
+      return state;
+  }
+}
+
 const listingsReducer = combineReducers({
   default: defaultReducer,
   featured: featuredReducer,
+  userListings: userListingsReducer
 });
 
 export default listingsReducer;

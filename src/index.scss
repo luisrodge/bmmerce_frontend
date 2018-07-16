@@ -77,3 +77,17 @@ body {
 .listing-card:hover {
   border-color: #ccc;
 }
+
+.img-sm {
+  width: 60px;
+  height: 60px;;
+}
+
+table {
+  th {
+    border-bottom-width: 0!important;
+    font-weight: normal;
+    color: #000;
+    font-size: 18px;
+  }
+}

@@ -52,6 +52,19 @@ const getFeaturedListingsFailure = (json) => ({
     type: types.GET_FEATURES_LISTINGS_FAILURE,
 });
 
+const getUserListings = () => ({
+    type: types.GET_USER_LISTINGS
+});
+
+const getUserListingsSuccess = (json) => ({
+    type: types.GET_USER_LISTINGS_SUCCESS,
+    userListings: json
+});
+
+const getUserListingsFailure = (json) => ({
+    type: types.GET_USER_LISTINGS_FAILURE,
+});
+
 const createListing = () => ({
     type: types.CREATE_LISTING
 });
@@ -64,6 +77,20 @@ const createListingSuccess = (listing) => ({
 const createListingFailure = (json) => ({
     type: types.CREATE_LISTING_FAILURE,
     createListingErrors: json
+});
+
+const updateListing = () => ({
+    type: types.UPDATE_LISTING
+});
+
+const updateListingSuccess = (listing) => ({
+    type: types.UPDATE_LISTING_SUCCESS,
+    updatedListing: listing
+});
+
+const updateListingFailure = (json) => ({
+    type: types.UPDATE_LISTING_FAILURE,
+    updateListingErrors: json
 });
 
 export default {
@@ -79,7 +106,13 @@ export default {
     getFeaturedListings,
     getFeaturedListingsSuccess,
     getFeaturedListingsFailure,
+    getUserListings,
+    getUserListingsSuccess,
+    getUserListingsFailure,
     createListing,
     createListingSuccess,
-    createListingFailure
+    createListingFailure,
+    updateListing,
+    updateListingSuccess,
+    updateListingFailure
 };
