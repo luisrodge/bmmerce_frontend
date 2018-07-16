@@ -59,8 +59,8 @@ class Rent extends Component {
           </div>
         </div>
         <div className="row">
-          {this.props.listings.map((listing) =>
-            <div className="col-md-3 mb-5">
+          {this.props.listings.map((listing, index) =>
+            <div className="col-md-3 mb-5" key={index}>
               <Listing
                 listing={listing}
                 onOpenModal={this.openModal}

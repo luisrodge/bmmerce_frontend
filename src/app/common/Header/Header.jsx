@@ -36,8 +36,8 @@ class Header extends Component {
                 <li className="nav-item mr-3">
                   <Link to="/" className="nav-link home">Home</Link>
                 </li>
-                <li className="nav-item mr-3">
-                  <Link to="/rent" className="nav-link home">Rent</Link>
+                <li className="nav-item">
+                  <Link to="/rent" className="nav-link home">Rent Something</Link>
                 </li>
               </ul>
               {this.props.authenticated ? (
@@ -61,7 +61,7 @@ class Header extends Component {
                       <Link to="/login" className="nav-link">Sign In</Link>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="#">Register</a>
+                      <a className="nav-link pr-0" href="#">Register</a>
                     </li>
                   </ul>
                 )}

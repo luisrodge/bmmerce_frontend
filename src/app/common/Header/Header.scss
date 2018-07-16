@@ -1,3 +1,9 @@
+header {
+    border-bottom: 1px #ccc solid;
+    background: #eee;
+    padding-bottom: 22px;
+}
+
 .logo {
     span {
         font-family: 'Oswald', sans-serif;
@@ -8,7 +14,7 @@
     margin-bottom: 60px;
     background: #FFF;
     .nav-link {
-        font-size: 17px;
+        font-size: 20px;
         color: #3a3a3a;
         &:hover {
             color: #000;

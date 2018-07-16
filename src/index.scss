@@ -73,3 +73,7 @@ body {
 .ReactModal__Overlay.ReactModal__Overlay--after-open {
   background-color: rgba(21, 21, 21, 0.75)!important;
 }
+
+.listing-card:hover {
+  border-color: #ccc;
+}

@@ -8,8 +8,8 @@ const FeaturedListings = (props) => {
             <div className="col-md-12">
                 <h4 className="pb-3">Featured Rentals</h4>
             </div>
-            {props.featuredListings.map((listing) =>
-                <div className="col-md-3">
+            {props.featuredListings.map((listing, index) =>
+                <div className="col-md-3" key={index}>
                     <Listing 
                         listing={listing}
                         onOpenModal={props.onOpenModal}
