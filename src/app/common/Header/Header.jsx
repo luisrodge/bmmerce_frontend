@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import { SearchForm } from '../';
+
 import './Header.scss';
 
 class Header extends Component {
@@ -15,14 +17,7 @@ class Header extends Component {
               </div>
             </div>
             <div className="row">
-              <div className="input-group col-md-5 mx-auto">
-                <input className="form-control py-2 input-sm" type="search" placeholder="Search for something to rent..." id="example-search-input" />
-                <span className="input-group-append">
-                  <button className="btn btn-outline-secondary border-left-0 border" type="button">
-                    <i className="fa fa-search"></i>
-                  </button>
-                </span>
-              </div>
+              <SearchForm />
             </div>
           </div>
         </header>

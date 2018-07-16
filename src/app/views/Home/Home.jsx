@@ -72,11 +72,11 @@ class Home extends Component {
           contentLabel="Listing View"
         >
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-8">
               <h4 className="m-0">{this.state.selectedListing.title}</h4>
               <p className="text-muted">{this.state.selectedListing.address}</p>
             </div>
-            <div className="col-md-6 text-right">
+            <div className="col-md-4 text-right">
               <h4 className="text-success m-0">${this.state.selectedListing.price}</h4>
               <p className="text-muted">Listed by Cayo Rentals</p>
             </div>
