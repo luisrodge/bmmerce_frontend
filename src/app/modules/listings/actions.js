@@ -93,6 +93,15 @@ const updateListingFailure = (json) => ({
     updateListingErrors: json
 });
 
+const deleteListing = () => ({
+    type: types.DELETE_LISTING
+});
+
+const deleteListingSuccess = (listingId) => ({
+    type: types.DELETE_LISTING_SUCCESS,
+    listingId: listingId
+});
+
 export default {
     getListing,
     getListingSuccess,
@@ -114,5 +123,7 @@ export default {
     createListingFailure,
     updateListing,
     updateListingSuccess,
-    updateListingFailure
+    updateListingFailure,
+    deleteListing,
+    deleteListingSuccess
 };

@@ -24,6 +24,7 @@ const USER_LISTINGS_STATE = {
   gettingUserListings: false,
   updatingListing: false,
   updateListingErrors: [],
+  deletingListing: false
 }
 
 const defaultReducer = (state = STATE, action) => {
@@ -191,10 +192,10 @@ const userListingsReducer = (state = USER_LISTINGS_STATE, action) => {
           updatingListing: false,
           userListings: state.userListings.map(listing => listing.id === updatedListing.id ?
             // transform the one with a matching id
-            updatedListing : 
+            updatedListing :
             // otherwise return original todo
             listing
-          ) 
+          )
         }
       }
 
@@ -207,6 +208,26 @@ const userListingsReducer = (state = USER_LISTINGS_STATE, action) => {
           ...state,
           updateListingErrors,
           updatingListing: false,
+        }
+      }
+
+    case types.DELETE_LISTING:
+      {
+        return {
+          ...state,
+          deletingListing: true,
+        }
+      }
+
+    case types.DELETE_LISTING_SUCCESS:
+      {
+        const {
+          listingId
+        } = action;
+        return {
+          ...state,
+          userListings: state.userListings.filter(listing => listingId !== listing.id),
+          deletingListing: false,
         }
       }
 

@@ -31,6 +31,9 @@ const updateListingAction = Actions.updateListing;
 const updateListingSuccessAction = Actions.updateListingSuccess;
 const updateListingFailureAction = Actions.updateListingFailure;
 
+const deleteListingAction = Actions.deleteListing;
+const deleteListingSuccessAction = Actions.deleteListingSuccess;
+
 const getListing = (id) => {
   return dispatch => {
     dispatch(getListingAction());
@@ -220,6 +223,19 @@ const updateListing = (updatedListing) => {
   }
 };
 
+const deleteListing = (id) => {
+  return dispatch => {
+    dispatch(deleteListingAction());
+    axios.delete(`${API_ROOT}/listings/${id}`)
+      .then(function (response) {
+        dispatch(deleteListingSuccessAction(id))
+      })
+      .catch(function (error) {
+        //dispatch(getUsersFailureAction(error.response.data.data));
+      });
+  }
+}
+
 export default {
   createListing,
   getListing,
@@ -227,5 +243,6 @@ export default {
   getLatestListings,
   getFeaturedListings,
   getUserListings,
-  updateListing
+  updateListing,
+  deleteListing
 };

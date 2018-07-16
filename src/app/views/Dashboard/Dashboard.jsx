@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import ImageUploader from 'react-images-upload';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 const customStyles = {
   content: {
@@ -66,6 +68,34 @@ class Dashboard extends Component {
     });
   }
 
+  handleDelete = () => {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className='custom-confirm-alert'>
+            <h3 className="text-center">Are you sure?</h3>
+            <p>Do you really want to delete this listing?</p>
+            <div className="row">
+              <div className="col-md-6">
+                <button className="btn btn-danger btn-block" onClick={() => {
+                  this.props.deleteListing(this.state.selectedListing.id)
+                  onClose()
+                  this.setState({
+                    modalIsOpen: false,
+                    selectedListing: {}
+                  });
+                }}>Yes, Delete it!</button>
+              </div>
+              <div className="col-md-6">
+                <button onClick={onClose} className="btn btn-light btn-block">No</button>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    })
+  };
+
   render() {
     if (this.props.gettingUserListings) { return null; }
     return (
@@ -107,11 +137,8 @@ class Dashboard extends Component {
           contentLabel="Listing View"
         >
           <div className="row">
-            <div className="col-md-8">
-              <h5 className="m-0">{this.state.selectedListing.title}</h5>
-            </div>
-            <div className="col-md-4 text-right">
-              <p className="text-muted">Delete</p>
+            <div className="col-md-4 ml-auto text-right">
+              <p className="text-muted pointer" onClick={this.handleDelete}>Delete</p>
             </div>
           </div>
           <form onSubmit={e => this.handleSubmit(e)}>

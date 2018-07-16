@@ -10,7 +10,8 @@ const mapStateToProps = (state) => {
     const {
         userListings,
         gettingUserListings,
-        updatingListings
+        updatingListings,
+        deletingListing
     } = state.listings.userListings;
     const {
         user
@@ -30,9 +31,13 @@ const mapDispatchToProps = (dispatch) => {
     const updateListing = (updatedListing) => {
         dispatch(listingsOperations.updateListing(updatedListing));
     };
+    const deleteListing = (id) => {
+        dispatch(listingsOperations.deleteListing(id));
+    };
     return {
         getUserListings,
-        updateListing
+        updateListing,
+        deleteListing
     };
 };
 
