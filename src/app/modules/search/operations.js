@@ -24,7 +24,7 @@ const search = (query) => {
       .then(function (response) {
         const responseData = response.data.listings;
         console.log("Hsds", response);
-        if (responseData !== "") {
+        if (response.data !== "") {
           let data = [];
           responseData.map(child => {
             const childData = {
