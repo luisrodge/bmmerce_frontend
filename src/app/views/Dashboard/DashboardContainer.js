@@ -28,8 +28,8 @@ const mapDispatchToProps = (dispatch) => {
     const getUserListings = (id) => {
         dispatch(listingsOperations.getUserListings(id));
     };
-    const updateListing = (updatedListing) => {
-        dispatch(listingsOperations.updateListing(updatedListing));
+    const updateListing = (updatedListing, newImages) => {
+        dispatch(listingsOperations.updateListing(updatedListing, newImages));
     };
     const deleteListing = (id) => {
         dispatch(listingsOperations.deleteListing(id));

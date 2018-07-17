@@ -59,41 +59,6 @@ const getListing = (id) => {
   }
 }
 
-const createListing = (newListing) => {
-  console.log(newListing);
-  let formData = new FormData();
-  formData.append('title', newListing.title);
-  formData.append('description', newListing.description);
-  formData.append('price', newListing.price);
-  formData.append('price_details', newListing.priceDetails);
-  formData.append('address', newListing.address);
-  if (newListing.userId) {
-    formData.append('user_id', newListing.userId);
-  }
-  for (var i = 0; i < newListing.pictures.length; i++) {
-    console.log(newListing.pictures[i]);
-    formData.append("images[]", newListing.pictures[i]);
-  }
-  return dispatch => {
-    dispatch(createListingAction());
-    axios.post(`${API_ROOT}/listings`, formData)
-      .then(async (response) => {
-        console.log(response);
-        dispatch(createListingSuccessAction(response.data.listing));
-        if (newListing.userId) {
-          dispatch(push('/dashboard'));
-        } else {
-          dispatch(push('/'));
-        }
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-        dispatch(createListingFailureAction(error.response.data.errors));
-        // dispatch(authenticateFailureAction(error.response.data.error.user_authentication[0]));
-      });
-  }
-};
-
 const getListings = () => {
   return dispatch => {
     dispatch(getListingsAction());
@@ -209,19 +174,60 @@ const getUserListings = (id) => {
   }
 }
 
-const updateListing = (updatedListing) => {
+const createListing = (newListing) => {
+  console.log(newListing);
+  let formData = new FormData();
+  formData.append('title', newListing.title);
+  formData.append('description', newListing.description);
+  formData.append('price', newListing.price);
+  formData.append('price_details', newListing.priceDetails);
+  formData.append('address', newListing.address);
+  if (newListing.userId) {
+    formData.append('user_id', newListing.userId);
+  }
+  for (var i = 0; i < newListing.pictures.length; i++) {
+    console.log(newListing.pictures[i]);
+    formData.append("images[]", newListing.pictures[i]);
+  }
+  return dispatch => {
+    dispatch(createListingAction());
+    axios.post(`${API_ROOT}/listings`, formData)
+      .then(async (response) => {
+        console.log(response);
+        dispatch(createListingSuccessAction(response.data.listing));
+        if (newListing.userId) {
+          dispatch(push('/dashboard'));
+        } else {
+          dispatch(push('/'));
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        dispatch(createListingFailureAction(error.response.data.errors));
+        // dispatch(authenticateFailureAction(error.response.data.error.user_authentication[0]));
+      });
+  }
+};
+
+const updateListing = (updatedListing, newImages = []) => {
   console.log(updatedListing);
+  let formData = new FormData();
+  formData.append('title', updatedListing.title);
+  formData.append('description', updatedListing.description);
+  formData.append('price', updatedListing.price);
+  formData.append('price_details', updatedListing.priceDetails);
+  formData.append('address', updatedListing.address);
+  formData.append('user_id', updatedListing.userId);
+  // Append new images to be uploaded
+  if (newImages.length > 0) {
+    for (var i = 0; i < newImages.length; i++) {
+      console.log(newImages[i]);
+      formData.append("images[]", newImages[i]);
+    }
+  }
   return dispatch => {
     dispatch(updateListingAction());
-    axios.put(`${API_ROOT}/listings/${updatedListing.id}`, {
-        id: updatedListing.id,
-        title: updatedListing.title,
-        description: updatedListing.description,
-        price: updatedListing.price,
-        price_details: updatedListing.priceDetails,
-        address: updatedListing.address,
-        user_id: updatedListing.userId
-      })
+    axios.put(`${API_ROOT}/listings/${updatedListing.id}`, formData)
       .then(async (response) => {
         console.log(response);
         const responseData = response.data.listing;
@@ -232,7 +238,8 @@ const updateListing = (updatedListing) => {
           address: responseData.address,
           description: responseData.description,
           priceDetails: responseData.price_details,
-          userId: responseData.user_id
+          userId: responseData.user_id,
+          images: responseData.images
         };
         dispatch(updateListingSuccessAction(data));
       })

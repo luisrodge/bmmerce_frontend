@@ -27,7 +27,8 @@ class Dashboard extends Component {
     super();
     this.state = {
       modalIsOpen: false,
-      selectedListing: {}
+      selectedListing: {},
+      pictures: []
     };
   }
 
@@ -61,10 +62,14 @@ class Dashboard extends Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log(this.state.selectedListing);
-    this.props.updateListing(this.state.selectedListing);
+    this.props.updateListing(
+      this.state.selectedListing,
+      this.state.pictures
+    );
     this.setState({
       modalIsOpen: false,
-      selectedListing: {}
+      selectedListing: {},
+      pictures: []
     });
   }
 
@@ -95,6 +100,12 @@ class Dashboard extends Component {
       }
     })
   };
+
+  onDrop = (pictureFiles, pictureDataURLs) => {
+    this.setState({
+      pictures: this.state.pictures.concat(pictureFiles)
+    });
+  }
 
   render() {
     if (this.props.gettingUserListings) { return null; }
@@ -129,92 +140,96 @@ class Dashboard extends Component {
             </tbody>
           </table>
         </div>
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-          shouldCloseOnOverlayClick={true}
-          contentLabel="Listing View"
-        >
-          <div className="row">
-            <div className="col-md-4 ml-auto text-right">
-              <p className="text-muted pointer" onClick={this.handleDelete}>Delete</p>
-            </div>
-          </div>
-          <form onSubmit={e => this.handleSubmit(e)}>
-            <div className="form-group">
-              <label htmlFor="title">*Title</label>
-              <input
-                type="text"
-                name="title"
-                className="form-control"
-                onChange={this.handleChangeFor('title')}
-                value={this.state.selectedListing.title}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="title">*Price</label>
-              <input
-                type="text"
-                name="price"
-                className="form-control"
-                onChange={this.handleChangeFor('price')}
-                value={this.state.selectedListing.price}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="price-details">Additional Pricing Details</label>
-              <textarea
-                name="price-details"
-                className="form-control"
-                onChange={this.handleChangeFor('priceDetails')}
-                value={this.state.selectedListing.priceDetails}
-              >
-              </textarea>
-            </div>
-            <div className="form-group">
-              <label htmlFor="title">Address</label>
-              <input
-                type="text"
-                name="address"
-                className="form-control"
-                onChange={this.handleChangeFor('address')}
-                value={this.state.selectedListing.address}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="description">Description</label>
-              <textarea
-                name="description"
-                className="form-control"
-                onChange={this.handleChangeFor('description')}
-                value={this.state.selectedListing.description}
-              >
-              </textarea>
-            </div>
+        {this.state.modalIsOpen &&
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+            shouldCloseOnOverlayClick={true}
+            contentLabel="Listing View"
+          >
             <div className="row">
-              <div className="col-md-12">
-                <p className="m-0">*Images</p>
-              </div>
-              <div className="col-md-3">
-                <img className="img-fluid mt-3 mb-3" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap" />
+              <div className="col-md-4 ml-auto text-right">
+                <p className="text-muted pointer" onClick={this.handleDelete}>Delete</p>
               </div>
             </div>
-            <div className="form-group">
-              <ImageUploader
-                withIcon={true}
-                buttonText='Choose Images'
-                onChange={this.onDrop}
-                imgExtension={['.jpg', '.jpeg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
-                withPreview={true}
-                className="image-uploader"
-              />
-            </div>
-            <br />
-            <button className="btn btn-light btn-block">Update Listing</button>
-          </form>
-        </Modal>
+            <form onSubmit={e => this.handleSubmit(e)}>
+              <div className="form-group">
+                <label htmlFor="title">*Title</label>
+                <input
+                  type="text"
+                  name="title"
+                  className="form-control"
+                  onChange={this.handleChangeFor('title')}
+                  value={this.state.selectedListing.title}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="title">*Price</label>
+                <input
+                  type="text"
+                  name="price"
+                  className="form-control"
+                  onChange={this.handleChangeFor('price')}
+                  value={this.state.selectedListing.price}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="price-details">Additional Pricing Details</label>
+                <textarea
+                  name="price-details"
+                  className="form-control"
+                  onChange={this.handleChangeFor('priceDetails')}
+                  value={this.state.selectedListing.priceDetails}
+                >
+                </textarea>
+              </div>
+              <div className="form-group">
+                <label htmlFor="title">Address</label>
+                <input
+                  type="text"
+                  name="address"
+                  className="form-control"
+                  onChange={this.handleChangeFor('address')}
+                  value={this.state.selectedListing.address}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="description">Description</label>
+                <textarea
+                  name="description"
+                  className="form-control"
+                  onChange={this.handleChangeFor('description')}
+                  value={this.state.selectedListing.description}
+                >
+                </textarea>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <p className="m-0">*Images</p>
+                </div>
+                {this.state.selectedListing.images.map((image, index) =>
+                  <div className="col-md-3" key={index}>
+                    <img className="img-fluid mt-3 mb-3" src={image['listing_image']['url']} alt="Listing image" />
+                  </div>
+                )}
+              </div>
+              <div className="form-group">
+                <ImageUploader
+                  withIcon={true}
+                  buttonText='Choose Images'
+                  onChange={this.onDrop}
+                  imgExtension={['.jpg', '.jpeg', '.gif', '.png', '.gif']}
+                  maxFileSize={5242880}
+                  withPreview={true}
+                  className="image-uploader"
+                />
+              </div>
+              <br />
+              <button className="btn btn-light btn-block">Update Listing</button>
+            </form>
+          </Modal>
+        }
       </div>
     );
   }
