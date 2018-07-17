@@ -16,11 +16,9 @@ class NewListing extends Component {
     }
 
     onDrop(pictureFiles, pictureDataURLs) {
-        console.log(pictureFiles);
         this.setState({
             pictures: this.state.pictures.concat(pictureFiles)
         });
-        console.log('Picture', this.state.pictures);
     }
 
     handleSubmit(e) {
@@ -101,7 +99,7 @@ class NewListing extends Component {
                             />
                         </div>
                         <br />
-                        <button className="btn btn-light btn-block">Create Listing</button>
+                        <button className="btn btn-light btn-block" disabled={this.props.creatingListing}>Create Listing</button>
                     </form>
                 </div>
             </div>

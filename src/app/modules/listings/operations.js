@@ -39,8 +39,19 @@ const getListing = (id) => {
     dispatch(getListingAction());
     axios.get(`${API_ROOT}/listings/${id}`)
       .then(function (response) {
-        const responseData = response.data;
-        dispatch(getListingSuccessAction(responseData))
+        const responseData = response.data.listing;
+        console.log("daddy", responseData);
+        const listing = {
+          id: responseData.id,
+          title: responseData.title,
+          price: responseData.price,
+          address: responseData.address,
+          description: responseData.description,
+          priceDetails: responseData.price_details,
+          userId: responseData.user_id,
+          images: responseData.images
+        };
+        dispatch(getListingSuccessAction(listing))
       })
       .catch(function (error) {
         //dispatch(getUsersFailureAction(error.response.data.data));
@@ -50,24 +61,23 @@ const getListing = (id) => {
 
 const createListing = (newListing) => {
   console.log(newListing);
-  let imagesData = new FormData();
+  let formData = new FormData();
+  formData.append('title', newListing.title);
+  formData.append('description', newListing.description);
+  formData.append('price', newListing.price);
+  formData.append('price_details', newListing.priceDetails);
+  formData.append('address', newListing.address);
+  formData.append('user_id', newListing.userId);
   for (var i = 0; i < newListing.pictures.length; i++) {
-    imagesData.append("pictures", newListing.pictures[i]);
+    console.log(newListing.pictures[i]);
+    formData.append("images[]", newListing.pictures[i]);
   }
   return dispatch => {
     dispatch(createListingAction());
-    axios.post(`${API_ROOT}/listings`, {
-        title: newListing.title,
-        description: newListing.description,
-        price: newListing.price,
-        price_details: newListing.priceDetails,
-        address: newListing.address,
-        images: imagesData,
-        user_id: newListing.userId
-      })
+    axios.post(`${API_ROOT}/listings`, formData)
       .then(async (response) => {
         console.log(response);
-        dispatch(createListingSuccessAction(response.data));
+        dispatch(createListingSuccessAction(response.data.listing));
         if (newListing.userId) {
           dispatch(push('/dashboard'));
         } else {
@@ -75,7 +85,8 @@ const createListing = (newListing) => {
         }
       })
       .catch((error) => {
-        console.log(error.response);
+        console.log(error.response.data);
+        dispatch(createListingFailureAction(error.response.data.errors));
         // dispatch(authenticateFailureAction(error.response.data.error.user_authentication[0]));
       });
   }
@@ -86,7 +97,7 @@ const getListings = () => {
     dispatch(getListingsAction());
     axios.get(`${API_ROOT}/listings`)
       .then(function (response) {
-        const responseData = response.data;
+        const responseData = response.data.listings;
         let data = [];
         responseData.map(child => {
           const childData = {
@@ -96,8 +107,10 @@ const getListings = () => {
             address: child.address,
             description: child.description,
             priceDetails: child.price_details,
-            userId: child.user_id
+            userId: child.user_id,
+            images: child.images
           };
+          console.log(childData);
           data.push(childData);
         });
         dispatch(getListingsSuccessAction(data))
@@ -113,7 +126,8 @@ const getLatestListings = () => {
     dispatch(getLatestListingsAction());
     axios.get(`${API_ROOT}/listings?limit=4`)
       .then(function (response) {
-        const responseData = response.data;
+        console.log(response)
+        const responseData = response.data.listings;
         let data = [];
         responseData.map(child => {
           const childData = {
@@ -123,7 +137,8 @@ const getLatestListings = () => {
             address: child.address,
             description: child.description,
             priceDetails: child.price_details,
-            userId: child.user_id
+            userId: child.user_id,
+            images: child.images
           };
           data.push(childData);
         });
@@ -140,7 +155,8 @@ const getFeaturedListings = () => {
     dispatch(getFeaturedListingsAction());
     axios.get(`${API_ROOT}/listings/featured?limit=4`)
       .then(function (response) {
-        const responseData = response.data;
+        console.log("featured", response.data)
+        const responseData = response.data.listings;
         let data = [];
         responseData.map(child => {
           const childData = {
@@ -150,7 +166,8 @@ const getFeaturedListings = () => {
             address: child.address,
             description: child.description,
             priceDetails: child.price_details,
-            userId: child.user_id
+            userId: child.user_id,
+            images: child.images
           };
           data.push(childData);
         });
@@ -167,7 +184,7 @@ const getUserListings = (id) => {
     dispatch(getUserListingsAction());
     axios.get(`${API_ROOT}/listings/user_listings?user_id=${id}`)
       .then(function (response) {
-        const responseData = response.data;
+        const responseData = response.data.listings;
         let data = [];
         responseData.map(child => {
           const childData = {
@@ -177,7 +194,8 @@ const getUserListings = (id) => {
             address: child.address,
             description: child.description,
             priceDetails: child.price_details,
-            userId: child.user_id
+            userId: child.user_id,
+            images: child.images
           };
           data.push(childData);
         });
@@ -204,7 +222,7 @@ const updateListing = (updatedListing) => {
       })
       .then(async (response) => {
         console.log(response);
-        const responseData = response.data;
+        const responseData = response.data.listing;
         const data = {
           id: responseData.id,
           title: responseData.title,

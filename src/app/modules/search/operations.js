@@ -22,7 +22,7 @@ const search = (query) => {
     dispatch(searchAction());
     axios.get(`${API_ROOT}/search?query=${query}`)
       .then(function (response) {
-        const responseData = response.data;
+        const responseData = response.data.listings;
         console.log("Hsds", response);
         if (responseData !== "") {
           let data = [];
@@ -34,7 +34,8 @@ const search = (query) => {
               address: child.address,
               priceDetails: child.price_details,
               description: child.description,
-              userId: child.user_id
+              userId: child.user_id,
+              images: child.images
             };
             data.push(childData);
           });

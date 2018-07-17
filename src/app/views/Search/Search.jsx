@@ -16,7 +16,7 @@ class Search extends React.Component {
     }
 
     render() {
-        if (this.props.searching) { return <p className="text-center">Searching...</p> }
+        if (this.props.searching) { return <p className="text-center">Searching...</p>; }
         return (
             <div className="container">
                 <div className="row">

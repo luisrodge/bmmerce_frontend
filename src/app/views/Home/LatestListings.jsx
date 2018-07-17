@@ -2,7 +2,7 @@ import React from 'react';
 import { Listing } from '../../common'
 
 const LatestListings = (props) => {
-    if (props.gettingLatestListings) { return null; }
+    if (props.gettingLatestListings || props.latestListings.length == 0) { return null; }
     return (
         <div className="row mt-5">
             <div className="col-md-12">

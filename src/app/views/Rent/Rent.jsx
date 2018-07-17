@@ -51,6 +51,7 @@ class Rent extends Component {
   }
 
   render() {
+    if (this.props.gettingListings || this.props.listings.length == 0) { return null; }
     return (
       <div>
         <div className="row">
@@ -68,37 +69,41 @@ class Rent extends Component {
             </div>
           )}
         </div>
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-          shouldCloseOnOverlayClick={true}
-          contentLabel="Listing View"
-        >
-          <div className="row">
-            <div className="col-md-8">
-              <h4 className="m-0">{this.state.selectedListing.title}</h4>
-              <p className="text-muted">{this.state.selectedListing.address}</p>
+        {this.state.modalIsOpen &&
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+            shouldCloseOnOverlayClick={true}
+            contentLabel="Listing View"
+            ariaHideApp={true}
+          >
+            <div className="row">
+              <div className="col-md-8">
+                <h4 className="m-0">{this.state.selectedListing.title}</h4>
+                <p className="text-muted">{this.state.selectedListing.address}</p>
+              </div>
+              <div className="col-md-4 text-right">
+                <h4 className="text-success m-0">${this.state.selectedListing.price}</h4>
+                <p className="text-muted">Listed by Cayo Rentals</p>
+              </div>
             </div>
-            <div className="col-md-4 text-right">
-              <h5 className="text-success m-0">${this.state.selectedListing.price}</h5>
-              <p className="text-muted">Listed by Cayo Rentals</p>
-            </div>
-          </div>
-          <Link to={{pathname: `/${this.state.selectedListing.id}/rent`, state: {listing: this.state.selectedListing}}} className="btn btn-light btn-lg btn-block mt-3 mb-4">
-            Send Rent Request
+            <Link to={{ pathname: `/${this.state.selectedListing.id}/rent`, state: { listing: this.state.selectedListing } }} className="btn btn-light btn-lg btn-block mt-3 mb-4">
+              Send Rent Request
           </Link>
-          {this.state.selectedListing.priceDetails &&
-            <div>
-              <h5 className="mb-1">Pricing Details:</h5>
-              <p>{this.state.selectedListing.priceDetails}</p>
-              <hr />
-            </div>
-          }
-         <h5 className=" mb-1">Other Information:</h5>
-          <p>{this.state.selectedListing.description}</p>
-          <img class="img-fluid mt-3 mb-3" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap" />
-        </Modal>
+            {this.state.selectedListing.priceDetails &&
+              <div>
+                <h5 className="mb-1">Pricing Details:</h5>
+                <p>{this.state.selectedListing.priceDetails}</p>
+                <hr />
+              </div>
+            }
+            <h5 className=" mb-1">Other Information:</h5>
+            <p>{this.state.selectedListing.description}</p>
+            <img class="img-fluid mt-3 mb-3" src={this.state.selectedListing.images[0]['listing_image']['url']} alt="Card image cap" />
+            {console.log("fucker,", this.state.selectedListing)}
+          </Modal>
+        }
       </div>
     );
   }

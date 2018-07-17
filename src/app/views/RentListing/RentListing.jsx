@@ -24,7 +24,7 @@ class RentListing extends Component {
     }
 
     render() {
-        if (this.props.gettingListing) { return null; }
+        if (this.props.gettingListing === true) { return null; }
         return (
             <div className="row">
                 <div className="col-md-6">
@@ -79,7 +79,9 @@ class RentListing extends Component {
                     </form>
                 </div>
                 <div className="col-md-4 ml-auto">
-                    <img src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="" className="img-fluid" />
+                    {this.props.listing.images &&
+                        <img src={this.props.listing.images[0]['listing_image']['url']} alt="" className="img-fluid" />
+                    }
                 </div>
             </div>
         );

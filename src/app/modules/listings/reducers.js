@@ -11,7 +11,7 @@ const STATE = {
   latestListings: [],
   gettingLatestListings: false,
   creatingListing: false,
-  createListingErrors: [],
+  createListingErrors: {},
 }
 
 const FEATURED_STATE = {

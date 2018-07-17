@@ -118,7 +118,7 @@ class Dashboard extends Component {
               {this.props.userListings.map((listing, index) =>
                 <tr key={index} className="pointer" onClick={() => this.openModal(listing)}>
                   <td>
-                    <img className="img-sm" src="https://www.drive.sg/uploads/cars/Subaru-Impreza-5DR-idealrentalcar-2747-main.png" alt="Card image cap" />
+                    <img className="img-sm" src={listing.images[0]['listing_image']['url']} alt="Card image cap" />
                   </td>
                   <td>{listing.title}</td>
                   <td className="text-success">${listing.price}</td>
