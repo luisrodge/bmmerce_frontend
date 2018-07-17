@@ -67,7 +67,9 @@ const createListing = (newListing) => {
   formData.append('price', newListing.price);
   formData.append('price_details', newListing.priceDetails);
   formData.append('address', newListing.address);
-  formData.append('user_id', newListing.userId);
+  if (newListing.userId) {
+    formData.append('user_id', newListing.userId);
+  }
   for (var i = 0; i < newListing.pictures.length; i++) {
     console.log(newListing.pictures[i]);
     formData.append("images[]", newListing.pictures[i]);
