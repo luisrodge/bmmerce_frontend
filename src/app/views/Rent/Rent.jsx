@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 
-import { Listing } from '../../common'
-
+import { Listing, Slider } from '../../common'
 
 const customStyles = {
   content: {
@@ -100,8 +99,7 @@ class Rent extends Component {
             }
             <h5 className=" mb-1">Other Information:</h5>
             <p>{this.state.selectedListing.description}</p>
-            <img class="img-fluid mt-3 mb-3" src={this.state.selectedListing.images[0]['listing_image']['url']} alt="Card image cap" />
-            {console.log("fucker,", this.state.selectedListing)}
+            <Slider images={this.state.selectedListing.images} />
           </Modal>
         }
       </div>

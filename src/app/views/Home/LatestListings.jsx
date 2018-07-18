@@ -10,7 +10,7 @@ const LatestListings = (props) => {
             </div>
             {props.latestListings.map((listing, index) =>
                 <div className="col-md-3" key={index}>
-                    <Listing 
+                    <Listing
                         listing={listing}
                         onOpenModal={props.onOpenModal}
                     />

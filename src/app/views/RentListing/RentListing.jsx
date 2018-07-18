@@ -55,16 +55,6 @@ class RentListing extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="rentDate">When Would You Like To Rent This Listing?</label>
-                            <input
-                                type="date"
-                                name="rentDate"
-                                className="form-control"
-                                value={this.state.rentDate}
-                                onChange={e => this.setState({ rentDate: e.target.value })}
-                            />
-                        </div>
-                        <div className="form-group">
                             <label htmlFor="comment">Additional Comments/Details</label>
                             <textarea
                                 name="comment"

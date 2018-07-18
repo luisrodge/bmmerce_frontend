@@ -12,8 +12,10 @@ class Header extends Component {
         <header>
           <div className="container">
             <div className="row">
-              <div className="col-md-12">
-                <h1 className="text-center pt-2 logo">belize<span>rentify</span></h1>
+              <div className="col-md-12 text-center">
+                <Link to="/" className="text-center pt-2 logo">
+                  belize<span>rentify</span>
+                </Link>
               </div>
             </div>
             <div className="row">
