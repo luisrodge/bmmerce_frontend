@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
 import LatestListings from './LatestListings';
 import FeaturedListings from './FeaturedListings';
@@ -53,6 +55,36 @@ class Home extends Component {
     });
   }
 
+  onContactPoster = () => {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className='custom-confirm-alert'>
+            <h3 className="text-center mb-0">Contact This Poster</h3>
+            <p>You may Contact this poster through any of the following:</p>
+            <div className="text-center">
+              <p>
+                <i class="far fa-envelope"></i> Email: {this.state.selectedListing.contactEmail}
+            </p>
+              <p><i class="fas fa-mobile-alt"></i> Phone Call: {this.state.selectedListing.contactNumber}</p>
+              <p>
+                <i class="far fa-comment"></i> SMS: {this.state.selectedListing.contactNumber}
+            </p>
+              <p><i class="fab fa-whatsapp"></i> WhatsApp: {this.state.selectedListing.contactNumber}</p>
+            </div>
+            <div className="row">
+              <div className="col-md-12">
+                <button className="btn btn-light btn-block" onClick={() => {
+                  onClose()
+                }}>Done</button>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    })
+  };
+
   render() {
     return (
       <div>
@@ -83,20 +115,13 @@ class Home extends Component {
               </div>
               <div className="col-md-4 text-right">
                 <h4 className="text-success m-0">${this.state.selectedListing.price}</h4>
-                <p className="text-muted">Listed by Cayo Rentals</p>
+                <p className="text-muted">Listed by {this.state.selectedListing.contactName}</p>
               </div>
             </div>
-            <Link to={{ pathname: `/${this.state.selectedListing.id}/rent`, state: { listing: this.state.selectedListing } }} className="btn btn-light btn-lg btn-block mt-3 mb-4">
-              Contact Poster
-          </Link>
-            {this.state.selectedListing.priceDetails &&
-              <div>
-                <h5 className="mb-1">Pricing Details:</h5>
-                <p>{this.state.selectedListing.priceDetails}</p>
-                <hr />
-              </div>
-            }
-            <h5 className=" mb-1">Other Information:</h5>
+            <button onClick={this.onContactPoster} className="btn btn-light btn-lg btn-block mt-3 mb-4">
+              <i class="fas fa-mobile-alt"></i> Contact Poster
+            </button>
+            <h5 className=" mb-1">Details:</h5>
             <p>{this.state.selectedListing.description}</p>
             <Slider images={this.state.selectedListing.images} />
           </Modal>

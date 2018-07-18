@@ -73,7 +73,13 @@ const getListings = () => {
             price: child.price,
             address: child.address,
             description: child.description,
-            priceDetails: child.price_details,
+            contactName: child.contact_name,
+            contactEmail: child.contact_email,
+            contactNumber: child.contact_number,
+            emailFlag: child.email_flag,
+            smsFlag: child.sms_flag,
+            phoneCallFlag: child.phone_call_flag,
+            whatsappFlag: child.whatsapp_flag,
             userId: child.user_id,
             images: child.images
           };
@@ -103,7 +109,13 @@ const getLatestListings = () => {
             price: child.price,
             address: child.address,
             description: child.description,
-            priceDetails: child.price_details,
+            contactName: child.contact_name,
+            contactEmail: child.contact_email,
+            contactNumber: child.contact_number,
+            emailFlag: child.email_flag,
+            smsFlag: child.sms_flag,
+            phoneCallFlag: child.phone_call_flag,
+            whatsappFlag: child.whatsapp_flag,
             userId: child.user_id,
             images: child.images
           };
@@ -132,7 +144,13 @@ const getFeaturedListings = () => {
             price: child.price,
             address: child.address,
             description: child.description,
-            priceDetails: child.price_details,
+            contactName: child.contact_name,
+            contactEmail: child.contact_email,
+            contactNumber: child.contact_number,
+            emailFlag: child.email_flag,
+            smsFlag: child.sms_flag,
+            phoneCallFlag: child.phone_call_flag,
+            whatsappFlag: child.whatsapp_flag,
             userId: child.user_id,
             images: child.images
           };
