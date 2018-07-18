@@ -14,7 +14,7 @@ class Header extends Component {
             <div className="row">
               <div className="col-md-12 text-center">
                 <Link to="/" className="text-center pt-2 logo">
-                  belize<span>rentify</span>
+                  bzlistify
                 </Link>
               </div>
             </div>
@@ -34,10 +34,15 @@ class Header extends Component {
                   <Link to="/" className="nav-link home">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/rent" className="nav-link home">Rent Something</Link>
+                  <Link to="/rent" className="nav-link home">Browse Listings</Link>
                 </li>
               </ul>
-              {this.props.authenticated ? (
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item mr-3">
+                  <Link to="/listings/new" className="nav-link">Post A Listing</Link>
+                </li>
+              </ul>
+              {/* {this.props.authenticated ? (
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item mr-3">
                     <Link to="/listings/new" className="nav-link">Post Listing</Link>
@@ -61,7 +66,7 @@ class Header extends Component {
                       <a className="nav-link pr-0" href="#">Register</a>
                     </li>
                   </ul>
-                )}
+                )} */}
             </div>
           </div>
         </nav>

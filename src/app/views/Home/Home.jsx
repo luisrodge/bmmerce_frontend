@@ -9,11 +9,11 @@ import { Slider } from '../../common';
 const customStyles = {
   content: {
     top: '50%',
-    left: '50%',
-    right: '50%',
+    left: '50.1%',
+    right: '50.1%',
     bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    marginRight: '-50.1%',
+    transform: 'translate(-50.1%, -50.1%)',
     maxHeight: '100vh', // <-- This sets the height
     overlfow: 'scroll' // <-- This tells the modal to scrol
   },
@@ -87,7 +87,7 @@ class Home extends Component {
               </div>
             </div>
             <Link to={{ pathname: `/${this.state.selectedListing.id}/rent`, state: { listing: this.state.selectedListing } }} className="btn btn-light btn-lg btn-block mt-3 mb-4">
-              Send Rent Request
+              Contact Poster
           </Link>
             {this.state.selectedListing.priceDetails &&
               <div>

@@ -9,7 +9,7 @@ import {
 
 const searchAction = Actions.search;
 const searchSuccessAction = Actions.searchSuccess;
-const searchFailureAction = Actions.searchFailure;
+// const searchFailureAction = Actions.searchFailure;
 
 const onSearch = (query) => {
   return dispatch => {

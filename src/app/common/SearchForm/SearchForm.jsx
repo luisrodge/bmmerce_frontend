@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router';
 
 const WAIT_INTERVAL = 400;
 const ENTER_KEY = 13;

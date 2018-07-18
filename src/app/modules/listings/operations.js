@@ -29,7 +29,7 @@ const createListingFailureAction = Actions.createListingFailure;
 
 const updateListingAction = Actions.updateListing;
 const updateListingSuccessAction = Actions.updateListingSuccess;
-const updateListingFailureAction = Actions.updateListingFailure;
+//const updateListingFailureAction = Actions.updateListingFailure;
 
 const deleteListingAction = Actions.deleteListing;
 const deleteListingSuccessAction = Actions.deleteListingSuccess;
@@ -91,7 +91,7 @@ const getListings = () => {
 const getLatestListings = () => {
   return dispatch => {
     dispatch(getLatestListingsAction());
-    axios.get(`${API_ROOT}/listings?limit=4`)
+    axios.get(`${API_ROOT}/listings?limit=8`)
       .then(function (response) {
         console.log(response)
         const responseData = response.data.listings;
@@ -178,10 +178,16 @@ const createListing = (newListing) => {
   console.log(newListing);
   let formData = new FormData();
   formData.append('title', newListing.title);
-  formData.append('description', newListing.description);
   formData.append('price', newListing.price);
-  formData.append('price_details', newListing.priceDetails);
+  formData.append('description', newListing.description);
   formData.append('address', newListing.address);
+  formData.append('contact_name', newListing.contactName);
+  formData.append('contact_email', newListing.contactEmail);
+  formData.append('contact_number', newListing.contactNumber);
+  formData.append('email_flag', newListing.emailFlag);
+  formData.append('whatsapp_flag', newListing.whatsappFlag);
+  formData.append('sms_flag', newListing.smsFlag);
+  formData.append('phone_call_flag', newListing.phoneCallFlag);
   if (newListing.userId) {
     formData.append('user_id', newListing.userId);
   }

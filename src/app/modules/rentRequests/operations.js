@@ -10,7 +10,7 @@ import {
 
 const createRentRequestAction = Actions.createRentRequest;
 const createRentRequestSuccessAction = Actions.createRentRequestSuccess;
-const createRentRequestFailureAction = Actions.createRentRequestFailure;
+// const createRentRequestFailureAction = Actions.createRentRequestFailure;
 
 const createRentRequest = (newRentRequest) => {
   console.log(newRentRequest);

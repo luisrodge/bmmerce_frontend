@@ -8,7 +8,7 @@ class MinimalHeader extends Component {
     return (
       <nav className="navbar navbar-expand-md navbar-light" id="minimal-nav">
         <div className="container">
-          <Link to="/" className="navbar-brand" id="minimal-logo">belize<span className="alt-font">rentify</span></Link>
+          <Link to="/" className="navbar-brand" id="minimal-logo">bzmonify.com</Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

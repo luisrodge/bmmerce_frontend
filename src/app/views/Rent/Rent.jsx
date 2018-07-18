@@ -50,14 +50,9 @@ class Rent extends Component {
   }
 
   render() {
-    if (this.props.gettingListings || this.props.listings.length == 0) { return null; }
+    if (this.props.gettingListings || this.props.listings.length === 0) { return null; }
     return (
       <div>
-        <div className="row">
-          <div className="col-md-12">
-            <h4 className="pb-3">Browse Listings To Rent</h4>
-          </div>
-        </div>
         <div className="row">
           {this.props.listings.map((listing, index) =>
             <div className="col-md-3 mb-5" key={index}>

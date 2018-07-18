@@ -8,16 +8,16 @@ import { API_ROOT } from '../../utils/apiConfig';
 
 const authenticateAction = Actions.authenticate;
 const authenticateSuccessAction = Actions.authenticateSuccess;
-const authenticateFailureAction = Actions.authenticateFailure;
+// const authenticateFailureAction = Actions.authenticateFailure;
 
 const unauthenticateAction = Actions.unauthenticate;
 
-const verifyTokenAction = Actions.verifyToken;
+// const verifyTokenAction = Actions.verifyToken;
 const verifyTokenSuccessAction = Actions.verifyTokenSuccess;
 const verifyTokenFailureAction = Actions.verifyTokenFailure;
 
 const registerAction = Actions.register;
-const registerSuccessAction = Actions.registerSuccess;
+//const registerSuccessAction = Actions.registerSuccess;
 const registerFailureAction = Actions.registerFailure;
 
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Listing } from '../../common'
 
 const FeaturedListings = (props) => {
-    if (props.gettingFeaturedListings || props.featuredListings.length == 0) { return null; }
+    if (props.gettingFeaturedListings || props.featuredListings.length === 0) { return null; }
     return (
         <div className="row mt-5">
             <div className="col-md-12">
