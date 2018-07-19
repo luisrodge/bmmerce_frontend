@@ -1,7 +1,7 @@
 import {
     connect
 } from 'react-redux';
-import Rent from './Rent';
+import Listings from './Listings';
 import {
     listingsOperations
 } from '../../modules/listings';
@@ -26,9 +26,9 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-const RentContainer = connect(
+const ListingsContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Rent);
+)(Listings);
 
-export default RentContainer;
+export default ListingsContainer;

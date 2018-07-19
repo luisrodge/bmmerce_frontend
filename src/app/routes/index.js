@@ -10,7 +10,7 @@ import {
     RentListing,
     SignIn,
     Dashboard,
-    Rent,
+    Listings,
     Search
 } from '../views';
 
@@ -20,7 +20,7 @@ export default (props) => (
     <ConnectedRouter history={history}>
         <Switch>
             <Route exact path="/" render={() => <DefaultLayout><Home /></DefaultLayout>}/>
-            <Route exact path="/rent" render={() => <DefaultLayout><Rent /></DefaultLayout>}/>
+            <Route exact path="/listings" render={() => <DefaultLayout><Listings /></DefaultLayout>}/>
             <Route path="/listings/new" render={() => <MinimalLayout><NewListing /></MinimalLayout>}/>
             <Route 
                 path="/search/:term" 
@@ -30,7 +30,7 @@ export default (props) => (
                     </DefaultLayout>
                 )}
             />
-            <Route exact path="/search" render={() => <DefaultLayout><Rent /></DefaultLayout>}/>
+            <Route exact path="/search" render={() => <DefaultLayout><Listings /></DefaultLayout>}/>
             <Route 
                 path="/:id/rent" 
                 render={({match}) => (

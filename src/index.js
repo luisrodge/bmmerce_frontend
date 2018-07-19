@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-
+import {IntlProvider} from 'react-intl';
 import logger from 'redux-logger';
 
 import thunk from 'redux-thunk';
@@ -45,7 +45,9 @@ if (localStorage.jwtToken) {
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <IntlProvider locale="en">
+      <App />
+    </IntlProvider>
   </Provider>,
   document.getElementById('root')
 );

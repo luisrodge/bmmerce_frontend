@@ -21,10 +21,13 @@ body {
 .card {
   border-radius: 0;
   border: none;
-  border-bottom: 1px solid #CCC;
   .card-body {
     padding-left: 0;
     padding-right: 0;
+  }
+  .footer {
+    background: #CCC;
+    text-align: center;
   }
 }
 
@@ -43,7 +46,6 @@ body {
 
 .notice {
   border: 1px solid #CBE1FF;
-  border-radius: 3px;
   padding: 5px 8px;
   p {
     margin: 0;
@@ -102,7 +104,7 @@ table {
 }
 
 .custom-confirm-alert {
-  background: #EEE;
+  background: #FFF;
   border: 1px solid #CCC;
   padding: 20px;
 }
@@ -136,4 +138,8 @@ textarea {
   .fileContainer {
     border: 1px solid #32af43
   }
+}
+
+.react-confirm-alert-overlay {
+  background: rgba(0, 0, 0, 0.77);
 }

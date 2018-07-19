@@ -32,10 +32,17 @@ const search = (query) => {
               title: child.title,
               price: child.price,
               address: child.address,
-              priceDetails: child.price_details,
               description: child.description,
+              contactName: child.contact_name,
+              contactEmail: child.contact_email,
+              contactNumber: child.contact_number,
+              emailFlag: child.email_flag,
+              smsFlag: child.sms_flag,
+              phoneCallFlag: child.phone_call_flag,
+              whatsappFlag: child.whatsapp_flag,
               userId: child.user_id,
-              images: child.images
+              images: child.images,
+              createdAt: child.created_at
             };
             data.push(childData);
           });

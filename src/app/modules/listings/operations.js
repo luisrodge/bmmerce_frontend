@@ -81,7 +81,8 @@ const getListings = () => {
             phoneCallFlag: child.phone_call_flag,
             whatsappFlag: child.whatsapp_flag,
             userId: child.user_id,
-            images: child.images
+            images: child.images,
+            createdAt: child.created_at
           };
           console.log(childData);
           data.push(childData);
@@ -117,7 +118,8 @@ const getLatestListings = () => {
             phoneCallFlag: child.phone_call_flag,
             whatsappFlag: child.whatsapp_flag,
             userId: child.user_id,
-            images: child.images
+            images: child.images,
+            createdAt: child.created_at
           };
           data.push(childData);
         });
@@ -152,7 +154,8 @@ const getFeaturedListings = () => {
             phoneCallFlag: child.phone_call_flag,
             whatsappFlag: child.whatsapp_flag,
             userId: child.user_id,
-            images: child.images
+            images: child.images,
+            createdAt: child.created_at
           };
           data.push(childData);
         });
@@ -219,11 +222,7 @@ const createListing = (newListing) => {
       .then(async (response) => {
         console.log(response);
         dispatch(createListingSuccessAction(response.data.listing));
-        if (newListing.userId) {
-          dispatch(push('/dashboard'));
-        } else {
-          dispatch(push('/'));
-        }
+        dispatch(push('/'));
       })
       .catch((error) => {
         console.log(error.response.data);
