@@ -37,15 +37,10 @@ class Header extends Component {
                   <Link to="/listings" className="nav-link home">Browse All Listings</Link>
                 </li>
               </ul>
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item mr-3">
-                  <Link to="/listings/new" className="nav-link btn btn-light">Post New Listing</Link>
-                </li>
-              </ul>
-              {/* {this.props.authenticated ? (
+              {this.props.authenticated ? (
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item mr-3">
-                    <Link to="/listings/new" className="nav-link">Post Listing</Link>
+                    <Link to="/listings/new" className="nav-link btn btn-light">Post New Listing</Link>
                   </li>
                   <li className="nav-item mr-3">
                     <Link to="/dashboard" className="nav-link">Dashboard</Link>
@@ -57,7 +52,7 @@ class Header extends Component {
               ) : (
                   <ul className="navbar-nav ml-auto">
                     <li className="nav-item mr-3">
-                      <Link to="/listings/new" className="nav-link">Post Listing</Link>
+                      <Link to="/listings/new" className="nav-link btn btn-light">Post New Listing</Link>
                     </li>
                     <li className="nav-item mr-3">
                       <Link to="/login" className="nav-link">Sign In</Link>
@@ -66,7 +61,7 @@ class Header extends Component {
                       <a className="nav-link pr-0" href="#">Register</a>
                     </li>
                   </ul>
-                )} */}
+                )}
             </div>
           </div>
         </nav>

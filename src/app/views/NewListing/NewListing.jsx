@@ -9,6 +9,7 @@ class NewListing extends Component {
             price: '',
             address: '',
             description: '',
+            isRental: false,
             contactNumber: '',
             contactEmail: '',
             contactName: '',
@@ -46,6 +47,10 @@ class NewListing extends Component {
                         <div className="col-md-4">
                             <h4>Listing Details</h4>
                             <hr />
+                            <div className="form-group">
+                                <input type="checkbox" name="cb-is-rental" checked={this.state.isRental} onChange={e => this.setState({ isRental: e.target.checked })} /> 
+                                <label className="pl-1 mb-0">Is this a rental listing?</label> 
+                            </div>
                             <div className="form-group">
                                 <label htmlFor="title">Title</label>
                                 <input

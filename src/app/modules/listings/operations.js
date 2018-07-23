@@ -82,6 +82,7 @@ const getListings = () => {
             whatsappFlag: child.whatsapp_flag,
             userId: child.user_id,
             images: child.images,
+            isRental: child.is_rental,
             createdAt: child.created_at
           };
           console.log(childData);
@@ -119,6 +120,7 @@ const getLatestListings = () => {
             whatsappFlag: child.whatsapp_flag,
             userId: child.user_id,
             images: child.images,
+            isRental: child.is_rental,
             createdAt: child.created_at
           };
           data.push(childData);
@@ -155,6 +157,7 @@ const getFeaturedListings = () => {
             whatsappFlag: child.whatsapp_flag,
             userId: child.user_id,
             images: child.images,
+            isRental: child.is_rental,
             createdAt: child.created_at
           };
           data.push(childData);
@@ -201,6 +204,7 @@ const createListing = (newListing) => {
   formData.append('title', newListing.title);
   formData.append('price', newListing.price);
   formData.append('description', newListing.description);
+  formData.append('is_rental', newListing.isRental);
   formData.append('address', newListing.address);
   formData.append('contact_name', newListing.contactName);
   formData.append('contact_email', newListing.contactEmail);

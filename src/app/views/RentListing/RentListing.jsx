@@ -27,8 +27,12 @@ class RentListing extends Component {
         if (this.props.gettingListing === true) { return null; }
         return (
             <div className="row">
+                <div className="col-md-12 mb-4">
+                    <h3>Send Rent Request</h3>
+                    <hr/>
+                </div>
                 <div className="col-md-6">
-                    <h3>Rent {this.props.listing.title}</h3>
+                    <h3>{this.props.listing.title}</h3>
                     <div className="notice">
                         <p>We will get back to you either through whatsapp or phone call in about 1 hour.</p>
                     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { Link } from 'react-router-dom'
 import { FormattedDate, FormattedNumber } from 'react-intl';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
@@ -75,9 +76,15 @@ const ListingModal = (props) => {
                     <p className="text-muted">Listed by {props.selectedListing.contactName}</p>
                 </div>
             </div>
-            <button onClick={() => onContactPoster(props.selectedListing)} className="btn btn-light btn-lg btn-block mt-3 mb-4">
-                <i className="fas fa-mobile-alt pr-1"></i> Contact Poster
-            </button>
+            {props.selectedListing.isRental ? (
+                <Link to={`/${props.selectedListing.id}/rent`} className="btn btn-light btn-lg btn-block mt-3 mb-4">
+                    <i className="fas fa-arrow-alt-circle-right pr-1"></i> Send Rent Request
+                </Link>
+            ) : (
+                <button onClick={() => onContactPoster(props.selectedListing)} className="btn btn-light btn-lg btn-block mt-3 mb-4">
+                    <i className="fas fa-mobile-alt pr-1"></i> Contact Poster
+                </button>
+            )}
             <p className="py-2">{props.selectedListing.description}</p>
             <Slider images={props.selectedListing.images} />
             <p className="text-center mt-3 mb-0">

@@ -1,23 +1,22 @@
 header {
-    background: #eee;
+    background: #1FB200;
     padding-bottom: 22px;
 }
 
 .logo {
-    color: inherit;
+    color: #FFF;
     font-size: 40px;
     span {
         font-family: 'Oswald', sans-serif;
     }
     &:hover, &:focus {
-        color: inherit;
+        color: #FFF;
         text-decoration: none;
     }
 }
 
 #main-nav {
     margin-bottom: 60px;
-    background: #fafafa;
     .nav-link {
         font-size: 20px;
         color: #3a3a3a;
