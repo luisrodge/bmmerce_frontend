@@ -14,7 +14,7 @@ class Header extends Component {
             <div className="row">
               <div className="col-md-12 text-center">
                 <Link to="/" className="text-center pt-2 logo">
-                  belizesell
+                  belize<span>rs</span>
                 </Link>
               </div>
             </div>

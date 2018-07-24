@@ -6,7 +6,7 @@ const FeaturedListings = (props) => {
     return (
         <div className="row mt-5">
             <div className="col-md-12">
-                <h4 className="pb-3">Featured Rentals</h4>
+                <h4 className="pb-4">Featured Rentals</h4>
             </div>
             {props.featuredListings.map((listing, index) =>
                 <div className="col-md-3" key={index}>

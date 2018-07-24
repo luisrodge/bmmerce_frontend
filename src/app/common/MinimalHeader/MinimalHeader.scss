@@ -15,6 +15,13 @@
 a#minimal-logo {
     font-size: 24px;
     color: #FFF;
+    font-weight: bold;
+    span {
+        background: #FFF;
+        padding: 0 6px;
+        color: #00C300;
+        margin-left: 2px;
+    }
 }
 
 .pointer {

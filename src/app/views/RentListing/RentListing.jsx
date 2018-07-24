@@ -34,7 +34,7 @@ class RentListing extends Component {
                 <div className="col-md-6">
                     <h3>{this.props.listing.title}</h3>
                     <div className="notice">
-                        <p>We will get back to you either through whatsapp or phone call in about 1 hour.</p>
+                        <p>We'll get back to you either through whatsapp or phone call in about 1 hour.</p>
                     </div>
                     <br />
                     <form onSubmit={e => this.handleSubmit(e)}>

@@ -26,7 +26,6 @@ class Home extends Component {
   }
 
   openModal = (listing) => {
-    console.log("sdsds", listing);
     this.setState({
       selectedListing: listing,
       modalIsOpen: true,

@@ -6,8 +6,12 @@ header {
 .logo {
     color: #FFF;
     font-size: 40px;
+    font-weight: bold;
     span {
-        font-family: 'Oswald', sans-serif;
+        background: #FFF;
+        padding: 0 8px;
+        color: #00C300;
+        margin-left: 4px;
     }
     &:hover, &:focus {
         color: #FFF;

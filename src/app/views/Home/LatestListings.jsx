@@ -6,7 +6,7 @@ const LatestListings = (props) => {
     return (
         <div className="row mt-5">
             <div className="col-md-12">
-                <h4 className="pb-5">Latest Listings</h4>
+                <h4 className="pb-4">Latest Listings</h4>
             </div>
             {props.latestListings.map((listing, index) =>
                 <div className="col-md-3 mb-5" key={index}>
