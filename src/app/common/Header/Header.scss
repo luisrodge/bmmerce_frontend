@@ -1,5 +1,5 @@
 header {
-    background: #141414;
+    background: #FFF;
     .search-wrapper, .new-post-wrapper {
         padding-top:  27px;
     }
@@ -27,7 +27,8 @@ header {
 
 #main-nav {
     margin-bottom: 60px;
-    background:  #FAFAFA;
+    background:  #FFF;
+    border-top: 1px solid #f7f7f7;
     .nav-link {
         font-size: 20px;
         color: #3a3a3a;

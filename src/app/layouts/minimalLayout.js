@@ -3,7 +3,7 @@ import React from 'react';
 import { MinimalHeader, Footer } from '../common';
 
 const MinimalLayout = ({ children }) => (                       
-    <div>
+    <div className="minimal-layout">
         <MinimalHeader />
         <div className="container">
             {children}    

@@ -173,7 +173,7 @@ class NewListing extends Component {
                     </div>
 
                     <br />
-                    <button className="btn btn-light btn-lg btn-block" disabled={this.props.creatingListing}>
+                    <button className="btn btn-green btn-lg btn-block" disabled={this.props.creatingListing}>
                         {this.props.creatingListing ? "Posting Listing..." : "Create Listing"}
                     </button>
                 </form>

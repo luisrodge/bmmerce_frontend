@@ -43,7 +43,7 @@ class SignIn extends Component {
                             />
                         </div>
                         <br/>
-                        <button className="btn btn-light btn-block">Sign In</button>
+                        <button className="btn btn-green btn-block">Sign In</button>
                     </form>
                 </div>
             </div>

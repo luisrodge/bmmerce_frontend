@@ -8,7 +8,15 @@ body {
   padding: 0;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 16px;
-  margin-bottom: 90px
+  margin-bottom: 90px;
+}
+
+.default-layout {
+  background: #fafafa;
+}
+
+.minimal-layout {
+  background: #fff;
 }
 
 .img-fh {
@@ -19,24 +27,26 @@ body {
 }
 
 .card {
-  border-radius: 0;
+  padding: 4px;
+  border-radius: 4px;
   border: none;
   .card-body {
     padding-left: 0;
     padding-right: 0;
   }
   .footer {
-    background: #e2e6ea;
     text-align: center;
   }
 }
 
-.btn-light {
-  color: #212529;
-  background-color: #e2e6ea;
-  border-color: #dae0e5;
-  &:hover {
-    background-color: #DBDBDB;
+.btn-green {
+  color: #FFF;
+  background-color: #28a745;
+  border-color: #28a745;
+  &:hover, &:focus {
+    color: #FFF;
+    background-color: #28a745;
+    opacity: 0.96;
   }
 }
 
@@ -110,7 +120,9 @@ table {
 }
 
 .search-form {
+  border-radius: 2.3rem!important;
   border: none; 
+  background: #f7f7f7;
 }
 
 .search-form:focus {
@@ -123,7 +135,7 @@ textarea {
 }
 
 .btn {
-  border-radius: 0 !important;
+  border-radius: 2.3rem;
 }
 
 .required {
