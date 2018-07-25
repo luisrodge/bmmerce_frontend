@@ -4,7 +4,7 @@ const apiVersion = 'v1';
 const hostname = window && window.location && window.location.hostname;
 
 if(hostname === '178.128.79.228') {
-  backendHost = 'http://178.128.79.228:8080';
+  backendHost = 'http://178.128.79.228:8000';
 } else {
   backendHost = 'http://localhost:3000';
 }
