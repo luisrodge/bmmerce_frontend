@@ -1,6 +1,12 @@
 header {
-    background: #1FB200;
-    padding-bottom: 22px;
+    background: #141414;
+    .search-wrapper, .new-post-wrapper {
+        padding-top:  27px;
+    }
+}
+
+.logo-wrapper {
+    padding-top: 10px;
 }
 
 .logo {
@@ -21,6 +27,7 @@ header {
 
 #main-nav {
     margin-bottom: 60px;
+    background:  #FAFAFA;
     .nav-link {
         font-size: 20px;
         color: #3a3a3a;

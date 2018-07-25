@@ -3,8 +3,8 @@ const apiVersion = 'v1';
 
 const hostname = window && window.location && window.location.hostname;
 
-if(hostname === 'belizesell.herokuapp.com') {
-  backendHost = 'https://belizesell-api.herokuapp.com';
+if(hostname === '178.128.79.228') {
+  backendHost = 'http://178.128.79.228:8080';
 } else {
   backendHost = 'http://localhost:3000';
 }

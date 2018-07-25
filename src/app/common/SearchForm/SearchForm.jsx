@@ -7,7 +7,7 @@ class SearchForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          query: '',
+            query: '',
         };
     }
     componentWillMount() {
@@ -16,7 +16,7 @@ class SearchForm extends React.Component {
 
     handleChange = (e) => {
         clearTimeout(this.timer);
-        this.setState({ query: e.target.value });        
+        this.setState({ query: e.target.value });
         this.timer = setTimeout(this.triggerChange, WAIT_INTERVAL);
     }
 
@@ -34,16 +34,11 @@ class SearchForm extends React.Component {
 
     render() {
         return (
-            <div className="input-group col-md-5 col-sm-12 col-12 mx-auto">
-                <div className="input-group-prepend">
-                    <span className="input-group-text" id="basic-addon1"><i className="fas fa-search"></i></span>
-                </div>
-                <input 
-                    className="form-control simple-input search-form"
-                    placeholder="Find something to buy..."
-                    onChange={(e) => this.handleChange(e)}
-                    onKeyDown={(e) => this.handleKeyDown(e)} />
-            </div>
+            <input
+                className="form-control simple-input search-form"
+                placeholder="Find something to buy..."
+                onChange={(e) => this.handleChange(e)}
+                onKeyDown={(e) => this.handleKeyDown(e)} />
         );
     }
 }

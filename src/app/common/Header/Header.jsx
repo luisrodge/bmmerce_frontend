@@ -12,14 +12,19 @@ class Header extends Component {
         <header>
           <div className="container">
             <div className="row">
-              <div className="col-md-12 text-center">
-                <Link to="/" className="text-center pt-2 logo">
-                  belize<span>rs</span>
+              <div className="col-md-2 logo-wrapper">
+                <Link to="/" className="text-center logo">
+                  <img src="http://res.cloudinary.com/dwaavflqp/image/upload/v1532475995/BELIZERS-WebLogo_vo3rzh.png" className="img-fluid" />
                 </Link>
               </div>
-            </div>
-            <div className="row">
-              <SearchForm />
+              <div className="col-md-8  search-wrapper">
+                <SearchForm />
+              </div>
+              <div className="col-md-2 new-post-wrapper">
+                <Link to="/listings/new" className="btn btn-light btn-block">
+                <i class="fas fa-camera mr-1"></i> Post New Listing
+                </Link>
+              </div>
             </div>
           </div>
         </header>
@@ -40,20 +45,14 @@ class Header extends Component {
               {this.props.authenticated ? (
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item mr-3">
-                    <Link to="/listings/new" className="nav-link btn btn-light">Post New Listing</Link>
-                  </li>
-                  <li className="nav-item mr-3">
                     <Link to="/dashboard" className="nav-link">Dashboard</Link>
                   </li>
                   <li className="nav-item">
-                    <p className="nav-link pointer" onClick={this.props.unauthenticate}>Sign Out</p>
+                    <p className="nav-link pointer m-0 pr-0" onClick={this.props.unauthenticate}>Sign Out</p>
                   </li>
                 </ul>
               ) : (
                   <ul className="navbar-nav ml-auto">
-                    <li className="nav-item mr-3">
-                      <Link to="/listings/new" className="nav-link btn btn-light">Post New Listing</Link>
-                    </li>
                     <li className="nav-item mr-3">
                       <Link to="/login" className="nav-link">Sign In</Link>
                     </li>

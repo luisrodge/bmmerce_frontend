@@ -26,7 +26,7 @@ body {
     padding-right: 0;
   }
   .footer {
-    background: #CCC;
+    background: #e2e6ea;
     text-align: center;
   }
 }
@@ -109,6 +109,10 @@ table {
   padding: 20px;
 }
 
+.search-form {
+  border: none; 
+}
+
 .search-form:focus {
   outline: none !important;
 }
@@ -127,11 +131,11 @@ textarea {
 }
 
 .validation-error {
-  border: 1px solid #E03D3D!important;
+  border: 1px solid #E03D3D !important;
 }
 
 .text-danger {
-  color: #E03D3D!important;
+  color: #E03D3D !important;
 }
 
 .image-uploader-required {
@@ -142,4 +146,9 @@ textarea {
 
 .react-confirm-alert-overlay {
   background: rgba(0, 0, 0, 0.77);
+}
+
+.temp-logo {
+  width: 200px;
+  height: auto;
 }
