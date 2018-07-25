@@ -1,13 +1,13 @@
 
 #minimal-nav {
     margin-bottom: 60px;
-    background: #1FB200;
+    background: #FFF;
     padding: 0;
     .nav-link {
         font-size: 17px;
-        color: #FFF;
+        color: #3a3a3a;
         &:hover {
-            color: #FFF;
+            color: #000;
         }
     }
 }
@@ -21,6 +21,10 @@ a#minimal-logo {
         padding: 0 6px;
         color: #00C300;
         margin-left: 2px;
+    }
+    img {
+        width: 120px;
+        height: auto;
     }
 }
 

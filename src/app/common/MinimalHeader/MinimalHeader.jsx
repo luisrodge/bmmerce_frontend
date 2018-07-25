@@ -8,7 +8,9 @@ class MinimalHeader extends Component {
     return (
       <nav className="navbar navbar-expand-md navbar-light" id="minimal-nav">
         <div className="container">
-          <Link to="/" className="navbar-brand" id="minimal-logo">belize<span>rs</span></Link>
+          <Link to="/" className="navbar-brand" id="minimal-logo">
+            <img src="http://res.cloudinary.com/dwaavflqp/image/upload/v1532475995/BELIZERS-WebLogo_vo3rzh.png" />
+          </Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

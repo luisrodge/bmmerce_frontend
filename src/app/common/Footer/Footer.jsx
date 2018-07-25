@@ -4,9 +4,9 @@ import './Footer.scss';
 class Footer extends Component {
   render() {
     return (
-        <footer className="mt-5">
+        <footer>
             <div className="container">
-                <p className="text-muted m-0 text-center">&copy; Copyright belizerentify 2018</p>
+                <p className="m-0 text-center">&copy; Copyright Belize Rent Sell 2018</p>
             </div>
         </footer>
     );
