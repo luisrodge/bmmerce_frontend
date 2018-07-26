@@ -21,9 +21,9 @@ class Header extends Component {
                 <SearchForm />
               </div>
               <div className="col-md-2 new-post-wrapper">
-                <Link to="/listings/new" className="btn btn-green btn-block">
-                <i class="fas fa-camera mr-1"></i> Post New Listing
-                </Link>
+                <button onClick={this.props.openModal} className="btn btn-green btn-block">
+                  <i className="fas fa-camera mr-1"></i> Post New Listing
+                </button>
               </div>
             </div>
           </div>

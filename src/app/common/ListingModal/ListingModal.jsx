@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import { Link } from 'react-router-dom'
 import { FormattedDate, FormattedNumber } from 'react-intl';
 import { confirmAlert } from 'react-confirm-alert'; // Import
+import Lightbox from 'react-images';
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 import { Slider } from '../';
 
@@ -86,7 +87,10 @@ const ListingModal = (props) => {
                 </button>
             )}
             <p className="py-2">{props.selectedListing.description}</p>
-            <Slider images={props.selectedListing.images} />
+            {/* <Slider images={props.selectedListing.images} /> */}
+            {/* <Lightbox
+                images={props.selectedListing.images}
+            /> */}
             <p className="text-center mt-3 mb-0">
                 <span className="pr-1">Posted on</span>
                 <FormattedDate

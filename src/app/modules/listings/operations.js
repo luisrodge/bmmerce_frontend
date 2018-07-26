@@ -40,7 +40,6 @@ const getListing = (id) => {
     axios.get(`${API_ROOT}/listings/${id}`)
       .then(function (response) {
         const responseData = response.data.listing;
-        console.log("daddy", responseData);
         const listing = {
           id: responseData.id,
           title: responseData.title,

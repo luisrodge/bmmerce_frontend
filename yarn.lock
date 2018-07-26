@@ -150,6 +150,13 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
+aphrodite@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/aphrodite/-/aphrodite-0.5.0.tgz#a4b9a8902662395d2702e70ac7a2b4ca66f25703"
+  dependencies:
+    asap "^2.0.3"
+    inline-style-prefixer "^2.0.0"
+
 append-transform@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/append-transform/-/append-transform-1.0.0.tgz#046a52ae582a228bd72f58acfbe2967c678759ab"
@@ -255,7 +262,7 @@ arrify@^1.0.0, arrify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
-asap@~2.0.3:
+asap@^2.0.3, asap@~2.0.3:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
 
@@ -318,6 +325,12 @@ asynckit@^0.4.0:
 atob@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
+
+attr-accept@^1.0.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/attr-accept/-/attr-accept-1.1.3.tgz#48230c79f93790ef2775fcec4f0db0f5db41ca52"
+  dependencies:
+    core-js "^2.5.0"
 
 autoprefixer@7.1.6:
   version "7.1.6"
@@ -1121,6 +1134,10 @@ boom@2.x.x:
 bootstrap@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.2.tgz#aee2a93472e61c471fc79fb475531dcbc87de326"
+
+bowser@^1.0.0:
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/bowser/-/bowser-1.9.4.tgz#890c58a2813a9d3243704334fa81b96a5c150c9a"
 
 boxen@^1.2.1:
   version "1.3.0"
@@ -2140,6 +2157,10 @@ dom-converter@~0.1:
   dependencies:
     utila "~0.3"
 
+dom-helpers@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.3.1.tgz#fc1a4e15ffdf60ddde03a480a9c0fece821dd4a6"
+
 dom-serializer@0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-0.1.0.tgz#073c697546ce0780ce23be4a28e293e40bc30c82"
@@ -2592,7 +2613,7 @@ execa@^0.7.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
-exenv@^1.2.0:
+exenv@^1.2.0, exenv@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
 
@@ -3289,7 +3310,7 @@ he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
-history@^4.7.2:
+history@^4.6.0, history@^4.7.2:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/history/-/history-4.7.2.tgz#22b5c7f31633c5b8021c7f4a8a954ac139ee8d5b"
   dependencies:
@@ -3311,7 +3332,7 @@ hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
-hoist-non-react-statics@^2.5.0:
+hoist-non-react-statics@^2.3.1, hoist-non-react-statics@^2.5.0:
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
 
@@ -3450,6 +3471,10 @@ https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
+hyphenate-style-name@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.2.tgz#31160a36930adaf1fc04c6074f7eb41465d4ec4b"
+
 iconv-lite@0.4.19:
   version "0.4.19"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
@@ -3539,6 +3564,13 @@ inherits@2.0.1:
 ini@^1.3.4, ini@~1.3.0:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
+
+inline-style-prefixer@^2.0.0:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/inline-style-prefixer/-/inline-style-prefixer-2.0.5.tgz#c153c7e88fd84fef5c602e95a8168b2770671fe7"
+  dependencies:
+    bowser "^1.0.0"
+    hyphenate-style-name "^1.0.1"
 
 inquirer@3.3.0, inquirer@^3.0.6:
   version "3.3.0"
@@ -5777,7 +5809,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1:
+prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   dependencies:
@@ -5909,6 +5941,14 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-albus@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-albus/-/react-albus-2.0.0.tgz#c6ad9932ff06b1880986e79817b6709f053f9ff7"
+  dependencies:
+    history "^4.6.0"
+    hoist-non-react-statics "^2.3.1"
+    prop-types "^15.5.8"
+
 react-confirm-alert@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/react-confirm-alert/-/react-confirm-alert-2.0.5.tgz#a450c4c773484da774298c3fa6c584f442ccfa4b"
@@ -5945,6 +5985,13 @@ react-dom@^16.4.1:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+react-dropzone@^4.2.13:
+  version "4.2.13"
+  resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-4.2.13.tgz#31393c079b4e5ddcc176c095cebc3545d1248b9d"
+  dependencies:
+    attr-accept "^1.0.3"
+    prop-types "^15.5.7"
+
 react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
@@ -5960,6 +6007,15 @@ react-images-upload@^1.2.0:
     react "^16.2.0"
     react-flip-move "^3.0.1"
 
+react-images@^0.5.19:
+  version "0.5.19"
+  resolved "https://registry.yarnpkg.com/react-images/-/react-images-0.5.19.tgz#9339570029e065f9f28a19f03fdb5d9d5aa109d3"
+  dependencies:
+    aphrodite "^0.5.0"
+    prop-types "^15.6.0"
+    react-scrolllock "^2.0.1"
+    react-transition-group "2"
+
 react-intl@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-2.4.0.tgz#66c14dc9df9a73b2fbbfbd6021726e80a613eb15"
@@ -5969,7 +6025,7 @@ react-intl@^2.4.0:
     intl-relativeformat "^2.0.0"
     invariant "^2.1.1"
 
-react-lifecycles-compat@^3.0.0:
+react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
@@ -5988,6 +6044,10 @@ react-move@^2.7.0:
   dependencies:
     d3-interpolate "^1.1.6"
     d3-timer "^1.0.4"
+
+react-prop-toggle@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-prop-toggle/-/react-prop-toggle-1.0.2.tgz#8b0b7e74653606b1427cfcf6c4eaa9198330568e"
 
 react-redux@^5.0.7:
   version "5.0.7"
@@ -6026,6 +6086,22 @@ react-router@^4.2.0, react-router@^4.3.1:
     path-to-regexp "^1.7.0"
     prop-types "^15.6.1"
     warning "^4.0.1"
+
+react-scrolllock@^2.0.1:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/react-scrolllock/-/react-scrolllock-2.0.7.tgz#3b879e1fe308fc900ab76e226e9be594c41226fd"
+  dependencies:
+    exenv "^1.2.2"
+    react-prop-toggle "^1.0.2"
+
+react-transition-group@2:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-2.4.0.tgz#1d9391fabfd82e016f26fabd1eec329dbd922b5a"
+  dependencies:
+    dom-helpers "^3.3.1"
+    loose-envify "^1.3.1"
+    prop-types "^15.6.2"
+    react-lifecycles-compat "^3.0.4"
 
 react@^16.2.0, react@^16.4.1:
   version "16.4.1"

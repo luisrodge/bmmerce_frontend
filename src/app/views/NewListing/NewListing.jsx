@@ -107,30 +107,24 @@ class NewListing extends Component {
                             <h4>Contact Information</h4>
                             <hr />
                             <div className="form-group">
-                                <label htmlFor="name">Contact Name</label>
+                                <label htmlFor="contactName">Contact Name</label>
                                 <input
                                     type="text"
-                                    name="name"
+                                    name="contactName"
                                     className={`form-control required ${this.props.createListingErrors.contact_name ? 'validation-error' : ''}`}
                                     value={this.state.contactName}
                                     onChange={e => this.setState({ contactName: e.target.value })}
                                 />
-                                {this.props.createListingErrors.contact_name &&
-                                    <p className="text-danger">{this.props.createListingErrors.contact_name[0]}</p>
-                                }
                             </div>
                             <div className="form-group">
-                                <label htmlFor="email">Email</label>
+                                <label htmlFor="contactEmail">Email</label>
                                 <input
                                     type="email"
-                                    name="email"
+                                    name="contactEmail"
                                     className={`form-control required ${this.props.createListingErrors.contact_email ? 'validation-error' : ''}`}
                                     value={this.state.contactEmail}
                                     onChange={e => this.setState({ contactEmail: e.target.value })}
                                 />
-                                {this.props.createListingErrors.contact_email &&
-                                    <p className="text-danger">{this.props.createListingErrors.contact_email[0]}</p>
-                                }
                             </div>
                             <div className="form-group">
                                 <label htmlFor="contact-number">Contact Number</label>
