@@ -1,7 +1,7 @@
 header {
     background: #FFF;
     .search-wrapper, .new-post-wrapper {
-        padding-top:  27px;
+        padding-top:  20px;
     }
 }
 
@@ -23,12 +23,13 @@ header {
         color: #FFF;
         text-decoration: none;
     }
+    img {
+    }
 }
 
 #main-nav {
     margin-bottom: 60px;
     background:  #FFF;
-    border-top: 1px solid #f7f7f7;
     .nav-link {
         font-size: 20px;
         color: #3a3a3a;

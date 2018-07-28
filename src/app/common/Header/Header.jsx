@@ -35,11 +35,11 @@ class Header extends Component {
             </button>
             <div className="collapse navbar-collapse" id="navbarCollapse">
               <ul className="navbar-nav mr-3">
-                <li className="nav-item mr-3">
+                <li className="nav-item mr-5">
                   <Link to="/" className="nav-link home">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/listings" className="nav-link home">Browse All Listings</Link>
+                  <Link to="/listings" className="nav-link home">Rentals</Link>
                 </li>
               </ul>
               {this.props.authenticated ? (
@@ -53,7 +53,7 @@ class Header extends Component {
                 </ul>
               ) : (
                   <ul className="navbar-nav ml-auto">
-                    <li className="nav-item mr-3">
+                    <li className="nav-item mr-5">
                       <Link to="/login" className="nav-link">Sign In</Link>
                     </li>
                     <li className="nav-item">

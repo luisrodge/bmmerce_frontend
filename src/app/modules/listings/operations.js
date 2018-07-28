@@ -14,9 +14,6 @@ const getListingSuccessAction = Actions.getListingSuccess;
 const getListingsAction = Actions.getListings;
 const getListingsSuccessAction = Actions.getListingsSuccess;
 
-const getLatestListingsAction = Actions.getLatetsListings;
-const getLatestListingsSuccessAction = Actions.getLatestListingsSuccess;
-
 const getFeaturedListingsAction = Actions.getFeaturedListings;
 const getFeaturedListingsSuccessAction = Actions.getFeaturedListingsSuccess;
 
@@ -71,14 +68,6 @@ const getListings = () => {
             title: child.title,
             price: child.price,
             address: child.address,
-            description: child.description,
-            contactName: child.contact_name,
-            contactEmail: child.contact_email,
-            contactNumber: child.contact_number,
-            emailFlag: child.email_flag,
-            smsFlag: child.sms_flag,
-            phoneCallFlag: child.phone_call_flag,
-            whatsappFlag: child.whatsapp_flag,
             userId: child.user_id,
             images: child.images,
             isRental: child.is_rental,
@@ -88,43 +77,6 @@ const getListings = () => {
           data.push(childData);
         });
         dispatch(getListingsSuccessAction(data))
-      })
-      .catch(function (error) {
-        //dispatch(getUsersFailureAction(error.response.data.data));
-      });
-  }
-}
-
-const getLatestListings = () => {
-  return dispatch => {
-    dispatch(getLatestListingsAction());
-    axios.get(`${API_ROOT}/listings?limit=8`)
-      .then(function (response) {
-        console.log(response)
-        const responseData = response.data.listings;
-        let data = [];
-        responseData.map(child => {
-          const childData = {
-            id: child.id,
-            title: child.title,
-            price: child.price,
-            address: child.address,
-            description: child.description,
-            contactName: child.contact_name,
-            contactEmail: child.contact_email,
-            contactNumber: child.contact_number,
-            emailFlag: child.email_flag,
-            smsFlag: child.sms_flag,
-            phoneCallFlag: child.phone_call_flag,
-            whatsappFlag: child.whatsapp_flag,
-            userId: child.user_id,
-            images: child.images,
-            isRental: child.is_rental,
-            createdAt: child.created_at
-          };
-          data.push(childData);
-        });
-        dispatch(getLatestListingsSuccessAction(data))
       })
       .catch(function (error) {
         //dispatch(getUsersFailureAction(error.response.data.data));
@@ -223,9 +175,20 @@ const createListing = (newListing) => {
     dispatch(createListingAction());
     axios.post(`${API_ROOT}/listings`, formData)
       .then(async (response) => {
-        console.log(response);
-        dispatch(createListingSuccessAction(response.data.listing));
-        dispatch(push('/'));
+        console.log("Images", response.data.listing.images[0]['listing_image']);
+        let responseData = response.data.listing;
+        console.log(response.data);
+        const newListing = {
+          id: responseData.id,
+          title: responseData.title,
+          price: responseData.price,
+          address: responseData.address,
+          userId: responseData.user_id,
+          images: responseData.images,
+          isRental: responseData.is_rental,
+          createdAt: responseData.created_at
+        };
+        dispatch(createListingSuccessAction(newListing));
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -293,7 +256,6 @@ export default {
   createListing,
   getListing,
   getListings,
-  getLatestListings,
   getFeaturedListings,
   getUserListings,
   updateListing,

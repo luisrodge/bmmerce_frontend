@@ -8,8 +8,6 @@ const STATE = {
   listing: {},
   listings: [],
   gettingListings: false,
-  latestListings: [],
-  gettingLatestListings: false,
   creatingListing: false,
   createListingErrors: {},
 }
@@ -68,25 +66,6 @@ const defaultReducer = (state = STATE, action) => {
           gettingListings: false,
         }
       }
-    case types.GET_LATEST_LISTINGS:
-      {
-        return {
-          ...state,
-          gettingLatestListings: true,
-        }
-      }
-
-    case types.GET_LATEST_LISTINGS_SUCCESS:
-      {
-        const {
-          latestListings
-        } = action;
-        return {
-          ...state,
-          latestListings,
-          gettingLatestListings: false,
-        }
-      }
 
     case types.CREATE_LISTING:
       {
@@ -103,7 +82,7 @@ const defaultReducer = (state = STATE, action) => {
         } = action;
         return {
           ...state,
-          listing,
+          listings: [listing, ...state.listings],
           creatingListing: false,
         }
       }

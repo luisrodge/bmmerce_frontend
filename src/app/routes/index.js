@@ -5,7 +5,6 @@ import { ConnectedRouter } from 'connected-react-router';
 import history from '../utils/history';
 
 import { 
-    Home, 
     NewListing, 
     RentListing,
     SignIn,
@@ -19,7 +18,7 @@ import { DefaultLayout, MinimalLayout } from '../layouts';
 export default (props) => (
     <ConnectedRouter history={history}>
         <Switch>
-            <Route exact path="/" render={() => <DefaultLayout><Home /></DefaultLayout>}/>
+            <Route exact path="/" render={() => <DefaultLayout><Listings /></DefaultLayout>}/>
             <Route exact path="/listings" render={() => <DefaultLayout><Listings /></DefaultLayout>}/>
             <Route path="/listings/new" render={() => <MinimalLayout><NewListing /></MinimalLayout>}/>
             <Route 

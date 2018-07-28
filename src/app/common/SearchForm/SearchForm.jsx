@@ -36,7 +36,7 @@ class SearchForm extends React.Component {
         return (
             <input
                 className="form-control simple-input  search-form"
-                placeholder="Find something to buy..."
+                placeholder="Find something to buy or rent..."
                 onChange={(e) => this.handleChange(e)}
                 onKeyDown={(e) => this.handleKeyDown(e)} />
         );
