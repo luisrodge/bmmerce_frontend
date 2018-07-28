@@ -10,6 +10,7 @@ import {
     SignIn,
     Dashboard,
     Listings,
+    Rentals,
     Search
 } from '../views';
 
@@ -30,6 +31,7 @@ export default (props) => (
                 )}
             />
             <Route exact path="/search" render={() => <DefaultLayout><Listings /></DefaultLayout>}/>
+            <Route exact path="/rentals" render={() => <DefaultLayout><Rentals /></DefaultLayout>}/>
             <Route 
                 path="/:id/rent" 
                 render={({match}) => (

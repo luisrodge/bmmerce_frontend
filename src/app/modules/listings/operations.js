@@ -55,10 +55,11 @@ const getListing = (id) => {
   }
 }
 
-const getListings = () => {
+const getListings = (rental = false) => {
+  let endpoint = rental ? `${API_ROOT}/listings/rentals` : `${API_ROOT}/listings`;
   return dispatch => {
     dispatch(getListingsAction());
-    axios.get(`${API_ROOT}/listings`)
+    axios.get(endpoint)
       .then(function (response) {
         const responseData = response.data.listings;
         let data = [];

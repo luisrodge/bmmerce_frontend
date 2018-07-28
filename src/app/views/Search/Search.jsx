@@ -1,4 +1,5 @@
 import React from 'react';
+import shortid from 'shortid';
 
 import { Listing, ListingModal } from '../../common'
 
@@ -40,11 +41,12 @@ class Search extends React.Component {
         return (
             <div className="container">
                 <div className="row">
-                    {this.props.results.map((listing, index) =>
-                        <div className="col-md-3 mb-5" key={index}>
+                    {this.props.results.map((listing) =>
+                        <div className="col-md-3 mb-5" key={shortid.generate()}>
                             <Listing
                                 listing={listing}
                                 onOpenModal={this.openModal}
+                                key={shortid.generate()}
                             />
                         </div>
                     )}

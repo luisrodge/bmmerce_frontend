@@ -39,7 +39,7 @@ class Header extends Component {
                   <Link to="/" className="nav-link home">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/listings" className="nav-link home">Rentals</Link>
+                  <Link to="/rentals" className="nav-link home">Rentals</Link>
                 </li>
               </ul>
               {this.props.authenticated ? (

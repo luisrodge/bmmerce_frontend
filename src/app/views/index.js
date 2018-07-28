@@ -5,6 +5,7 @@ import RentListing from './RentListing';
 import SignIn from './SignIn';
 import Dashboard from './Dashboard';
 import Listings from './Listings';
+import Rentals from './Rentals';
 import Search from './Search';
 
 export {
@@ -15,5 +16,6 @@ export {
     SignIn,
     Dashboard,
     Listings,
+    Rentals,
     Search
 }
