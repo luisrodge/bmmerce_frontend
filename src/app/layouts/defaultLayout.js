@@ -1,16 +1,18 @@
 import React from 'react';
 import { Header, Footer } from '../common';
 
-import { NewListing } from '../common'
-import NewListingContainer from '../common/NewListing';
+import { NewListing, AuthModal } from '../common'
 
 const DefaultLayout = ({ children }) => (                       
     <div className="default-layout">
       <Header />
+      
       <div className="container">
         {children}    
       </div>
-      <NewListing />    
+      
+      <NewListing /> 
+      <AuthModal />   
       <Footer />                                  
     </div>           
 ); 

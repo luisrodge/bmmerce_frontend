@@ -17,11 +17,11 @@ class Header extends Component {
                   <img src="http://res.cloudinary.com/dwaavflqp/image/upload/v1532475995/BELIZERS-WebLogo_vo3rzh.png" className="img-fluid" />
                 </Link>
               </div>
-              <div className="col-md-8  search-wrapper">
+              <div className="col-md-7  search-wrapper">
                 <SearchForm />
               </div>
-              <div className="col-md-2 new-post-wrapper">
-                <button onClick={this.props.openModal} className="btn btn-green btn-block">
+              <div className="col-md-3 new-post-wrapper">
+                <button onClick={this.props.openNewListingModal} className="btn btn-green btn-block btn-lg">
                   <i className="fas fa-camera mr-1"></i> Post New Listing
                 </button>
               </div>
@@ -54,7 +54,7 @@ class Header extends Component {
               ) : (
                   <ul className="navbar-nav ml-auto">
                     <li className="nav-item mr-5">
-                      <Link to="/login" className="nav-link">Sign In</Link>
+                      <p className="nav-link m-0 pr-0 pointer" onClick={this.props.openAuthModal}>Sign In</p>
                     </li>
                     <li className="nav-item">
                       <a className="nav-link pr-0" href="#">Register</a>

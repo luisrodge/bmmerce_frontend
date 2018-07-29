@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
     } = state.listings.default;
     const {
         modalIsOpen
-    } = state.modal
+    } = state.modal.newListingModal
     return {
         creatingListing,
         createListingErrors,
@@ -29,10 +29,10 @@ const mapDispatchToProps = (dispatch) => {
     const createListing = (newListing) => {
         dispatch(listingsOperations.createListing(newListing));
     };
-    const closeModal = () => dispatch(modalActions.closeModal());
+    const closeNewListingModal = () => dispatch(modalActions.closeNewListingModal());
     return {
         createListing,
-        closeModal
+        closeNewListingModal
     };
 };
 

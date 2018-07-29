@@ -18,11 +18,24 @@ body {
   background: #F0F0F0;
 }
 
+.text-success {
+  color: #24963e !important;
+}
+
+.link-green {
+  color: #24963e;
+  &:hover,
+  &:focus {
+    color: #24963e;
+    text-decoration: none
+  }
+}
+
 .card {
   padding: 4px;
   border-radius: 4px;
   border: none;
-  border: 1px solid #F0F0F0;
+  border: 1px solid #D9D9D9;
   .card-body {
     padding-left: 0;
     padding-right: 0;
@@ -34,13 +47,13 @@ body {
 
 .btn-green {
   color: #FFF;
-  background-color: #28a745;
-  border-color: #28a745;
+  background-color: #24963e;
+  border-color: #24963e;
   &:hover,
   &:focus {
     color: #FFF;
-    background-color: #28a745;
-    opacity: 0.96;
+    border-color: #208537;
+    background-color: #208537;
   }
 }
 
@@ -85,14 +98,16 @@ body {
 }
 
 .ReactModal__Overlay.ReactModal__Overlay--after-open {
-  background-color: rgba(21, 21, 21, 0.75) !important;
+  background-color: rgba(21, 21, 21, 0.6) !important;
 }
-
 
 .img-sm {
   width: 60px;
   height: 60px;
-  ;
+}
+
+.img-fluid {
+  width: 100%;
 }
 
 table {
@@ -111,9 +126,9 @@ table {
 }
 
 .search-form {
-  border-radius: 2.3rem !important;
-  border: none;
-  background: #f7f7f7;
+  border-radius: 0 !important;
+  border: 1px solid #f7f7f7;
+  background: #FFF;
 }
 
 .search-form:focus {
@@ -126,7 +141,7 @@ textarea {
 }
 
 .btn {
-  border-radius: 2.3rem;
+  border-radius: 0;
 }
 
 .required {

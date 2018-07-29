@@ -19,9 +19,6 @@ class MinimalHeader extends Component {
               <li className="nav-item mr-4">
                 <Link to="/" className="nav-link home">Home</Link>
               </li>
-              <li className="nav-item mr-4">
-                <Link to="/listings" className="nav-link home">Listings</Link>
-              </li>
               <li className="nav-item mr-0">
                 <Link to="/listings/new" className="nav-link pr-0">Post Listing</Link>
               </li>

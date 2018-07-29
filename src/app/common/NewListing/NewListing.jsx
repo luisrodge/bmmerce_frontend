@@ -48,7 +48,7 @@ class NewListing extends Component {
 
     closeModal = () => {
         console.log("Close");
-        this.props.closeModal();
+        this.props.closeNewListingModal();
         this.setState(intitalState);
     }
 

@@ -3,9 +3,9 @@ import Footer from './Footer';
 import MinimalHeader from './MinimalHeader';
 import Listing from './Listing';
 import SearchForm from './SearchForm';
-import Slider from './Slider';
 import ListingModal from './ListingModal';
 import NewListing from './NewListing';
+import AuthModal from './AuthModal';
 
 export {
     Header,
@@ -13,7 +13,7 @@ export {
     Footer,
     Listing,
     SearchForm,
-    Slider,
     ListingModal,
-    NewListing
+    NewListing,
+    AuthModal
 }

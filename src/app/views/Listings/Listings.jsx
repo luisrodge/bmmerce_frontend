@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
+import Lightbox from 'react-images';
 
 import { Listing, ListingModal } from '../../common'
 
@@ -8,7 +9,9 @@ class Listings extends Component {
     super();
     this.state = {
       modalIsOpen: false,
-      selectedListing: {}
+      selectedListing: {},
+      lightboxIsOpen: false,
+      currentImage: 0,
     };
   }
 
@@ -27,6 +30,31 @@ class Listings extends Component {
     this.setState({
       modalIsOpen: true,
       selectedListing: listing
+    });
+  }
+
+  openLightbox = (index) => {
+    this.setState({
+      currentImage: index,
+      lightboxIsOpen: true,
+    });
+  }
+
+  closeLightbox = () => {
+    this.setState({
+      currentImage: 0,
+      lightboxIsOpen: false,
+    });
+  }
+
+  gotoPrevious = () => {
+    this.setState({
+      currentImage: this.state.currentImage - 1,
+    });
+  }
+  gotoNext = () => {
+    this.setState({
+      currentImage: this.state.currentImage + 1,
     });
   }
 
@@ -50,6 +78,17 @@ class Listings extends Component {
             modalIsOpen={this.state.modalIsOpen}
             closeModal={this.closeModal}
             selectedListing={this.state.selectedListing}
+            onOpenLightbox={this.openLightbox}
+          />
+        }
+        {this.state.lightboxIsOpen &&
+          <Lightbox
+            currentImage={this.state.currentImage}
+            isOpen={this.state.lightboxIsOpen}
+            onClose={this.closeLightbox}
+            images={this.state.selectedListing.images}
+            onClickNext={this.gotoNext}
+            onClickPrev={this.gotoPrevious}
           />
         }
       </div>

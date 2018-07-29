@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { Wizard, Steps, Step } from 'react-albus';
-import ImageUploader from 'react-images-upload';
 import Dropzone from 'react-dropzone';
 
 const customStyles = {
@@ -158,16 +157,6 @@ const NewListingModal = (props) => {
                                                         onChange={props.onHandleInput}
                                                     />
                                                 </div>
-                                                <div className="form-group">
-                                                    <label htmlFor="contactNumber">Phone Number</label>
-                                                    <input
-                                                        type="text"
-                                                        name="contactNumber"
-                                                        className="form-control"
-                                                        value={props.inputValues.contactNumber}
-                                                        onChange={props.onHandleInput}
-                                                    />
-                                                </div>
                                                 {props.inputValues.isRental &&
                                                     <div className="form-group">
                                                         <label htmlFor="contactEmail">Email</label>
@@ -185,7 +174,7 @@ const NewListingModal = (props) => {
                                         <div className="row">
                                             <div className="col-md-6 mx-auto">
                                                 <button
-                                                    disabled={!props.inputValues.address || !props.inputValues.price || !props.inputValues.title || !props.inputValues.contactNumber}
+                                                    disabled={!props.inputValues.address || !props.inputValues.price || !props.inputValues.title}
                                                     onClick={props.onCreateListing}
                                                     className="btn btn-green btn-block"
                                                 >

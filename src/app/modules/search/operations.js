@@ -35,13 +35,10 @@ const search = (query) => {
               description: child.description,
               contactName: child.contact_name,
               contactEmail: child.contact_email,
-              contactNumber: child.contact_number,
-              emailFlag: child.email_flag,
-              smsFlag: child.sms_flag,
-              phoneCallFlag: child.phone_call_flag,
-              whatsappFlag: child.whatsapp_flag,
               userId: child.user_id,
-              images: child.images,
+              images: child.images.map(image => ({
+                src: image.listing_image.url
+              })),
               createdAt: child.created_at
             };
             data.push(childData);

@@ -24,10 +24,12 @@ const mapDispatchToProps = (dispatch) => {
     const unauthenticate = () => {
         dispatch(authOperations.unauthenticate());
     };
-    const openModal = () => dispatch(modalActions.openModal());
+    const openNewListingModal = () => dispatch(modalActions.openNewListingModal());
+    const openAuthModal = () => dispatch(modalActions.openAuthModal());
     return {
         unauthenticate,
-        openModal
+        openNewListingModal,
+        openAuthModal
     };
 };
 

@@ -34,7 +34,7 @@ const deleteListingSuccessAction = Actions.deleteListingSuccess;
 const getListing = (id) => {
   return dispatch => {
     dispatch(getListingAction());
-    axios.get(`${API_ROOT}/listings/${id}`)
+    axios.get(`${API_ROOT}/listing_type/listings/${id}`)
       .then(function (response) {
         const responseData = response.data.listing;
         const listing = {
@@ -56,11 +56,12 @@ const getListing = (id) => {
 }
 
 const getListings = (rental = false) => {
-  let endpoint = rental ? `${API_ROOT}/listings/rentals` : `${API_ROOT}/listings`;
+  let endpoint = rental ? `${API_ROOT}/listing_type/rentals` : `${API_ROOT}/listing_type/listings`;
   return dispatch => {
     dispatch(getListingsAction());
     axios.get(endpoint)
       .then(function (response) {
+        console.log(response)
         const responseData = response.data.listings;
         let data = [];
         responseData.map(child => {
@@ -70,7 +71,7 @@ const getListings = (rental = false) => {
             price: child.price,
             address: child.address,
             userId: child.user_id,
-            images: child.images,
+            images: child.images.map(image => ({src: image.listing_image.url})),
             isRental: child.is_rental,
             createdAt: child.created_at
           };
@@ -125,7 +126,7 @@ const getFeaturedListings = () => {
 const getUserListings = (id) => {
   return dispatch => {
     dispatch(getUserListingsAction());
-    axios.get(`${API_ROOT}/listings/user_listings?user_id=${id}`)
+    axios.get(`${API_ROOT}/listing_type/listings/user_listings?user_id=${id}`)
       .then(function (response) {
         const responseData = response.data.listings;
         let data = [];
@@ -174,7 +175,7 @@ const createListing = (newListing) => {
   }
   return dispatch => {
     dispatch(createListingAction());
-    axios.post(`${API_ROOT}/listings`, formData)
+    axios.post(`${API_ROOT}/listing_type/listings`, formData)
       .then(async (response) => {
         console.log("Images", response.data.listing.images[0]['listing_image']);
         let responseData = response.data.listing;
@@ -185,7 +186,7 @@ const createListing = (newListing) => {
           price: responseData.price,
           address: responseData.address,
           userId: responseData.user_id,
-          images: responseData.images,
+          images: responseData.images.map(image => ({src: image.listing_image.url})),
           isRental: responseData.is_rental,
           createdAt: responseData.created_at
         };
@@ -217,7 +218,7 @@ const updateListing = (updatedListing, newImages = []) => {
   }
   return dispatch => {
     dispatch(updateListingAction());
-    axios.put(`${API_ROOT}/listings/${updatedListing.id}`, formData)
+    axios.put(`${API_ROOT}/listing_type/listings/${updatedListing.id}`, formData)
       .then(async (response) => {
         console.log(response);
         const responseData = response.data.listing;
@@ -243,7 +244,7 @@ const updateListing = (updatedListing, newImages = []) => {
 const deleteListing = (id) => {
   return dispatch => {
     dispatch(deleteListingAction());
-    axios.delete(`${API_ROOT}/listings/${id}`)
+    axios.delete(`${API_ROOT}/listing_type/listings/${id}`)
       .then(function (response) {
         dispatch(deleteListingSuccessAction(id))
       })

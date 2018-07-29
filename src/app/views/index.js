@@ -1,4 +1,3 @@
-import Home from './Home';
 import About from './About';
 import NewListing from './NewListing';
 import RentListing from './RentListing';
@@ -9,7 +8,6 @@ import Rentals from './Rentals';
 import Search from './Search';
 
 export {
-    Home,
     About,
     NewListing,
     RentListing,
