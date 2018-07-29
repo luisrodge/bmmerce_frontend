@@ -14,6 +14,12 @@ export default function (ComposedComponent) {
             }
         }
 
+        componentDidUpdate(nextProps) {
+            if (!nextProps.authenticated) {
+                this.props.history.push('/');
+            }
+        }
+
         render() {
             return (
                 <ComposedComponent {...this.props} />

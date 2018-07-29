@@ -8,22 +8,19 @@ header {
 }
 
 .logo-wrapper {
-    padding-top: 21px;
+    padding-top: 14px;
 }
 
 .logo {
-    color: #FFF;
-    font-size: 40px;
-    font-weight: bold;
+    font-family: 'Acme', sans-serif;
+    color: #1c7831;
+    font-size: 44px;
     span {
-        background: #FFF;
-        padding: 0 8px;
-        color: #00C300;
-        margin-left: 4px;
+        color: #24963e;
     }
     &:hover,
     &:focus {
-        color: #24963e;
+        color: #1c7831;
         text-decoration: none;
     }
 }

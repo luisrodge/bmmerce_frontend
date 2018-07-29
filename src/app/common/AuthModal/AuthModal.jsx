@@ -56,7 +56,7 @@ class AuthModal extends Component {
                             render={({ next }) => (
                                 <div>
                                     <h3 className="text-center mb-0">Sign In To Start Posting</h3>
-                                    <p className="text-center text-muted">We are Belize's premier platform on which producers and consumers can easily engage in business</p>
+                                    <p className="text-center text-muted">We are Belize's premier platform for consumer to consumer and business to consumer commerce.</p>
                                     <div className="row">
                                         <div className="col-md-12">
                                             <form onSubmit={e => this.login(e)}>

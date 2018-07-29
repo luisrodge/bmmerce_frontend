@@ -13,8 +13,8 @@ class Header extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-2 logo-wrapper">
-                <Link to="/" className="text-center logo">
-                  <img src="http://res.cloudinary.com/dwaavflqp/image/upload/v1532834896/logo_lpdxgs.png" className="img-fluid" />
+                <Link to="/" className="logo">
+                  <span>b</span>mmerce
                 </Link>
               </div>
               <div className="col-md-7  search-wrapper">
@@ -38,8 +38,11 @@ class Header extends Component {
                 <li className="nav-item mr-5">
                   <Link to="/" className="nav-link home">Home</Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item mr-5">
                   <Link to="/rentals" className="nav-link home">Rentals</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/rentals" className="nav-link home">Businesses</Link>
                 </li>
               </ul>
               {this.props.authenticated ? (
