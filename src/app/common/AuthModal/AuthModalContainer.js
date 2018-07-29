@@ -13,7 +13,8 @@ const mapStateToProps = (state) => {
     const {
         user,
         authenticating,
-        signInError
+        signInError,
+        registering
     } = state.auth;
     const {
         modalIsOpen
@@ -22,6 +23,7 @@ const mapStateToProps = (state) => {
         user,
         authenticating,
         signInError,
+        registering,
         modalIsOpen
     };
 };
@@ -30,9 +32,13 @@ const mapDispatchToProps = (dispatch) => {
     const authenticate = (email, password) => {
         dispatch(authOperations.authenticate(email, password));
     };
+    const register = (name, email, password) => {
+        dispatch(authOperations.register(name, email, password));
+    };
     const closeAuthModal = () => dispatch(modalActions.closeAuthModal());
     return {
         authenticate,
+        register,
         closeAuthModal
     };
 };

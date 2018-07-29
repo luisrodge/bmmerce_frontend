@@ -14,7 +14,7 @@ class Header extends Component {
             <div className="row">
               <div className="col-md-2 logo-wrapper">
                 <Link to="/" className="text-center logo">
-                  <img src="http://res.cloudinary.com/dwaavflqp/image/upload/v1532475995/BELIZERS-WebLogo_vo3rzh.png" className="img-fluid" />
+                  <img src="http://res.cloudinary.com/dwaavflqp/image/upload/v1532834896/logo_lpdxgs.png" className="img-fluid" />
                 </Link>
               </div>
               <div className="col-md-7  search-wrapper">
@@ -45,7 +45,9 @@ class Header extends Component {
               {this.props.authenticated ? (
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item mr-3">
-                    <Link to="/dashboard" className="nav-link">Dashboard</Link>
+                    <Link to="/dashboard" className="nav-link">
+                      <i class="far fa-user-circle pr-1"></i> Your Dashboard
+                    </Link>
                   </li>
                   <li className="nav-item">
                     <p className="nav-link pointer m-0 pr-0" onClick={this.props.unauthenticate}>Sign Out</p>
@@ -53,11 +55,8 @@ class Header extends Component {
                 </ul>
               ) : (
                   <ul className="navbar-nav ml-auto">
-                    <li className="nav-item mr-5">
-                      <p className="nav-link m-0 pr-0 pointer" onClick={this.props.openAuthModal}>Sign In</p>
-                    </li>
                     <li className="nav-item">
-                      <a className="nav-link pr-0" href="#">Register</a>
+                      <p className="nav-link m-0 pr-0 pointer" onClick={this.props.openAuthModal}>Sign In To Your Account</p>
                     </li>
                   </ul>
                 )}

@@ -27,7 +27,7 @@ const verifyTokenSuccessAction = Actions.verifyTokenSuccess;
 const verifyTokenFailureAction = Actions.verifyTokenFailure;
 
 const registerAction = Actions.register;
-//const registerSuccessAction = Actions.registerSuccess;
+const registerSuccessAction = Actions.registerSuccess;
 const registerFailureAction = Actions.registerFailure;
 
 
@@ -44,9 +44,8 @@ const authenticate = (email, password) => {
         localStorage.setItem('jwtToken', authToken);
         // Apply token to request headers
         setAuthorizationToken(authToken);
+        // Add token payload to the store
         dispatch(authenticateSuccessAction(jwt.decode(authToken)));
-        // Redirect to home view
-        // dispatch(push('/'));
         dispatch(modalActions.closeAuthModal());
       })
       .catch((error) => {
@@ -66,32 +65,28 @@ const register = (name, email, password) => {
       })
       .then(async (response) => {
         let authToken = response.data.auth_token;
+        console.log(authToken);
+        localStorage.setItem('jwtToken', authToken);
         // Apply token to request headers
         setAuthorizationToken(authToken);
-        // Decode token 
-        // jwt.decode(authToken, { complete: false })
-        //   .then(async (payload) => {
-        //     console.log(payload);
-        //     try {
-        //        // Store the access token locally
-        //       await AsyncStorage.setItem('jwtToken', authToken);
-        //       // Update store with newly created user payload data
-        //       dispatch(registerSuccessAction({
-        //         userId: payload.user_id, 
-        //         name: payload.name, 
-        //         email: payload.email,
-        //         type: payload.type,
-        //       }));
-        //     } catch (error) {
-        //       // Error saving data
-        //       console.log("Something failed")
-        //     }
-        //   });
+        // Add token payload to the store
+        dispatch(registerSuccessAction(jwt.decode(authToken)));
+        dispatch(modalActions.closeAuthModal());
       })
       .catch((error) => {
         console.log(error.response.data.data);
         dispatch(registerFailureAction(error.response.data.data));
       });
+  }
+};
+
+const unauthenticate = () => {
+  return dispatch => {
+    localStorage.removeItem('jwtToken');
+    setAuthorizationToken(false);
+    dispatch(unauthenticateAction());
+    // Redirect to home view
+    dispatch(push('/'));
   }
 };
 
@@ -118,19 +113,10 @@ const verifyToken = (payload, token) => {
   }
 };
 
-const unauthenticate = () => {
-  return dispatch => {
-    localStorage.removeItem('jwtToken');
-    setAuthorizationToken(false);
-    dispatch(unauthenticateAction());
-    // Redirect to home view
-    dispatch(push('/'));
-  }
-};
 
 export default {
   authenticate,
   register,
+  unauthenticate,
   verifyToken,
-  unauthenticate
 };

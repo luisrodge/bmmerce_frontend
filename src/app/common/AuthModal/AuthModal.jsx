@@ -34,6 +34,12 @@ class AuthModal extends Component {
     }
 
     register = (e) => {
+        e.preventDefault();
+        this.props.register(
+            this.state.name,
+            this.state.email,
+            this.state.password
+        );
     }
 
     render() {
@@ -49,7 +55,7 @@ class AuthModal extends Component {
                             id="signin"
                             render={({ next }) => (
                                 <div>
-                                    <h3 className="text-center">Sign In To Start Posting</h3>
+                                    <h3 className="text-center mb-0">Sign In To Start Posting</h3>
                                     <p className="text-center text-muted">We are Belize's premier platform on which producers and consumers can easily engage in business</p>
                                     <div className="row">
                                         <div className="col-md-12">
@@ -77,7 +83,7 @@ class AuthModal extends Component {
                                                 <br />
                                                 <button
                                                     className="btn btn-green btn-block btn-lg"
-                                                    disabled={this.props.authenticating}
+                                                    disabled={this.props.authenticating || !this.state.email || !this.state.password}
                                                 >
                                                     {this.props.authenticating ? "Signing You In..." : "Sign In"}
                                                 </button>
@@ -94,9 +100,54 @@ class AuthModal extends Component {
                             id="register"
                             render={({ next, previous }) => (
                                 <div>
-                                    <h1>Gandalf</h1>
-                                    <button onClick={next}>Next</button>
-                                    <button onClick={previous}>Previous</button>
+                                    <h3 className="text-center mb-0">Create Your Account</h3>
+                                    <p className="text-center text-muted">You'll never go back to the old ways of buying & selling in Belize!</p>
+                                    <div className="row mt-4">
+                                        <div className="col-md-12">
+                                            <form onSubmit={e => this.register(e)}>
+                                                <div className="form-group">
+                                                    <label htmlFor="email">Full Name</label>
+                                                    <input
+                                                        type="text"
+                                                        name="name"
+                                                        className="form-control form-control-lg"
+                                                        value={this.state.name}
+                                                        onChange={this.handleInput}
+                                                    />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label htmlFor="email">Email</label>
+                                                    <input
+                                                        type="email"
+                                                        name="email"
+                                                        className="form-control form-control-lg"
+                                                        value={this.state.email}
+                                                        onChange={this.handleInput}
+                                                    />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label htmlFor="password">Password</label>
+                                                    <input
+                                                        type="password"
+                                                        name="password"
+                                                        className="form-control form-control-lg"
+                                                        value={this.state.password}
+                                                        onChange={this.handleInput}
+                                                    />
+                                                </div>
+                                                <br />
+                                                <button
+                                                    className="btn btn-green btn-block btn-lg"
+                                                    disabled={this.props.registering || !this.state.name || !this.state.email || !this.state.password}
+                                                >
+                                                    {this.props.registering ? "Creating account..." : "Create Account"}
+                                                </button>
+                                                <div className="mt-4 text-center">
+                                                    <h5>Or <span className="link-green text-center pointer" onClick={previous}>Sign In</span></h5>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             )}
                         />
