@@ -44,7 +44,7 @@ class Header extends Component {
               </ul>
               {this.props.authenticated ? (
                 <ul className="navbar-nav ml-auto">
-                  <li className="nav-item mr-3">
+                  <li className="nav-item mr-5">
                     <Link to="/dashboard" className="nav-link">
                       <i class="far fa-user-circle pr-1"></i> Your Dashboard
                     </Link>

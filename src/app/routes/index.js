@@ -17,6 +17,10 @@ import {
 
 import { DefaultLayout, MinimalLayout } from '../layouts';
 
+import requireAuth from '../hoc/requireAuth';
+
+const DashboardAuth = requireAuth(Dashboard);
+
 export default (props) => (
     <ConnectedRouter history={history}>
         <Switch>
@@ -42,7 +46,11 @@ export default (props) => (
                 )}
             />
             <Route path="/login" render={() => <MinimalLayout><SignIn /></MinimalLayout>}/>
-            <Route path="/dashboard" render={() => <MinimalLayout><Dashboard /></MinimalLayout>}/>
+            <Route 
+                path="/dashboard" 
+                render={(props) => 
+                    <MinimalLayout><DashboardAuth {...props} /></MinimalLayout>
+                }/>
         </Switch>
     </ConnectedRouter>
 );
