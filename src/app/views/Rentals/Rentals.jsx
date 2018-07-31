@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
+import Lightbox from 'react-images';
 
 import { Listing, ListingModal } from '../../common'
 
@@ -9,7 +10,9 @@ class Rentals extends Component {
     this.state = {
       modalIsOpen: false,
       selectedListing: {},
-      page: 1
+      page: 1,
+      lightboxIsOpen: false,
+      currentImage: 0,
     };
   }
 
@@ -41,6 +44,32 @@ class Rentals extends Component {
     let previousPage = this.state.page - 1
     this.props.getListings(false, previousPage, 20);
     this.setState({ page: previousPage });
+  }
+
+  openLightbox = (index) => {
+    this.setState({
+      currentImage: index,
+      lightboxIsOpen: true,
+    });
+  }
+
+  closeLightbox = () => {
+    this.setState({
+      currentImage: 0,
+      lightboxIsOpen: false,
+    });
+  }
+
+  gotoPrevious = () => {
+    this.setState({
+      currentImage: this.state.currentImage - 1,
+    });
+  }
+
+  gotoNext = () => {
+    this.setState({
+      currentImage: this.state.currentImage + 1,
+    });
   }
 
   render() {
@@ -91,6 +120,17 @@ class Rentals extends Component {
             modalIsOpen={this.state.modalIsOpen}
             closeModal={this.closeModal}
             selectedListing={this.state.selectedListing}
+            onOpenLightbox={this.openLightbox}
+          />
+        }
+        {this.state.lightboxIsOpen &&
+          <Lightbox
+            currentImage={this.state.currentImage}
+            isOpen={this.state.lightboxIsOpen}
+            onClose={this.closeLightbox}
+            images={this.state.selectedListing.images}
+            onClickNext={this.gotoNext}
+            onClickPrev={this.gotoPrevious}
           />
         }
       </div>
