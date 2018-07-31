@@ -9,17 +9,19 @@ import {
 const mapStateToProps = (state) => {
     const {
         listings,
-        gettingListings
+        gettingListings,
+        totalPages
     } = state.listings.default;
     return {
         listings,
-        gettingListings
+        gettingListings,
+        totalPages
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    const getListings = () => {
-        dispatch(listingsOperations.getListings(true));
+    const getListings = (page, limit) => {
+        dispatch(listingsOperations.getListings(true, page, limit));
     };
     return {
         getListings

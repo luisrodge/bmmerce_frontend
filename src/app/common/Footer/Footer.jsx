@@ -6,7 +6,7 @@ class Footer extends Component {
     return (
         <footer>
             <div className="container">
-                <p className="m-0 text-center">&copy; Copyright Belize Rent Sell 2018</p>
+                <p className="m-0 text-center">&copy; Copyright bmmerce 2018</p>
             </div>
         </footer>
     );

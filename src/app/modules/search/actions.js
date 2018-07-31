@@ -4,9 +4,10 @@ const search = () => ({
     type: types.SEARCH
 });
 
-const searchSuccess = (json) => ({
+const searchSuccess = (results, totalPages) => ({
     type: types.SEARCH_SUCCESS,
-    results: json
+    results: results,
+    totalPages: totalPages
 });
 
 const searchFailure = (json) => ({

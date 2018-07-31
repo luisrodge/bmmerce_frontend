@@ -7,6 +7,7 @@ const STATE = {
   gettingListing: false,
   listing: {},
   listings: [],
+  totalPages: 0,
   gettingListings: false,
   creatingListing: false,
   createListingErrors: {},
@@ -58,10 +59,12 @@ const defaultReducer = (state = STATE, action) => {
     case types.GET_LISTINGS_SUCCESS:
       {
         const {
-          listings
+          listings,
+          totalPages
         } = action;
         return {
           ...state,
+          totalPages,
           listings,
           gettingListings: false,
         }

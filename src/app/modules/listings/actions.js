@@ -17,9 +17,10 @@ const getListings = () => ({
     type: types.GET_LISTINGS
 });
 
-const getListingsSuccess = (json) => ({
+const getListingsSuccess = (listings, totalPages) => ({
     type: types.GET_LISTINGS_SUCCESS,
-    listings: json
+    listings: listings,
+    totalPages: totalPages
 });
 
 const getListingsFailure = (json) => ({

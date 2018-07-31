@@ -12,11 +12,13 @@ class Listings extends Component {
       selectedListing: {},
       lightboxIsOpen: false,
       currentImage: 0,
+      page: 1,
     };
   }
 
   componentDidMount() {
-    this.props.getListings();
+    console.log("LAST", this.props.lastPage);
+    this.props.getListings(false, 1, 20);
   }
 
   closeModal = () => {
@@ -58,6 +60,18 @@ class Listings extends Component {
     });
   }
 
+  onNext = () => {
+    let nextPage = this.state.page + 1
+    this.props.getListings(false, nextPage, 20);
+    this.setState({ page: nextPage });
+  }
+
+  onPrevious = () => {
+    let previousPage = this.state.page - 1
+    this.props.getListings(false, previousPage, 20);
+    this.setState({ page: previousPage });
+  }
+
   render() {
     if (this.props.gettingListings || this.props.listings.length === 0) { return null; }
     return (
@@ -72,6 +86,29 @@ class Listings extends Component {
               />
             </div>
           )}
+        </div>
+        <div className="row pb-5 pt-4">
+          <div className="col-md-3 mx-auto">
+            <div className="row">
+              <div className="col-md-2">
+                {this.state.page === 1 ? (
+                  <i className="fas fa-chevron-left text-muted"></i>
+                ) : (
+                  <i className="fas fa-chevron-left pointer" onClick={this.onPrevious}></i>
+                )}
+              </div>
+              <div className="col-md-8 text-center">
+                Page {this.state.page} of {this.props.totalPages}
+              </div>
+              <div className="col-md-2 text-right">
+                {this.state.page === this.props.totalPages ? (
+                  <i className="fas fa-chevron-right text-muted"></i>
+                ) : (
+                  <i className="fas fa-chevron-right pointer" onClick={this.onNext}></i>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
         {this.state.modalIsOpen &&
           <ListingModal

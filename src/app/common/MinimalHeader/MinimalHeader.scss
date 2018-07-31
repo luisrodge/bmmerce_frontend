@@ -1,33 +1,23 @@
-
 #minimal-nav {
+    background: #1c7831;
     margin-bottom: 60px;
-    border-bottom: 1px solid #f7f7f7;
     padding: 0;
     .nav-link {
-        font-size: 17px;
-        color: #3a3a3a;
+        font-size: 18px;
+        color: #FFF;
         &:hover {
-            color: #000;
+            color: #f7f7f7;
         }
     }
 }
 
 a#minimal-logo {
-    font-size: 24px;
+    font-family: 'Acme', sans-serif;
+    font-size: 28px;
     color: #FFF;
     font-weight: bold;
-    span {
-        background: #FFF;
-        padding: 0 6px;
-        color: #00C300;
-        margin-left: 2px;
-    }
-    img {
-        width: 104px;
-        height: auto;
-    }
 }
 
 .pointer {
-    cursor: pointer; 
+    cursor: pointer;
 }

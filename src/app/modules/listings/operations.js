@@ -55,15 +55,21 @@ const getListing = (id) => {
   }
 }
 
-const getListings = (rental = false) => {
-  let endpoint = rental ? `${API_ROOT}/listing_type/rentals` : `${API_ROOT}/listing_type/listings`;
+const getListings = (rental = false, page = null, limit = null) => {
+  console.log("Page", page);
+  let baseUrl = rental ? `${API_ROOT}/listing_type/rentals` : `${API_ROOT}/listing_type/listings`;
   return dispatch => {
     dispatch(getListingsAction());
-    axios.get(endpoint)
+    axios.get(baseUrl, {
+        params: {
+          page: page,
+          limit: limit
+        }
+      })
       .then(function (response) {
-        console.log(response)
         const responseData = response.data.listings;
-        let data = [];
+        const meta = response.data.meta;
+        let listings = [];
         responseData.map(child => {
           const childData = {
             id: child.id,
@@ -71,14 +77,15 @@ const getListings = (rental = false) => {
             price: child.price,
             address: child.address,
             userId: child.user_id,
-            images: child.images.map(image => ({src: image.listing_image.url})),
+            images: child.images.map(image => ({
+              src: image.listing_image.url
+            })),
             isRental: child.is_rental,
             createdAt: child.created_at
           };
-          console.log(childData);
-          data.push(childData);
+          listings.push(childData);
         });
-        dispatch(getListingsSuccessAction(data))
+        dispatch(getListingsSuccessAction(listings, meta.total_pages))
       })
       .catch(function (error) {
         //dispatch(getUsersFailureAction(error.response.data.data));
@@ -186,7 +193,9 @@ const createListing = (newListing) => {
           price: responseData.price,
           address: responseData.address,
           userId: responseData.user_id,
-          images: responseData.images.map(image => ({src: image.listing_image.url})),
+          images: responseData.images.map(image => ({
+            src: image.listing_image.url
+          })),
           isRental: responseData.is_rental,
           createdAt: responseData.created_at
         };

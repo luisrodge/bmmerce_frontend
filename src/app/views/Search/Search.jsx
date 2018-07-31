@@ -8,17 +8,18 @@ class Search extends React.Component {
         super();
         this.state = {
             modalIsOpen: false,
-            selectedListing: {}
+            selectedListing: {},
+            page: 1,
         };
     }
 
     componentDidMount() {
-        this.props.search(this.props.term);
+        this.props.search(this.props.term, 1);
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.term !== prevProps.term) {
-            this.props.search(this.props.term);
+            this.props.search(this.props.term, 1);
         }
     }
 
@@ -37,6 +38,7 @@ class Search extends React.Component {
     }
 
     render() {
+        console.log("sdsdsd", this.props.results.length)
         if (this.props.searching) { return <p className="text-center">Searching...</p>; }
         return (
             <div className="container">
@@ -51,6 +53,31 @@ class Search extends React.Component {
                         </div>
                     )}
                 </div>
+                {this.props.results.length > 0 &&
+                    <div className="row pb-5 pt-4">
+                        <div className="col-md-3 mx-auto">
+                            <div className="row">
+                                <div className="col-md-2">
+                                    {this.state.page === 1 ? (
+                                        <i className="fas fa-chevron-left text-muted"></i>
+                                    ) : (
+                                            <i className="fas fa-chevron-left pointer" onClick={this.onPrevious}></i>
+                                        )}
+                                </div>
+                                <div className="col-md-8 text-center">
+                                    Page {this.state.page} of {this.props.totalPages}
+                                </div>
+                                <div className="col-md-2 text-right">
+                                    {this.state.page === this.props.totalPages ? (
+                                        <i className="fas fa-chevron-right text-muted"></i>
+                                    ) : (
+                                            <i className="fas fa-chevron-right pointer" onClick={this.onNext}></i>
+                                        )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
                 {this.state.modalIsOpen &&
                     <ListingModal
                         modalIsOpen={this.state.modalIsOpen}

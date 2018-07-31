@@ -18,8 +18,16 @@ body {
   background: #F0F0F0;
 }
 
+.text-muted {
+  color: #ABABAB !important;
+}
+
 .text-success {
   color: #24963e !important;
+}
+
+.text-xs {
+  font-size: 15px;
 }
 
 .link-green {
@@ -35,7 +43,7 @@ body {
   padding: 4px;
   border-radius: 4px;
   border: none;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #F2F2F2;
   .card-body {
     padding-left: 0;
     padding-right: 0;
@@ -138,6 +146,15 @@ table {
 input,
 textarea {
   border-radius: 0 !important;
+}
+
+.form-control {
+  outline: none;
+  box-shadow: none !important;
+  border: 1px solid #F2F2F2 !important;
+  &:focus {
+    border: 1px solid #CCC !important;
+  }
 }
 
 .btn {

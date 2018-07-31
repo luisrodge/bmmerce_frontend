@@ -13,17 +13,24 @@ const searchSuccessAction = Actions.searchSuccess;
 
 const onSearch = (query) => {
   return dispatch => {
-    dispatch(push(`/search/${query}`));
+    dispatch(push(`/search/${query}`, 1));
   }
 };
 
-const search = (query) => {
+const search = (query, page = null) => {
+  let fullUrl = `${API_ROOT}/search`;
   return dispatch => {
     dispatch(searchAction());
-    axios.get(`${API_ROOT}/search?query=${query}`)
+    axios.get(fullUrl, {
+        params: {
+          query: query,
+          page: page,
+        }
+      })
       .then(function (response) {
         const responseData = response.data.listings;
-        console.log("Hsds", response);
+        const meta = response.data.meta;
+        console.log("res", response.data)
         if (response.data !== "") {
           let data = [];
           responseData.map(child => {
@@ -43,8 +50,8 @@ const search = (query) => {
             };
             data.push(childData);
           });
-          dispatch(searchSuccessAction(data));
-        } else {
+          dispatch(searchSuccessAction(data,  meta.total_pages));
+        } else { 
           dispatch(searchSuccessAction([]));
         }
       })

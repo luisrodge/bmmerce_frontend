@@ -4,6 +4,7 @@ const INITIAL_STATE = {
     results: [],
     errors: [],
     searching: false,
+    totalPages: 0
 }
 
 const searchReducer = (state=INITIAL_STATE, action) => {
@@ -16,10 +17,11 @@ const searchReducer = (state=INITIAL_STATE, action) => {
         }
         
         case types.SEARCH_SUCCESS: {
-          const { results } = action;
+          const { results, totalPages } = action;
           return {
             ...state,
             results,
+            totalPages,
             searching: false
           }
         }
