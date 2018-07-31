@@ -14,9 +14,6 @@ const getListingSuccessAction = Actions.getListingSuccess;
 const getListingsAction = Actions.getListings;
 const getListingsSuccessAction = Actions.getListingsSuccess;
 
-const getFeaturedListingsAction = Actions.getFeaturedListings;
-const getFeaturedListingsSuccessAction = Actions.getFeaturedListingsSuccess;
-
 const getUserListingsAction = Actions.getUserListings;
 const getUserListingsSuccessAction = Actions.getUserListingsSuccess;
 
@@ -45,6 +42,7 @@ const getListing = (id) => {
           description: responseData.description,
           priceDetails: responseData.price_details,
           userId: responseData.user_id,
+          userName: responseData.user.name,
           images: responseData.images
         };
         dispatch(getListingSuccessAction(listing))
@@ -77,6 +75,7 @@ const getListings = (rental = false, page = null, limit = null) => {
             price: child.price,
             address: child.address,
             userId: child.user_id,
+            userName: child.user.name,
             images: child.images.map(image => ({
               src: image.listing_image.url
             })),
@@ -86,43 +85,6 @@ const getListings = (rental = false, page = null, limit = null) => {
           listings.push(childData);
         });
         dispatch(getListingsSuccessAction(listings, meta.total_pages))
-      })
-      .catch(function (error) {
-        //dispatch(getUsersFailureAction(error.response.data.data));
-      });
-  }
-}
-
-const getFeaturedListings = () => {
-  return dispatch => {
-    dispatch(getFeaturedListingsAction());
-    axios.get(`${API_ROOT}/listings/featured?limit=4`)
-      .then(function (response) {
-        console.log("featured", response.data)
-        const responseData = response.data.listings;
-        let data = [];
-        responseData.map(child => {
-          const childData = {
-            id: child.id,
-            title: child.title,
-            price: child.price,
-            address: child.address,
-            description: child.description,
-            contactName: child.contact_name,
-            contactEmail: child.contact_email,
-            contactNumber: child.contact_number,
-            emailFlag: child.email_flag,
-            smsFlag: child.sms_flag,
-            phoneCallFlag: child.phone_call_flag,
-            whatsappFlag: child.whatsapp_flag,
-            userId: child.user_id,
-            images: child.images,
-            isRental: child.is_rental,
-            createdAt: child.created_at
-          };
-          data.push(childData);
-        });
-        dispatch(getFeaturedListingsSuccessAction(data))
       })
       .catch(function (error) {
         //dispatch(getUsersFailureAction(error.response.data.data));
@@ -146,6 +108,7 @@ const getUserListings = (id) => {
             description: child.description,
             priceDetails: child.price_details,
             userId: child.user_id,
+            userName: child.user.name,
             images: child.images
           };
           data.push(childData);
@@ -166,16 +129,7 @@ const createListing = (newListing) => {
   formData.append('description', newListing.description);
   formData.append('is_rental', newListing.isRental);
   formData.append('address', newListing.address);
-  formData.append('contact_name', newListing.contactName);
-  formData.append('contact_email', newListing.contactEmail);
-  formData.append('contact_number', newListing.contactNumber);
-  formData.append('email_flag', newListing.emailFlag);
-  formData.append('whatsapp_flag', newListing.whatsappFlag);
-  formData.append('sms_flag', newListing.smsFlag);
-  formData.append('phone_call_flag', newListing.phoneCallFlag);
-  if (newListing.userId) {
-    formData.append('user_id', newListing.userId);
-  }
+  formData.append('user_id', newListing.userId);
   for (var i = 0; i < newListing.pictures.length; i++) {
     console.log(newListing.pictures[i]);
     formData.append("images[]", newListing.pictures[i]);
@@ -193,6 +147,7 @@ const createListing = (newListing) => {
           price: responseData.price,
           address: responseData.address,
           userId: responseData.user_id,
+          userName: responseData.user.name,
           images: responseData.images.map(image => ({
             src: image.listing_image.url
           })),
@@ -267,7 +222,6 @@ export default {
   createListing,
   getListing,
   getListings,
-  getFeaturedListings,
   getUserListings,
   updateListing,
   deleteListing

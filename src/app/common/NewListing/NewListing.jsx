@@ -6,11 +6,8 @@ import './NewListing.scss'
 const intitalState = {
     title: '',
     price: '',
-    address: '',
     description: '',
     isRental: false,
-    contactNumber: '',
-    contactEmail: '',
     pictures: [],
 }
 
@@ -20,17 +17,13 @@ class NewListing extends Component {
         this.state = {
             title: '',
             price: '',
-            address: '',
             description: '',
             isRental: false,
-            contactNumber: '',
-            contactEmail: '',
             pictures: [],
         }
     }
 
     onDrop = (pictures) => {
-        console.log(pictures);
         this.setState({
             pictures: this.state.pictures.concat(pictures),
         });
@@ -42,7 +35,7 @@ class NewListing extends Component {
             ...this.state,
             userId: this.props.userId
         });
-        this.props.closeModal();
+        this.props.closeNewListingModal();
         this.setState(intitalState);
     }
 

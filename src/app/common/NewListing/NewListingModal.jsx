@@ -47,10 +47,10 @@ const NewListingModal = (props) => {
                                         <h5 className="mb-5 mt-0 text-center text-muted">Will you be posting something to rent or sell?</h5>
                                         <div className="row">
                                             <div className="col-md-6">
-                                                <button onClick={() => { next(); props.onSelectSale() }} className="btn btn-green btn-block">Sell</button>
+                                                <button onClick={() => { next(); props.onSelectSale() }} className="btn btn-green btn-block btn-lg">Sell</button>
                                             </div>
                                             <div className="col-md-6">
-                                                <button onClick={() => { next(); props.onSelectRental() }} className="btn btn-green btn-block">Rent</button>
+                                                <button onClick={() => { next(); props.onSelectRental() }} className="btn btn-green btn-block btn-lg">Rent</button>
                                             </div>
                                         </div>
                                     </div>
@@ -94,7 +94,7 @@ const NewListingModal = (props) => {
                                         <div className="row mt-4">
                                             <div className="col-md-6 mx-auto">
                                                 {props.inputValues.pictures.length > 0 &&
-                                                    <button onClick={next} className="btn btn-green btn-block">
+                                                    <button onClick={next} className="btn btn-green btn-block btn-lg">
                                                         Next
                                                     </button>
                                                 }
@@ -118,22 +118,22 @@ const NewListingModal = (props) => {
                                         <div className="row mb-3 mt-4" >
                                             <div className="col-md-12">
                                                 <div className="form-group">
-                                                    <label htmlFor="title">Price</label>
-                                                    <input
-                                                        type="text"
-                                                        name="price"
-                                                        className="form-control"
-                                                        value={props.inputValues.price}
-                                                        onChange={props.onHandleInput}
-                                                    />
-                                                </div>
-                                                <div className="form-group">
                                                     <label htmlFor="title">Title</label>
                                                     <input
                                                         type="text"
                                                         name="title"
                                                         className="form-control"
                                                         value={props.inputValues.title}
+                                                        onChange={props.onHandleInput}
+                                                    />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label htmlFor="title">Price</label>
+                                                    <input
+                                                        type="text"
+                                                        name="price"
+                                                        className="form-control"
+                                                        value={props.inputValues.price}
                                                         onChange={props.onHandleInput}
                                                     />
                                                 </div>
@@ -157,18 +157,6 @@ const NewListingModal = (props) => {
                                                         onChange={props.onHandleInput}
                                                     />
                                                 </div>
-                                                {props.inputValues.isRental &&
-                                                    <div className="form-group">
-                                                        <label htmlFor="contactEmail">Email</label>
-                                                        <input
-                                                            type="text"
-                                                            name="contactEmail"
-                                                            className="form-control"
-                                                            value={props.inputValues.contactEmail}
-                                                            onChange={props.onHandleInput}
-                                                        />
-                                                    </div>
-                                                }
                                             </div>
                                         </div>
                                         <div className="row">
@@ -176,7 +164,7 @@ const NewListingModal = (props) => {
                                                 <button
                                                     disabled={!props.inputValues.address || !props.inputValues.price || !props.inputValues.title}
                                                     onClick={props.onCreateListing}
-                                                    className="btn btn-green btn-block"
+                                                    className="btn btn-green btn-block btn-lg"
                                                 >
                                                     Post Listing
                                                 </button>

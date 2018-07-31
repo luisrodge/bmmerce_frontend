@@ -6,6 +6,15 @@ import { SearchForm } from '../';
 import './Header.scss';
 
 class Header extends Component {
+
+  openNewListingModal = () => {
+    if (this.props.authenticated) {
+      this.props.openNewListingModal();
+    } else {
+      this.props.openAuthModal();
+    }
+  }
+
   render() {
     return (
       <div>
@@ -21,7 +30,7 @@ class Header extends Component {
                 <SearchForm />
               </div>
               <div className="col-md-3 new-post-wrapper">
-                <button onClick={this.props.openNewListingModal} className="btn btn-green btn-block btn-lg">
+                <button onClick={this.openNewListingModal} className="btn btn-green btn-block btn-lg">
                   <i className="fas fa-camera mr-1"></i> Post New Listing
                 </button>
               </div>
