@@ -6,7 +6,7 @@ const authenticate = () => ({
 
 const authenticateSuccess = (json) => ({
     type: types.AUTHENTICATE_SUCCESS,
-    user: json
+    account: json
 });
 
 const authenticateFailure = (json) => ({
@@ -19,9 +19,9 @@ const unauthenticate = () => ({
 });
 
 
-const verifyTokenSuccess = (user) => ({
+const verifyTokenSuccess = (account) => ({
     type: types.VERIFY_TOKEN_SUCCESS,
-    user: user
+    account: account
 });
 
 const verifyTokenFailure = (json) => ({
@@ -35,7 +35,7 @@ const register = () => ({
 
 const registerSuccess = (json) => ({
     type: types.REGISTER_SUCCESS,
-    user: json
+    account: json
 });
 
 const registerFailure = (json) => ({

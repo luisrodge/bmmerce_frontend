@@ -46,7 +46,9 @@ const ListingModal = (props) => {
                 </div>
                 <div className="col-md-4 text-right">
                     <h4 className="text-success m-0">$<FormattedNumber value={props.selectedListing.price} /></h4>
-                    <p className="text-muted">Listed by {props.selectedListing.accountName}</p>
+                    <p className="text-muted">
+                        Listed by {props.selectedListing.listedBy.account.name }
+                    </p>
                 </div>
             </div>
 

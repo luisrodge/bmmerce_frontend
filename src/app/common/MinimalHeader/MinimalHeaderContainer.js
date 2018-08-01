@@ -11,11 +11,11 @@ import {
 
 const mapStateToProps = (state) => {
     const {
-        user,
+        account,
         authenticated
     } = state.auth;
     return {
-        user,
+        account,
         authenticated
     };
 };

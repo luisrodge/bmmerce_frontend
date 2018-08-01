@@ -1,7 +1,7 @@
 import types from './types';
 
 const STATE = {
-  user: {},
+  account: {},
   signInError: '',
   authenticated: false,
   authenticating: false,
@@ -20,10 +20,10 @@ const authReducer = (state=STATE, action) => {
         }
         
         case types.AUTHENTICATE_SUCCESS: {
-          const { user } = action;
+          const { account } = action;
           return {
             ...state,
-            user,
+            account,
             authenticated: true,
             authenticating: false,
           }
@@ -41,7 +41,7 @@ const authReducer = (state=STATE, action) => {
         case types.UNAUTHENTICATE: {
           return {
             ...state,
-            user: {},
+            account: {},
             authenticated: false,
             verifyingToken: false
           }
@@ -55,10 +55,10 @@ const authReducer = (state=STATE, action) => {
         }
         
         case types.REGISTER_SUCCESS: {
-          const { user } = action;
+          const { account } = action;
           return {
             ...state,
-            user,
+            account,
             authenticated: true,
             registering: false,
           }
@@ -74,10 +74,10 @@ const authReducer = (state=STATE, action) => {
         }
 
         case types.VERIFY_TOKEN_SUCCESS: {
-          const { user } = action;
+          const { account } = action;
           return {
             ...state,
-            user,
+            account,
             authenticated: true,
             verifyingToken: false,
           }
@@ -86,7 +86,7 @@ const authReducer = (state=STATE, action) => {
         case types.VERIFY_TOKEN_FAILURE: {
           return {
             ...state,
-            user: {},
+            account: {},
             verifyingToken: false,
             authenticated: false,
           }

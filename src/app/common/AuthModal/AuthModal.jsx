@@ -6,6 +6,7 @@ import { Modal } from '../../components';
 const intitalState = {
     name: '',
     email: '',
+    username: '',
     password: '',
 }
 
@@ -33,6 +34,7 @@ class AuthModal extends Component {
         e.preventDefault();
         this.props.authenticate(
             this.state.email,
+            this.state.username,
             this.state.password,
             this.state.businessSignIn
         );
@@ -168,12 +170,12 @@ class AuthModal extends Component {
                                         <div className="col-md-12">
                                             <form onSubmit={(e) => { this.setState({ businessSignIn: true }); this.login(e) }}>
                                                 <div className="form-group">
-                                                    <label htmlFor="email">Email</label>
+                                                    <label htmlFor="username">Username</label>
                                                     <input
-                                                        type="email"
-                                                        name="email"
+                                                        type="text"
+                                                        name="username"
                                                         className="form-control form-control-lg"
-                                                        value={this.state.email}
+                                                        value={this.state.username}
                                                         onChange={this.handleInput}
                                                     />
                                                 </div>
@@ -190,7 +192,7 @@ class AuthModal extends Component {
                                                 <br />
                                                 <button
                                                     className="btn btn-green btn-block btn-lg"
-                                                    disabled={this.props.authenticating || !this.state.email || !this.state.password}
+                                                    disabled={this.props.authenticating || !this.state.username || !this.state.password}
                                                 >
                                                     {this.props.authenticating ? "Signing You In..." : "Sign In"}
                                                 </button>

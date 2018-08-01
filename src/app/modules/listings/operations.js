@@ -72,8 +72,7 @@ const getListings = (rental = false, page = null, limit = null) => {
             title: child.title,
             price: child.price,
             address: child.address,
-            accountId: child.account_id,
-            accountName: child.account.name,
+            listedBy: child.business ? {account: child.business, business: true} : {account: child.account},
             images: child.images.map(image => ({
               src: image.listing_image.url
             })),

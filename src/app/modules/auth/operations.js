@@ -31,14 +31,12 @@ const registerSuccessAction = Actions.registerSuccess;
 const registerFailureAction = Actions.registerFailure;
 
 
-const authenticate = (email, password, businessSignIn) => {
+const authenticate = (email, username, password, businessSignIn) => {
   let baseUrl = businessSignIn ? `${API_ROOT}/auth/authenticate/business` : `${API_ROOT}/auth/authenticate`;
+  let params = businessSignIn ? {username, password} : {email, password}
   return dispatch => {
     dispatch(authenticateAction());
-    axios.post(baseUrl, {
-        email,
-        password,
-      })
+    axios.post(baseUrl, params)
       .then(async (response) => {
         let authToken = response.data.auth_token;
         console.log(authToken);

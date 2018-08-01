@@ -21,3 +21,18 @@ a#minimal-logo {
 .pointer {
     cursor: pointer;
 }
+
+.business-logo {
+    padding: 10px 0;
+    img {
+        width: 45px !important;
+        width: auto;
+        margin-right: 10px;
+    }
+    font-size: 20px;
+    color: #FFF !important;
+    &:hover, &:focus {
+        color: #FFF;
+        text-decoration: none;
+    }
+}

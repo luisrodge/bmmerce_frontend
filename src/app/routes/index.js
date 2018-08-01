@@ -10,7 +10,8 @@ import {
     Dashboard,
     Listings,
     Rentals,
-    Search
+    Search,
+    Businesses
 } from '../views';
 
 import { DefaultLayout, MinimalLayout } from '../layouts';
@@ -35,6 +36,7 @@ export default (props) => (
             />
             <Route exact path="/search" render={() => <DefaultLayout><Listings /></DefaultLayout>}/>
             <Route exact path="/rentals" render={() => <DefaultLayout><Rentals /></DefaultLayout>}/>
+            <Route exact path="/businesses" render={() => <DefaultLayout><Businesses /></DefaultLayout>}/>
             <Route 
                 path="/dashboard" 
                 render={(props) => 
