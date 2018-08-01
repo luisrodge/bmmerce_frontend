@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import ImageUploader from 'react-images-upload';
+import shortid from 'shortid';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
@@ -10,7 +11,7 @@ const customStyles = {
     left: '50%',
     right: '50%',
     bottom: 'auto',
-    marginRight: '-50%',
+    marginRight: '-40%',
     transform: 'translate(-50%, -50%)',
     maxHeight: '100vh', // <-- This sets the height
     overlfow: 'scroll' // <-- This tells the modal to scrol
@@ -127,7 +128,7 @@ class Dashboard extends Component {
             </thead>
             <tbody>
               {this.props.listings.map((listing, index) =>
-                <tr key={index} className="pointer" onClick={() => this.openModal(listing)}>
+                <tr key={shortid.generate()} className="pointer" onClick={() => this.openModal(listing)}>
                   <td>
                     <img className="img-sm" src={listing.images[0]['src']} alt="Card image cap" />
                   </td>
@@ -150,7 +151,7 @@ class Dashboard extends Component {
           >
             <div className="row">
               <div className="col-md-4 ml-auto text-right">
-                <p className="text-muted pointer" onClick={this.handleDelete}>Delete</p>
+                <p className="text-danger pointer" onClick={this.handleDelete}>Delete</p>
               </div>
             </div>
             <form onSubmit={e => this.handleSubmit(e)}>
@@ -216,7 +217,7 @@ class Dashboard extends Component {
                 />
               </div>
               <br />
-              <button className="btn btn-light btn-block">Update Listing</button>
+              <button className="btn btn-green btn-block">Update Listing</button>
             </form>
           </Modal>
         }

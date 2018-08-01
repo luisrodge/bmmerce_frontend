@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
     const {
         creatingListing,
         createListingErrors
-    } = state.listings.default;
+    } = state.listings.admin;
     const {
         modalIsOpen
     } = state.modal.newListingModal

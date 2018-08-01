@@ -118,6 +118,7 @@ body {
   width: 100%;
 }
 
+/* Table Styles */
 table {
   th {
     border-bottom-width: 0 !important;
@@ -125,6 +126,17 @@ table {
     color: #000;
     font-size: 18px;
   }
+}
+
+table.table-bordered{
+  border:1px solid #F2F2F2;
+  margin-top:20px;
+}
+table.table-bordered > thead > tr > th{
+  border:1px solid #F2F2F2;
+}
+table.table-bordered > tbody > tr > td{
+  border:1px solid #F2F2F2;
 }
 
 .custom-confirm-alert {
@@ -146,14 +158,15 @@ table {
 input,
 textarea {
   border-radius: 0 !important;
+  border: 1px solid #d5d8db !important;
 }
 
 .form-control {
   outline: none;
   box-shadow: none !important;
-  border: 1px solid #F2F2F2 !important;
+  border: 1px solid #d5d8db !important;
   &:focus {
-    border: 1px solid #CCC !important;
+    border: 1px solid #B8B8B8 !important;
   }
 }
 

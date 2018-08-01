@@ -1,3 +1,3 @@
-import MinimalHeader from './MinimalHeader';
+import MinimalHeaderContainer from './MinimalHeaderContainer';
 
-export default MinimalHeader;
+export default MinimalHeaderContainer;

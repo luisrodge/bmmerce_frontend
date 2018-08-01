@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { MinimalHeader, Footer } from '../common';
+import { 
+    MinimalHeader, 
+    Footer, 
+    NewListing 
+} from '../common';
 
 const MinimalLayout = ({ children }) => (                       
     <div className="minimal-layout">
@@ -8,6 +12,7 @@ const MinimalLayout = ({ children }) => (
         <div className="container">
             {children}    
         </div>    
+        <NewListing /> 
         <Footer />                                  
     </div>           
 ); 

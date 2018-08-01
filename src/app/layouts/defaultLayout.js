@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header, Footer } from '../common';
 
-import { NewListing, AuthModal } from '../common'
+import { NewListing, AuthModal } from '../common';
 
 const DefaultLayout = ({ children }) => (                       
     <div className="default-layout">

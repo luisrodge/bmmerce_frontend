@@ -9,13 +9,13 @@ const STATE = {
   listings: [],
   totalPages: 0,
   gettingListings: false,
-  creatingListing: false,
-  createListingErrors: {},
 }
 
 const ADMIN_LISTINGS_STATE = {
   listings: [],
   gettingListings: false,
+  creatingListing: false,
+  createListingErrors: {},
   updatingListing: false,
   updateListingErrors: [],
   deletingListing: false
@@ -23,6 +23,18 @@ const ADMIN_LISTINGS_STATE = {
 
 const defaultReducer = (state = STATE, action) => {
   switch (action.type) {
+    case types.CREATE_LISTING_SUCCESS:
+      {
+        const {
+          listing
+        } = action;
+        return {
+          ...state,
+          listings: [listing, ...state.listings],
+          creatingListing: false,
+        }
+      }
+      
     case types.GET_LISTING:
       {
         return {
@@ -65,6 +77,33 @@ const defaultReducer = (state = STATE, action) => {
         }
       }
 
+    default:
+      return state;
+  }
+}
+
+const adminListingsReducer = (state = ADMIN_LISTINGS_STATE, action) => {
+  switch (action.type) {
+    case types.GET_ADMIN_LISTINGS:
+      {
+        return {
+          ...state,
+          gettingListings: true,
+        }
+      }
+
+    case types.GET_ADMIN_LISTINGS_SUCCESS:
+      {
+        const {
+          listings
+        } = action;
+        return {
+          ...state,
+          listings,
+          gettingListings: false,
+        }
+      }
+
     case types.CREATE_LISTING:
       {
         return {
@@ -97,32 +136,6 @@ const defaultReducer = (state = STATE, action) => {
         }
       }
 
-    default:
-      return state;
-  }
-}
-
-const adminListingsReducer = (state = ADMIN_LISTINGS_STATE, action) => {
-  switch (action.type) {
-    case types.GET_ADMIN_LISTINGS:
-      {
-        return {
-          ...state,
-          gettingListings: true,
-        }
-      }
-
-    case types.GET_ADMIN_LISTINGS_SUCCESS:
-      {
-        const {
-          listings
-        } = action;
-        return {
-          ...state,
-          listings,
-          gettingListings: false,
-        }
-      }
 
     case types.UPDATE_LISTING:
       {
@@ -176,7 +189,7 @@ const adminListingsReducer = (state = ADMIN_LISTINGS_STATE, action) => {
         } = action;
         return {
           ...state,
-          userListings: state.userListings.filter(listing => listingId !== listing.id),
+          listings: state.listings.filter(listing => listingId !== listing.id),
           deletingListing: false,
         }
       }

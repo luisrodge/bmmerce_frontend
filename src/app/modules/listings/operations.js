@@ -98,7 +98,7 @@ const getAdminListings = () => {
       .then(function (response) {
         const responseData = response.data.listings;
         let listings = [];
-        console.log(responseData);
+        console.log("Respone", responseData);
         responseData.map(child => {
           const childData = {
             id: child.id,
@@ -106,7 +106,6 @@ const getAdminListings = () => {
             price: child.price,
             address: child.address,
             accountId: child.account_id,
-            accountName: child.account.name,
             description: child.description,
             images: child.images.map(image => ({
               src: image.listing_image.url
@@ -140,7 +139,6 @@ const createListing = (newListing) => {
     dispatch(createListingAction());
     axios.post(`${API_ROOT}/admin/listings`, formData)
       .then(async (response) => {
-        console.log("Images", response.data.listing.images[0]['listing_image']);
         let responseData = response.data.listing;
         console.log(response.data);
         const newListing = {
@@ -148,19 +146,20 @@ const createListing = (newListing) => {
           title: responseData.title,
           price: responseData.price,
           address: responseData.address,
-          userId: responseData.user_id,
-          userName: responseData.user.name,
+          accountId: responseData.account_id,
+          accountName: responseData.account.name,
           images: responseData.images.map(image => ({
             src: image.listing_image.url
           })),
           isRental: responseData.is_rental,
           createdAt: responseData.created_at
         };
+        console.log(newListing);
         dispatch(createListingSuccessAction(newListing));
       })
       .catch((error) => {
-        console.log(error.response.data);
-        dispatch(createListingFailureAction(error.response.data.errors));
+        console.log(error);
+        // dispatch(createListingFailureAction(error.response.data.errors));
         // dispatch(authenticateFailureAction(error.response.data.error.user_authentication[0]));
       });
   }

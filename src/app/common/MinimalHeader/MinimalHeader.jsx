@@ -17,13 +17,10 @@ class MinimalHeader extends Component {
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item mr-4">
-                <Link to="/" className="nav-link home">Home</Link>
-              </li>
-              <li className="nav-item mr-4">
-                <Link to="/listings/new" className="nav-link pr-0">Post Listing</Link>
+                <p to="/listings/new" className="nav-link pointer m-0 pr-0" onClick={this.props.openNewListingModal}>Post Listing</p>
               </li>
               <li className="nav-item mr-0">
-                <Link to="/" className="nav-link home">Sign Out</Link>
+                <p to="/" className="nav-link pointer m-0" onClick={this.props.unauthenticate}>Sign Out</p>
               </li>
             </ul>
           </div>
