@@ -29,8 +29,8 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    const authenticate = (email, password) => {
-        dispatch(authOperations.authenticate(email, password));
+    const authenticate = (email, password, businessSignIn) => {
+        dispatch(authOperations.authenticate(email, password, businessSignIn));
     };
     const register = (name, email, password) => {
         dispatch(authOperations.register(name, email, password));

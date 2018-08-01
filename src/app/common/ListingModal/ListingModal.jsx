@@ -1,8 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { Link } from 'react-router-dom'
 import { FormattedDate, FormattedNumber } from 'react-intl';
-import Lightbox from 'react-images';
 import shortid from 'shortid';
 
 
@@ -35,7 +33,7 @@ const ListingModal = (props) => {
         >
             <div className="text-center app-notice">
                 <p className="py-1 px-2">
-                    <i class="fas fa-exclamation-circle pr-2"></i>
+                    <i className="fas fa-exclamation-circle pr-2"></i>
                     Install our app to engage in conversation with this poster</p>
             </div>
             <div className="row mb-4">
@@ -48,7 +46,7 @@ const ListingModal = (props) => {
                 </div>
                 <div className="col-md-4 text-right">
                     <h4 className="text-success m-0">$<FormattedNumber value={props.selectedListing.price} /></h4>
-                    <p className="text-muted">Listed by {props.selectedListing.userName}</p>
+                    <p className="text-muted">Listed by {props.selectedListing.accountName}</p>
                 </div>
             </div>
 

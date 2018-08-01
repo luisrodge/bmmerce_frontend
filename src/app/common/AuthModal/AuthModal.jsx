@@ -16,6 +16,7 @@ class AuthModal extends Component {
             name: '',
             email: '',
             password: '',
+            businessSignIn: false
         }
     }
 
@@ -30,7 +31,11 @@ class AuthModal extends Component {
 
     login = (e) => {
         e.preventDefault();
-        this.props.authenticate(this.state.email, this.state.password);
+        this.props.authenticate(
+            this.state.email,
+            this.state.password,
+            this.state.businessSignIn
+        );
     }
 
     register = (e) => {
@@ -53,7 +58,7 @@ class AuthModal extends Component {
                     <Steps>
                         <Step
                             id="signin"
-                            render={({ next }) => (
+                            render={({ next, push }) => (
                                 <div>
                                     <h3 className="text-center mb-0">Sign In To Start Posting</h3>
                                     <p className="text-center text-muted">We are Belize's premier platform for consumer to consumer and business to consumer commerce.</p>
@@ -89,6 +94,9 @@ class AuthModal extends Component {
                                                 </button>
                                                 <div className="mt-4 text-center">
                                                     <h5>New to belizers? <span className="link-green text-center pointer" onClick={next}>Sign up</span> today!</h5>
+                                                </div>
+                                                <div className="mt-2 text-center">
+                                                    <h5><span className="link-green text-center pointer" onClick={() => { this.setState({ businessSignIn: true }); push('business-signin') }}>Business Portal</span></h5>
                                                 </div>
                                             </form>
                                         </div>
@@ -144,6 +152,50 @@ class AuthModal extends Component {
                                                 </button>
                                                 <div className="mt-4 text-center">
                                                     <h5>Or <span className="link-green text-center pointer" onClick={previous}>Sign In</span></h5>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                        />
+                        <Step
+                            id="business-signin"
+                            render={({ next, push }) => (
+                                <div>
+                                    <h3 className="text-center mb-3">Business Portal Sign In</h3>
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <form onSubmit={(e) => { this.setState({ businessSignIn: true }); this.login(e) }}>
+                                                <div className="form-group">
+                                                    <label htmlFor="email">Email</label>
+                                                    <input
+                                                        type="email"
+                                                        name="email"
+                                                        className="form-control form-control-lg"
+                                                        value={this.state.email}
+                                                        onChange={this.handleInput}
+                                                    />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label htmlFor="password">Password</label>
+                                                    <input
+                                                        type="password"
+                                                        name="password"
+                                                        className="form-control form-control-lg"
+                                                        value={this.state.password}
+                                                        onChange={this.handleInput}
+                                                    />
+                                                </div>
+                                                <br />
+                                                <button
+                                                    className="btn btn-green btn-block btn-lg"
+                                                    disabled={this.props.authenticating || !this.state.email || !this.state.password}
+                                                >
+                                                    {this.props.authenticating ? "Signing You In..." : "Sign In"}
+                                                </button>
+                                                <div className="mt-4 text-center">
+                                                    <h5><span className="link-green text-center pointer" onClick={() => { this.setState({ businessSignIn: false }); push('signin') }}>Regular Sign In</span></h5>
                                                 </div>
                                             </form>
                                         </div>

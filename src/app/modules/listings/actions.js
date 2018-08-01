@@ -27,43 +27,18 @@ const getListingsFailure = (json) => ({
     type: types.GET_LISTINGS_FAILURE,
 });
 
-const getLatetsListings = () => ({
-    type: types.GET_LATEST_LISTINGS
+
+const getAdminListings = () => ({
+    type: types.GET_ADMIN_LISTINGS
 });
 
-const getLatestListingsSuccess = (json) => ({
-    type: types.GET_LATEST_LISTINGS_SUCCESS,
-    latestListings: json
+const getAdminListingsSuccess = (json) => ({
+    type: types.GET_ADMIN_LISTINGS_SUCCESS,
+    listings: json
 });
 
-const getLatestListingsFailure = (json) => ({
-    type: types.GET_LATEST_LISTINGS_FAILURE,
-});
-
-const getFeaturedListings = () => ({
-    type: types.GET_FEATURED_LISTINGS
-});
-
-const getFeaturedListingsSuccess = (json) => ({
-    type: types.GET_FEATURED_LISTINGS_SUCCESS,
-    featuredListings: json
-});
-
-const getFeaturedListingsFailure = (json) => ({
-    type: types.GET_FEATURES_LISTINGS_FAILURE,
-});
-
-const getUserListings = () => ({
-    type: types.GET_USER_LISTINGS
-});
-
-const getUserListingsSuccess = (json) => ({
-    type: types.GET_USER_LISTINGS_SUCCESS,
-    userListings: json
-});
-
-const getUserListingsFailure = (json) => ({
-    type: types.GET_USER_LISTINGS_FAILURE,
+const getAdminListingsFailure = (json) => ({
+    type: types.GET_ADMIN_LISTINGS_FAILURE,
 });
 
 const createListing = () => ({
@@ -110,15 +85,9 @@ export default {
     getListings,
     getListingsSuccess,
     getListingsFailure,
-    getLatetsListings,
-    getLatestListingsSuccess,
-    getLatestListingsFailure,
-    getFeaturedListings,
-    getFeaturedListingsSuccess,
-    getFeaturedListingsFailure,
-    getUserListings,
-    getUserListingsSuccess,
-    getUserListingsFailure,
+    getAdminListings,
+    getAdminListingsSuccess,
+    getAdminListingsFailure,
     createListing,
     createListingSuccess,
     createListingFailure,

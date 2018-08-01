@@ -31,10 +31,11 @@ const registerSuccessAction = Actions.registerSuccess;
 const registerFailureAction = Actions.registerFailure;
 
 
-const authenticate = (email, password) => {
+const authenticate = (email, password, businessSignIn) => {
+  let baseUrl = businessSignIn ? `${API_ROOT}/auth/authenticate/business` : `${API_ROOT}/auth/authenticate`;
   return dispatch => {
     dispatch(authenticateAction());
-    axios.post(`${API_ROOT}/authenticate`, {
+    axios.post(baseUrl, {
         email,
         password,
       })
@@ -58,7 +59,7 @@ const authenticate = (email, password) => {
 const register = (name, email, password) => {
   return dispatch => {
     dispatch(registerAction());
-    axios.post(`${API_ROOT}/register`, {
+    axios.post(`${API_ROOT}/auth/register`, {
         name: name,
         email: email,
         password: password,

@@ -1,7 +1,4 @@
 import axios from 'axios';
-import {
-  push
-} from 'connected-react-router'
 
 import Actions from './actions';
 import {
@@ -14,8 +11,8 @@ const getListingSuccessAction = Actions.getListingSuccess;
 const getListingsAction = Actions.getListings;
 const getListingsSuccessAction = Actions.getListingsSuccess;
 
-const getUserListingsAction = Actions.getUserListings;
-const getUserListingsSuccessAction = Actions.getUserListingsSuccess;
+const getAdminListingsAction = Actions.getAdminListings;
+const getAdminListingsSuccessAction = Actions.getAdminListingsSuccess;
 
 const createListingAction = Actions.createListing;
 const createListingSuccessAction = Actions.createListingSuccess;
@@ -54,7 +51,6 @@ const getListing = (id) => {
 }
 
 const getListings = (rental = false, page = null, limit = null) => {
-  console.log("Page", page);
   let baseUrl = rental ? `${API_ROOT}/listing_type/rentals` : `${API_ROOT}/listing_type/listings`;
   return dispatch => {
     dispatch(getListingsAction());
@@ -66,16 +62,18 @@ const getListings = (rental = false, page = null, limit = null) => {
       })
       .then(function (response) {
         const responseData = response.data.listings;
+        console.log(response);
         const meta = response.data.meta;
         let listings = [];
+        console.log("before", response.data.listings);
         responseData.map(child => {
           const childData = {
             id: child.id,
             title: child.title,
             price: child.price,
             address: child.address,
-            userId: child.user_id,
-            userName: child.user.name,
+            accountId: child.account_id,
+            accountName: child.account.name,
             images: child.images.map(image => ({
               src: image.listing_image.url
             })),
@@ -84,6 +82,7 @@ const getListings = (rental = false, page = null, limit = null) => {
           };
           listings.push(childData);
         });
+        console.log("herer", listings);
         dispatch(getListingsSuccessAction(listings, meta.total_pages))
       })
       .catch(function (error) {
@@ -92,28 +91,32 @@ const getListings = (rental = false, page = null, limit = null) => {
   }
 }
 
-const getUserListings = (id) => {
+const getAdminListings = () => {
   return dispatch => {
-    dispatch(getUserListingsAction());
-    axios.get(`${API_ROOT}/listing_type/listings/user_listings?user_id=${id}`)
+    dispatch(getAdminListingsAction());
+    axios.get(`${API_ROOT}/admin/listings`)
       .then(function (response) {
         const responseData = response.data.listings;
-        let data = [];
+        let listings = [];
+        console.log(responseData);
         responseData.map(child => {
           const childData = {
             id: child.id,
             title: child.title,
             price: child.price,
             address: child.address,
+            accountId: child.account_id,
+            accountName: child.account.name,
             description: child.description,
-            priceDetails: child.price_details,
-            userId: child.user_id,
-            userName: child.user.name,
-            images: child.images
+            images: child.images.map(image => ({
+              src: image.listing_image.url
+            })),
+            isRental: child.is_rental,
+            createdAt: child.created_at
           };
-          data.push(childData);
+          listings.push(childData);
         });
-        dispatch(getUserListingsSuccessAction(data))
+        dispatch(getAdminListingsSuccessAction(listings))
       })
       .catch(function (error) {
         //dispatch(getUsersFailureAction(error.response.data.data));
@@ -129,14 +132,13 @@ const createListing = (newListing) => {
   formData.append('description', newListing.description);
   formData.append('is_rental', newListing.isRental);
   formData.append('address', newListing.address);
-  formData.append('user_id', newListing.userId);
   for (var i = 0; i < newListing.pictures.length; i++) {
     console.log(newListing.pictures[i]);
     formData.append("images[]", newListing.pictures[i]);
   }
   return dispatch => {
     dispatch(createListingAction());
-    axios.post(`${API_ROOT}/listing_type/listings`, formData)
+    axios.post(`${API_ROOT}/admin/listings`, formData)
       .then(async (response) => {
         console.log("Images", response.data.listing.images[0]['listing_image']);
         let responseData = response.data.listing;
@@ -170,9 +172,7 @@ const updateListing = (updatedListing, newImages = []) => {
   formData.append('title', updatedListing.title);
   formData.append('description', updatedListing.description);
   formData.append('price', updatedListing.price);
-  formData.append('price_details', updatedListing.priceDetails);
   formData.append('address', updatedListing.address);
-  formData.append('user_id', updatedListing.userId);
   // Append new images to be uploaded
   if (newImages.length > 0) {
     for (var i = 0; i < newImages.length; i++) {
@@ -182,7 +182,7 @@ const updateListing = (updatedListing, newImages = []) => {
   }
   return dispatch => {
     dispatch(updateListingAction());
-    axios.put(`${API_ROOT}/listing_type/listings/${updatedListing.id}`, formData)
+    axios.put(`${API_ROOT}/admin/listings/${updatedListing.id}`, formData)
       .then(async (response) => {
         console.log(response);
         const responseData = response.data.listing;
@@ -193,8 +193,9 @@ const updateListing = (updatedListing, newImages = []) => {
           address: responseData.address,
           description: responseData.description,
           priceDetails: responseData.price_details,
-          userId: responseData.user_id,
-          images: responseData.images
+          images: responseData.images.map(image => ({
+            src: image.listing_image.url
+          })),
         };
         dispatch(updateListingSuccessAction(data));
       })
@@ -208,7 +209,7 @@ const updateListing = (updatedListing, newImages = []) => {
 const deleteListing = (id) => {
   return dispatch => {
     dispatch(deleteListingAction());
-    axios.delete(`${API_ROOT}/listing_type/listings/${id}`)
+    axios.delete(`${API_ROOT}/admin/listings/${id}`)
       .then(function (response) {
         dispatch(deleteListingSuccessAction(id))
       })
@@ -216,13 +217,13 @@ const deleteListing = (id) => {
         //dispatch(getUsersFailureAction(error.response.data.data));
       });
   }
-}
+};
 
 export default {
   createListing,
   getListing,
   getListings,
-  getUserListings,
+  getAdminListings,
   updateListing,
   deleteListing
 };

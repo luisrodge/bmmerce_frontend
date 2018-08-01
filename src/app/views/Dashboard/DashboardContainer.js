@@ -8,25 +8,21 @@ import {
 
 const mapStateToProps = (state) => {
     const {
-        userListings,
-        gettingUserListings,
+        listings,
+        gettingListings,
         updatingListings,
         deletingListing
-    } = state.listings.userListings;
-    const {
-        user
-    } = state.auth
+    } = state.listings.admin;
     return {
-        userListings,
-        gettingUserListings,
+        listings,
+        gettingListings,
         updatingListings,
-        userId: user.user_id,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    const getUserListings = (id) => {
-        dispatch(listingsOperations.getUserListings(id));
+    const getListings = () => {
+        dispatch(listingsOperations.getAdminListings());
     };
     const updateListing = (updatedListing, newImages) => {
         dispatch(listingsOperations.updateListing(updatedListing, newImages));
@@ -35,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(listingsOperations.deleteListing(id));
     };
     return {
-        getUserListings,
+        getListings,
         updateListing,
         deleteListing
     };

@@ -33,7 +33,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.props.getUserListings(this.props.userId);
+    this.props.getListings();
   }
 
   closeModal = () => {
@@ -108,7 +108,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    if (this.props.gettingUserListings) { return null; }
+    if (this.props.gettingListings) { return null; }
     return (
       <div className="row">
         <div className="col-md-12 mb-3">
@@ -126,10 +126,10 @@ class Dashboard extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.userListings.map((listing, index) =>
+              {this.props.listings.map((listing, index) =>
                 <tr key={index} className="pointer" onClick={() => this.openModal(listing)}>
                   <td>
-                    <img className="img-sm" src={listing.images[0]['listing_image']['url']} alt="Card image cap" />
+                    <img className="img-sm" src={listing.images[0]['src']} alt="Card image cap" />
                   </td>
                   <td>{listing.title}</td>
                   <td className="text-success">${listing.price}</td>
@@ -175,16 +175,6 @@ class Dashboard extends Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="price-details">Additional Pricing Details</label>
-                <textarea
-                  name="price-details"
-                  className="form-control"
-                  onChange={this.handleChangeFor('priceDetails')}
-                  value={this.state.selectedListing.priceDetails}
-                >
-                </textarea>
-              </div>
-              <div className="form-group">
                 <label htmlFor="title">Address</label>
                 <input
                   type="text"
@@ -210,7 +200,7 @@ class Dashboard extends Component {
                 </div>
                 {this.state.selectedListing.images.map((image, index) =>
                   <div className="col-md-3" key={index}>
-                    <img className="img-fluid mt-3 mb-3" src={image['listing_image']['url']} alt="Listing image" />
+                    <img className="img-fluid mt-3 mb-3" src={image['src']} alt="Listing image" />
                   </div>
                 )}
               </div>

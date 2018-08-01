@@ -33,7 +33,6 @@ class NewListing extends Component {
         e.preventDefault();
         this.props.createListing({
             ...this.state,
-            userId: this.props.userId
         });
         this.props.closeNewListingModal();
         this.setState(intitalState);

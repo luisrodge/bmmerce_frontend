@@ -21,7 +21,6 @@ const mapStateToProps = (state) => {
         creatingListing,
         createListingErrors,
         modalIsOpen,
-        userId: state.auth.user.user_id
     };
 };
 

@@ -4,11 +4,9 @@ import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import history from '../utils/history';
 
-import { NewListing, AuthModal } from '../common'
+import { NewListing } from '../common'
 
 import { 
-    RentListing,
-    SignIn,
     Dashboard,
     Listings,
     Rentals,
@@ -37,15 +35,6 @@ export default (props) => (
             />
             <Route exact path="/search" render={() => <DefaultLayout><Listings /></DefaultLayout>}/>
             <Route exact path="/rentals" render={() => <DefaultLayout><Rentals /></DefaultLayout>}/>
-            <Route 
-                path="/:id/rent" 
-                render={({match}) => (
-                    <MinimalLayout>
-                        <RentListing listingId={match.params.id} />
-                    </MinimalLayout>
-                )}
-            />
-            <Route path="/login" render={() => <MinimalLayout><SignIn /></MinimalLayout>}/>
             <Route 
                 path="/dashboard" 
                 render={(props) => 

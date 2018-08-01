@@ -13,14 +13,9 @@ const STATE = {
   createListingErrors: {},
 }
 
-const FEATURED_STATE = {
-  featuredListings: [],
-  gettingFeaturedListings: false,
-}
-
-const USER_LISTINGS_STATE = {
-  userListings: [],
-  gettingUserListings: false,
+const ADMIN_LISTINGS_STATE = {
+  listings: [],
+  gettingListings: false,
   updatingListing: false,
   updateListingErrors: [],
   deletingListing: false
@@ -107,52 +102,25 @@ const defaultReducer = (state = STATE, action) => {
   }
 }
 
-const featuredReducer = (state = FEATURED_STATE, action) => {
+const adminListingsReducer = (state = ADMIN_LISTINGS_STATE, action) => {
   switch (action.type) {
-    case types.GET_FEATURED_LISTINGS:
+    case types.GET_ADMIN_LISTINGS:
       {
         return {
           ...state,
-          gettingFeaturedListings: true,
+          gettingListings: true,
         }
       }
 
-    case types.GET_FEATURED_LISTINGS_SUCCESS:
+    case types.GET_ADMIN_LISTINGS_SUCCESS:
       {
         const {
-          featuredListings
+          listings
         } = action;
         return {
           ...state,
-          featuredListings,
-          gettingFeaturedListings: false,
-        }
-      }
-
-    default:
-      return state;
-  }
-}
-
-const userListingsReducer = (state = USER_LISTINGS_STATE, action) => {
-  switch (action.type) {
-    case types.GET_USER_LISTINGS:
-      {
-        return {
-          ...state,
-          gettingUserListings: true,
-        }
-      }
-
-    case types.GET_USER_LISTINGS_SUCCESS:
-      {
-        const {
-          userListings
-        } = action;
-        return {
-          ...state,
-          userListings,
-          gettingUserListings: false,
+          listings,
+          gettingListings: false,
         }
       }
 
@@ -172,7 +140,7 @@ const userListingsReducer = (state = USER_LISTINGS_STATE, action) => {
         return {
           ...state,
           updatingListing: false,
-          userListings: state.userListings.map(listing => listing.id === updatedListing.id ?
+          listings: state.listings.map(listing => listing.id === updatedListing.id ?
             // transform the one with a matching id
             updatedListing :
             // otherwise return original todo
@@ -220,8 +188,7 @@ const userListingsReducer = (state = USER_LISTINGS_STATE, action) => {
 
 const listingsReducer = combineReducers({
   default: defaultReducer,
-  featured: featuredReducer,
-  userListings: userListingsReducer
+  admin: adminListingsReducer
 });
 
 export default listingsReducer;
