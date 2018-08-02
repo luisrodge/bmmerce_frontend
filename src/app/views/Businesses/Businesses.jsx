@@ -25,7 +25,7 @@ class Businesses extends Component {
                 <div className="card-body text-center">
                   <h4 className="card-title mb-1 text-truncate">{business.name}</h4>
                   <p className="mb-0 text-muted">
-                    <i className="fas fa-map-marker-alt pr-2"></i>
+                  <i className="fas fa-map-marker-alt pr-2"></i>
                     {business.address}
                   </p>
                 </div>

@@ -15,7 +15,11 @@ import {
     Business
 } from '../views';
 
-import { DefaultLayout, MinimalLayout } from '../layouts';
+import { 
+    DefaultLayout, 
+    MinimalLayout,
+    BusinessLayout 
+} from '../layouts';
 
 import requireAuth from '../hoc/requireAuth';
 
@@ -38,7 +42,7 @@ export default (props) => (
             <Route exact path="/search" render={() => <DefaultLayout><Listings /></DefaultLayout>}/>
             <Route exact path="/rentals" render={() => <DefaultLayout><Rentals /></DefaultLayout>}/>
             <Route exact path="/businesses" render={() => <DefaultLayout><Businesses /></DefaultLayout>}/>
-            <Route exact path="/businesses/:id" render={() => <DefaultLayout><Business /></DefaultLayout>}/>
+            <Route exact path="/businesses/:id" render={({match}) => <BusinessLayout><Business id={match.params.id} /></BusinessLayout>}/>
             <Route 
                 path="/dashboard" 
                 render={(props) => 

@@ -18,9 +18,20 @@ const getBusinessSuccess = (json) => ({
     business: json
 });
 
+const getBusinessListings = () => ({
+    type: types.GET_BUSINESS_LISTINGS
+});
+
+const getBusinessListingsSuccess = (json) => ({
+    type: types.GET_BUSINESS_LISTINGS_SUCCESS,
+    listings: json
+});
+
 export default {
     getBusinesses,
     getBusinessesSuccess,
     getBusiness,
-    getBusinessSuccess
+    getBusinessSuccess,
+    getBusinessListings,
+    getBusinessListingsSuccess
 };

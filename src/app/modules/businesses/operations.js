@@ -11,6 +11,9 @@ const getBusinessesSuccessAction = Actions.getBusinessesSuccess;
 const getBusinessAction = Actions.getBusiness;
 const getBusinessSuccessAction = Actions.getBusinessSuccess;
 
+const getBusinessListingsAction = Actions.getBusinessListings;
+const getBusinessListingsSuccessAction = Actions.getBusinessListingsSuccess;
+
 const getBusinesses = () => {
   let baseUrl = `${API_ROOT}/businesses`;
   return dispatch => {
@@ -40,7 +43,7 @@ const getBusinesses = () => {
 const getBusiness = (id) => {
   let baseUrl = `${API_ROOT}/businesses/${id}`;
   return dispatch => {
-    dispatch(getBusinessesAction());
+    dispatch(getBusinessAction());
     axios.get(baseUrl)
       .then(function (response) {
         const responseData = response.data.business;
@@ -57,8 +60,39 @@ const getBusiness = (id) => {
   }
 }
 
+const getBusinessListings = (id) => {
+  let baseUrl = `${API_ROOT}/listing_type/businesses/${id}`;
+  return dispatch => {
+    dispatch(getBusinessListingsAction());
+    axios.get(baseUrl)
+      .then(function (response) {
+        const responseData = response.data.listings;
+        let listings = [];
+        responseData.map(child => {
+          const childData = {
+            id: child.id,
+            title: child.title,
+            price: child.price,
+            description: child.description,
+            images: child.images.map(image => ({
+              src: image.listing_image.url
+            })),
+            isRental: child.is_rental,
+            createdAt: child.created_at
+          };
+          listings.push(childData);
+        });
+        dispatch(getBusinessListingsSuccessAction(listings));
+      })
+      .catch(function (error) {
+        //dispatch(getUsersFailureAction(error.response.data.data));
+      });
+  }
+}
+
 
 export default {
   getBusinesses,
-  getBusiness
+  getBusiness,
+  getBusinessListings
 };

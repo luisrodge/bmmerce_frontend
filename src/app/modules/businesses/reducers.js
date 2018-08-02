@@ -3,6 +3,10 @@ import types from './types';
 const STATE = {
   gettingBusinesses: false,
   businesses: [],
+  gettingBusiness: false,
+  business: {},
+  listings: [],
+  gettingListings: false
 }
 
 const businessesReducer = (state = STATE, action) => {
@@ -24,6 +28,46 @@ const businessesReducer = (state = STATE, action) => {
           ...state,
           businesses,
           gettingBusinesses: false,
+        }
+      }
+
+    case types.GET_BUSINESS:
+      {
+        return {
+          ...state,
+          gettingBusiness: true,
+        }
+      }
+
+    case types.GET_BUSINESS_SUCCESS:
+      {
+        const {
+          business
+        } = action;
+        return {
+          ...state,
+          business,
+          gettingBusiness: false,
+        }
+      }
+
+    case types.GET_BUSINESS_LISTINGS:
+      {
+        return {
+          ...state,
+          gettingListings: true,
+        }
+      }
+
+    case types.GET_BUSINESS_LISTINGS_SUCCESS:
+      {
+        const {
+          listings
+        } = action;
+        return {
+          ...state,
+          listings,
+          gettingListings: false,
         }
       }
 
