@@ -3,28 +3,26 @@ import {
 } from 'react-redux';
 import Businesses from './Businesses';
 import {
-    listingsOperations
-} from '../../modules/listings';
+    businessesOperations
+} from '../../modules/businesses';
 
 const mapStateToProps = (state) => {
     const {
-        listings,
-        gettingListings,
-        totalPages
-    } = state.listings.default;
+        businesses,
+        gettingBusinesses,
+    } = state.businesses;
     return {
-        listings,
-        gettingListings,
-        totalPages
+        businesses,
+        gettingBusinesses,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    const getListings = (rental, page, perPage) => {
-        dispatch(listingsOperations.getListings(rental, page, perPage));
+    const getBusinesses = () => {
+        dispatch(businessesOperations.getBusinesses());
     };
     return {
-        getListings
+        getBusinesses
     };
 };
 

@@ -4,6 +4,8 @@ import Listings from './Listings';
 import Rentals from './Rentals';
 import Search from './Search';
 import Businesses from './Businesses';
+import Business from './Business';
+
 
 export {
     About,
@@ -11,5 +13,6 @@ export {
     Listings,
     Rentals,
     Search,
-    Businesses
+    Businesses,
+    Business
 }
