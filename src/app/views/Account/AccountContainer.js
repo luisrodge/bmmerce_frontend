@@ -1,45 +1,40 @@
 import {
     connect
 } from 'react-redux';
-import Dashboard from './Dashboard';
+import Account from './Account';
 import {
-    listingsOperations
-} from '../../modules/listings';
+    accountsOperations
+} from '../../modules/accounts';
 
 const mapStateToProps = (state) => {
     const {
-        listings,
-        gettingListings,
-        updatingListings,
-        deletingListing
-    } = state.listings.admin;
+        account,
+        gettingAccount,
+        updatingAccount
+    } = state.accounts;
     return {
-        listings,
-        gettingListings,
-        updatingListings,
+        account,
+        gettingAccount,
+        updatingAccount
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    const getListings = () => {
-        dispatch(listingsOperations.getAdminListings());
+    const getAccount = () => {
+        dispatch(accountsOperations.getAccount());
     };
-    const updateListing = (updatedListing, newImages) => {
-        dispatch(listingsOperations.updateListing(updatedListing, newImages));
-    };
-    const deleteListing = (id) => {
-        dispatch(listingsOperations.deleteListing(id));
+    const updateAccount = (updatedAccount, avatarImage) => {
+        dispatch(accountsOperations.updateAccount(updatedAccount, avatarImage));
     };
     return {
-        getListings,
-        updateListing,
-        deleteListing
+        getAccount,
+        updateAccount
     };
 };
 
-const DashboardContainer = connect(
+const AccountContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Dashboard);
+)(Account);
 
-export default DashboardContainer;
+export default AccountContainer;

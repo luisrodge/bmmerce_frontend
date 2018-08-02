@@ -28,7 +28,7 @@ class MinimalHeader extends Component {
                 <p to="/listings/new" className="nav-link pointer m-0 pr-0" onClick={this.props.openNewListingModal}>Post Listing</p>
               </li>
               <li className="nav-item mr-4">
-                <p to="/listings/new" className="nav-link pointer m-0 pr-0" onClick={this.props.openNewListingModal}>Account</p>
+                <Link to="/account" className="nav-link pointer m-0 pr-0">Account</Link>
               </li>
               <li className="nav-item mr-0">
                 <p to="/" className="nav-link pointer m-0" onClick={this.props.unauthenticate}>Sign Out</p>

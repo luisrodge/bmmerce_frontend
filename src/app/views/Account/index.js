@@ -1,3 +1,3 @@
-import DashboardContainer from './DashboardContainer';
+import AccountContainer from './AccountContainer';
 
-export default DashboardContainer;
+export default AccountContainer;

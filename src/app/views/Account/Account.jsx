@@ -1,172 +1,109 @@
 import React, { Component } from 'react';
-import shortid from 'shortid';
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 
+class Account extends Component {
 
-class Dashboard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      pictures: []
+      userAccount: {},
+      avatarImage: ''
     };
   }
 
-
-  handleSubmit(e) {
-    e.preventDefault();
+  componentDidMount() {
+    this.props.getAccount();
   }
 
-  handleDelete = () => {
-    confirmAlert({
-      customUI: ({ onClose }) => {
-        return (
-          <div className='custom-confirm-alert'>
-            <h3 className="text-center">Are you sure?</h3>
-            <p>Do you really want to delete this listing?</p>
-            <div className="row">
-              <div className="col-md-6">
-                <button className="btn btn-danger btn-block" onClick={() => {
-                  this.props.deleteListing(this.state.selectedListing.id)
-                  onClose()
-                  this.setState({
-                    modalIsOpen: false,
-                    selectedListing: {}
-                  });
-                }}>Yes, Delete it!</button>
-              </div>
-              <div className="col-md-6">
-                <button onClick={onClose} className="btn btn-light btn-block">No</button>
-              </div>
-            </div>
-          </div>
-        )
-      }
-    })
-  };
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.account !== prevState.userAccount) {
+      return { userAccount: nextProps.account };
+    }
+    else return null;
+  }
 
-  onDrop = (pictureFiles, pictureDataURLs) => {
-    this.setState({
-      pictures: this.state.pictures.concat(pictureFiles)
-    });
+  handleInput = (event) => {
+    const { userAccount } = this.state;
+    userAccount[event.target.name] = event.target.value
+    this.setState({ userAccount });
+  }
+
+  handleAvatarChange = (event) => {
+    console.log(event.target.files[0]);
+    this.setState({ avatarImage: event.target.files[0] });
+  }
+
+  updateAccount = (e) => {
+    e.preventDefault();
+    console.log(this.state.userAccount);
+    this.props.updateAccount(
+      this.state.userAccount,
+      this.state.avatarImage
+    );
   }
 
   render() {
-    if (this.props.gettingListings) { return null; }
+    if (this.props.gettingAccount) { return null; }
     return (
-      <div className="row">
-        <div className="col-md-12 mb-3">
-          <h3>Your Listings</h3>
-        </div>
-        <div className="col-md-12">
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th></th>
-                <th scope="col">Title</th>
-                <th scope="col">Price</th>
-                <th scope="col">Address</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.props.listings.map((listing, index) =>
-                <tr key={shortid.generate()} className="pointer" onClick={() => this.openModal(listing)}>
-                  <td>
-                    <img className="img-sm" src={listing.images[0]['src']} alt="Card image cap" />
-                  </td>
-                  <td>{listing.title}</td>
-                  <td className="text-success">${listing.price}</td>
-                  <td>{listing.address}</td>
-                  <td>{listing.description}</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-        {this.state.modalIsOpen &&
-          <Modal
-            isOpen={this.state.modalIsOpen}
-            onRequestClose={this.closeModal}
-            style={customStyles}
-            shouldCloseOnOverlayClick={true}
-            contentLabel="Listing View"
-          >
-            <div className="row">
-              <div className="col-md-4 ml-auto text-right">
-                <p className="text-danger pointer" onClick={this.handleDelete}>Delete</p>
-              </div>
+      <div className="row pb-5">
+        <div className="col-md-5 mx-auto">
+          <div className="row">
+            <div className="col-md-3">
+              {this.props.account.avatar &&
+                <img src={this.props.account.avatar['url']} alt="" className="img-sm" />
+              }
             </div>
-            <form onSubmit={e => this.handleSubmit(e)}>
-              <div className="form-group">
-                <label htmlFor="title">*Title</label>
-                <input
-                  type="text"
-                  name="title"
-                  className="form-control"
-                  onChange={this.handleChangeFor('title')}
-                  value={this.state.selectedListing.title}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="title">*Price</label>
-                <input
-                  type="text"
-                  name="price"
-                  className="form-control"
-                  onChange={this.handleChangeFor('price')}
-                  value={this.state.selectedListing.price}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="title">Address</label>
-                <input
-                  type="text"
-                  name="address"
-                  className="form-control"
-                  onChange={this.handleChangeFor('address')}
-                  value={this.state.selectedListing.address}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="description">Description</label>
-                <textarea
-                  name="description"
-                  className="form-control"
-                  onChange={this.handleChangeFor('description')}
-                  value={this.state.selectedListing.description}
-                >
-                </textarea>
-              </div>
-              <div className="row">
-                <div className="col-md-12">
-                  <p className="m-0">*Images</p>
-                </div>
-                {this.state.selectedListing.images.map((image, index) =>
-                  <div className="col-md-3" key={index}>
-                    <img className="img-fluid mt-3 mb-3" src={image['src']} alt="Listing image" />
-                  </div>
-                )}
-              </div>
-              <div className="form-group">
-                <ImageUploader
-                  withIcon={true}
-                  buttonText='Choose Images'
-                  onChange={this.onDrop}
-                  imgExtension={['.jpg', '.jpeg', '.gif', '.png', '.gif']}
-                  maxFileSize={5242880}
-                  withPreview={true}
-                  className="image-uploader"
-                />
-              </div>
-              <br />
-              <button className="btn btn-green btn-block">Update Listing</button>
-            </form>
-          </Modal>
-        }
+            <div className="col-md-9">
+              <h3 className="pt-3">Update Your Account</h3>
+            </div>
+          </div>
+          <hr />
+          <form onSubmit={this.updateAccount} className="mt-4">
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                name="name"
+                className="form-control form-control-lg"
+                value={this.state.userAccount.name}
+                onChange={this.handleInput}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                className="form-control form-control-lg"
+                value={this.state.userAccount.email}
+                onChange={this.handleInput}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">New Password (Leave blank if not changing)</label>
+              <input
+                type="password"
+                name="passwordDigest"
+                className="form-control form-control-lg"
+                value={this.state.userAccount.passwordDigest}
+                onChange={this.handleInput}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="avatar">Profile Picture</label><br />
+              <input type="file" onChange={this.handleAvatarChange} />
+            </div>
+            <br />
+            <button
+              className="btn btn-green btn-block btn-lg"
+              disabled={!this.state.userAccount.email || !this.state.userAccount.name}
+            >
+              {this.props.updatingAccount ? "Updating..." : "Update"}
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
 }
 
-export default Dashboard;
+export default Account;

@@ -12,7 +12,8 @@ import {
     Rentals,
     Search,
     Businesses,
-    Business
+    Business,
+    Account
 } from '../views';
 
 import { 
@@ -23,7 +24,9 @@ import {
 
 import requireAuth from '../hoc/requireAuth';
 
+// HOC wrappers
 const DashboardAuth = requireAuth(Dashboard);
+const AccountAuth = requireAuth(Account);
 
 export default (props) => (
     <ConnectedRouter history={history}>
@@ -47,7 +50,14 @@ export default (props) => (
                 path="/dashboard" 
                 render={(props) => 
                     <MinimalLayout><DashboardAuth {...props} /></MinimalLayout>
-                }/>
+                }
+            />
+            <Route 
+                path="/account" 
+                render={(props) => 
+                    <MinimalLayout><AccountAuth {...props} /></MinimalLayout>
+                }
+            />
         </Switch>
     </ConnectedRouter>
 );
