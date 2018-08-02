@@ -62,10 +62,8 @@ const getListings = (rental = false, page = null, limit = null) => {
       })
       .then(function (response) {
         const responseData = response.data.listings;
-        console.log(response);
         const meta = response.data.meta;
         let listings = [];
-        console.log("before", response.data.listings);
         responseData.map(child => {
           const childData = {
             id: child.id,
@@ -81,8 +79,7 @@ const getListings = (rental = false, page = null, limit = null) => {
           };
           listings.push(childData);
         });
-        console.log("herer", listings);
-        dispatch(getListingsSuccessAction(listings, meta.total_pages))
+        dispatch(getListingsSuccessAction(listings, meta.total_pages));
       })
       .catch(function (error) {
         //dispatch(getUsersFailureAction(error.response.data.data));
@@ -90,14 +87,14 @@ const getListings = (rental = false, page = null, limit = null) => {
   }
 }
 
-const getAdminListings = () => {
+const getAdminListings = (page) => {
   return dispatch => {
     dispatch(getAdminListingsAction());
-    axios.get(`${API_ROOT}/admin/listings`)
+    axios.get(`${API_ROOT}/admin/listings?page=${page}`)
       .then(function (response) {
         const responseData = response.data.listings;
+        const meta = response.data.meta;
         let listings = [];
-        console.log("Respone", responseData);
         responseData.map(child => {
           const childData = {
             id: child.id,
@@ -114,7 +111,7 @@ const getAdminListings = () => {
           };
           listings.push(childData);
         });
-        dispatch(getAdminListingsSuccessAction(listings))
+        dispatch(getAdminListingsSuccessAction(listings, meta.total_pages))
       })
       .catch(function (error) {
         //dispatch(getUsersFailureAction(error.response.data.data));
@@ -131,7 +128,6 @@ const createListing = (newListing) => {
   formData.append('is_rental', newListing.isRental);
   formData.append('address', newListing.address);
   for (var i = 0; i < newListing.pictures.length; i++) {
-    console.log(newListing.pictures[i]);
     formData.append("images[]", newListing.pictures[i]);
   }
   return dispatch => {
@@ -139,7 +135,6 @@ const createListing = (newListing) => {
     axios.post(`${API_ROOT}/admin/listings`, formData)
       .then(async (response) => {
         let responseData = response.data.listing;
-        console.log(response.data);
         const newListing = {
           id: responseData.id,
           title: responseData.title,
@@ -153,7 +148,6 @@ const createListing = (newListing) => {
           isRental: responseData.is_rental,
           createdAt: responseData.created_at
         };
-        console.log(newListing);
         dispatch(createListingSuccessAction(newListing));
       })
       .catch((error) => {
@@ -165,7 +159,6 @@ const createListing = (newListing) => {
 };
 
 const updateListing = (updatedListing, newImages = []) => {
-  console.log(updatedListing);
   let formData = new FormData();
   formData.append('title', updatedListing.title);
   formData.append('description', updatedListing.description);
@@ -182,7 +175,6 @@ const updateListing = (updatedListing, newImages = []) => {
     dispatch(updateListingAction());
     axios.put(`${API_ROOT}/admin/listings/${updatedListing.id}`, formData)
       .then(async (response) => {
-        console.log(response);
         const responseData = response.data.listing;
         const data = {
           id: responseData.id,

@@ -11,18 +11,20 @@ const mapStateToProps = (state) => {
         listings,
         gettingListings,
         updatingListings,
-        deletingListing
+        deletingListing,
+        totalPages
     } = state.listings.admin;
     return {
         listings,
         gettingListings,
         updatingListings,
+        totalPages
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    const getListings = () => {
-        dispatch(listingsOperations.getAdminListings());
+    const getListings = (page) => {
+        dispatch(listingsOperations.getAdminListings(page));
     };
     const updateListing = (updatedListing, newImages) => {
         dispatch(listingsOperations.updateListing(updatedListing, newImages));

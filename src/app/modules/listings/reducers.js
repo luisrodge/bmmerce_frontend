@@ -18,7 +18,8 @@ const ADMIN_LISTINGS_STATE = {
   createListingErrors: {},
   updatingListing: false,
   updateListingErrors: [],
-  deletingListing: false
+  deletingListing: false,
+  totalPages: 0
 }
 
 const defaultReducer = (state = STATE, action) => {
@@ -95,11 +96,13 @@ const adminListingsReducer = (state = ADMIN_LISTINGS_STATE, action) => {
     case types.GET_ADMIN_LISTINGS_SUCCESS:
       {
         const {
-          listings
+          listings,
+          totalPages
         } = action;
         return {
           ...state,
           listings,
+          totalPages,
           gettingListings: false,
         }
       }

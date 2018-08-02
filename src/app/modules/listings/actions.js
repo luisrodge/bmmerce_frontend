@@ -32,9 +32,10 @@ const getAdminListings = () => ({
     type: types.GET_ADMIN_LISTINGS
 });
 
-const getAdminListingsSuccess = (json) => ({
+const getAdminListingsSuccess = (json, totalPages) => ({
     type: types.GET_ADMIN_LISTINGS_SUCCESS,
-    listings: json
+    listings: json,
+    totalPages: totalPages
 });
 
 const getAdminListingsFailure = (json) => ({

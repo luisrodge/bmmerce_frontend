@@ -29,12 +29,13 @@ class Dashboard extends Component {
     this.state = {
       modalIsOpen: false,
       selectedListing: {},
-      pictures: []
+      pictures: [],
+      page: 1,
     };
   }
 
   componentDidMount() {
-    this.props.getListings();
+    this.props.getListings(1);
   }
 
   closeModal = () => {
@@ -108,39 +109,80 @@ class Dashboard extends Component {
     });
   }
 
+  onNext = () => {
+    let nextPage = this.state.page + 1
+    this.props.getListings(nextPage);
+    this.setState({ page: nextPage });
+  }
+
+  onPrevious = () => {
+    let previousPage = this.state.page - 1
+    this.props.getListings(previousPage);
+    this.setState({ page: previousPage });
+  }
+
   render() {
     if (this.props.gettingListings) { return null; }
     return (
-      <div className="row">
-        <div className="col-md-12 mb-2">
-          <h3>Listings</h3>
+      <div>
+        <div className="row">
+          <div className="col-md-12 mb-2">
+            <h3>Listings</h3>
+          </div>
         </div>
-        <div className="col-md-12">
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th></th>
-                <th scope="col">Title</th>
-                <th scope="col">Price</th>
-                <th scope="col">Address</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.props.listings.map((listing, index) =>
-                <tr key={shortid.generate()} className="pointer" onClick={() => this.openModal(listing)}>
-                  <td>
-                    <img className="img-sm" src={listing.images[0]['src']} alt="Card image cap" />
-                  </td>
-                  <td>{listing.title}</td>
-                  <td className="text-success">${listing.price}</td>
-                  <td>{listing.address}</td>
-                  <td>{listing.description}</td>
+        <div className="row">
+          <div className="col-md-12">
+            <table className="table table-bordered">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Description</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {this.props.listings.map((listing, index) =>
+                  <tr key={shortid.generate()} className="pointer" onClick={() => this.openModal(listing)}>
+                    <td>
+                      <img className="img-sm" src={listing.images[0]['src']} alt="Card image cap" />
+                    </td>
+                    <td>{listing.title}</td>
+                    <td className="text-success">${listing.price}</td>
+                    <td>{listing.address}</td>
+                    <td>{listing.description}</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
+
+        <div className="row pb-5 pt-4">
+          <div className="col-md-3 mx-auto">
+            <div className="row">
+              <div className="col-md-2">
+                {this.state.page === 1 ? (
+                  <i className="fas fa-chevron-left text-muted"></i>
+                ) : (
+                  <i className="fas fa-chevron-left pointer" onClick={this.onPrevious}></i>
+                )}
+              </div>
+              <div className="col-md-8 text-center">
+                Page {this.state.page} of {this.props.totalPages}
+              </div>
+              <div className="col-md-2 text-right">
+                {this.state.page === this.props.totalPages ? (
+                  <i className="fas fa-chevron-right text-muted"></i>
+                ) : (
+                  <i className="fas fa-chevron-right pointer" onClick={this.onNext}></i>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+        
         {this.state.modalIsOpen &&
           <Modal
             isOpen={this.state.modalIsOpen}
