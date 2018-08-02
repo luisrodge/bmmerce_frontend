@@ -6,7 +6,8 @@ const STATE = {
   gettingBusiness: false,
   business: {},
   listings: [],
-  gettingListings: false
+  gettingListings: false,
+  totalPages: 0,
 }
 
 const businessesReducer = (state = STATE, action) => {
@@ -22,7 +23,7 @@ const businessesReducer = (state = STATE, action) => {
     case types.GET_BUSINESSES_SUCCESS:
       {
         const {
-          businesses
+          businesses,
         } = action;
         return {
           ...state,
@@ -62,11 +63,13 @@ const businessesReducer = (state = STATE, action) => {
     case types.GET_BUSINESS_LISTINGS_SUCCESS:
       {
         const {
-          listings
+          listings,
+          totalPages,
         } = action;
         return {
           ...state,
           listings,
+          totalPages,
           gettingListings: false,
         }
       }

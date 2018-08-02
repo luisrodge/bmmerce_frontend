@@ -2,16 +2,17 @@ import React from 'react';
 import Modal from 'react-modal';
 import { FormattedDate, FormattedNumber } from 'react-intl';
 import shortid from 'shortid';
+import { Link } from 'react-router-dom';
 
 
 const customStyles = {
     content: {
         top: '50%',
-        left: '50.1%',
-        right: '50.1%',
+        left: '50%',
+        right: '50%',
         bottom: 'auto',
-        marginRight: '-50.1%',
-        transform: 'translate(-50.1%, -50.1%)',
+        marginRight: '-45%',
+        transform: 'translate(-50%, -50%)',
         maxHeight: '100vh', // <-- This sets the height
         overlfow: 'scroll' // <-- This tells the modal to scrol
     },
@@ -44,12 +45,21 @@ const ListingModal = (props) => {
                         {props.selectedListing.address}
                     </p>
                 </div>
+                {!props.business && 
                 <div className="col-md-4 text-right">
                     <h4 className="text-success m-0">$<FormattedNumber value={props.selectedListing.price} /></h4>
-                    <p className="text-muted">
-                        Listed by {props.selectedListing.listedBy.account.name }
-                    </p>
+                    {props.selectedListing.listedBy.business ? (
+                        <Link to={`/businesses/${props.selectedListing.listedBy.account.id}`} className="text-muted">
+                            Listed by {props.selectedListing.listedBy.account.name }
+                        </Link>
+                    ) : (
+                        <p className="text-muted">
+                            Listed by {props.selectedListing.listedBy.account.name }
+                        </p>
+                    )}
+                   
                 </div>
+                }
             </div>
 
             {props.selectedListing.description &&

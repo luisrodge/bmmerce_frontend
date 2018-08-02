@@ -60,13 +60,15 @@ const getBusiness = (id) => {
   }
 }
 
-const getBusinessListings = (id) => {
-  let baseUrl = `${API_ROOT}/listing_type/businesses/${id}`;
+const getBusinessListings = (id, page) => {
+  let baseUrl = `${API_ROOT}/listing_type/businesses/${id}?page=${page}`;
   return dispatch => {
     dispatch(getBusinessListingsAction());
     axios.get(baseUrl)
       .then(function (response) {
         const responseData = response.data.listings;
+        const meta = response.data.meta;
+        console.log("mete", meta);
         let listings = [];
         responseData.map(child => {
           const childData = {
@@ -82,7 +84,7 @@ const getBusinessListings = (id) => {
           };
           listings.push(childData);
         });
-        dispatch(getBusinessListingsSuccessAction(listings));
+        dispatch(getBusinessListingsSuccessAction(listings, meta.total_pages));
       })
       .catch(function (error) {
         //dispatch(getUsersFailureAction(error.response.data.data));

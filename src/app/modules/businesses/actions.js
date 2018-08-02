@@ -22,9 +22,10 @@ const getBusinessListings = () => ({
     type: types.GET_BUSINESS_LISTINGS
 });
 
-const getBusinessListingsSuccess = (json) => ({
+const getBusinessListingsSuccess = (json, totalPages) => ({
     type: types.GET_BUSINESS_LISTINGS_SUCCESS,
-    listings: json
+    listings: json,
+    totalPages: totalPages
 });
 
 export default {

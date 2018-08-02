@@ -112,8 +112,8 @@ class Dashboard extends Component {
     if (this.props.gettingListings) { return null; }
     return (
       <div className="row">
-        <div className="col-md-12 mb-3">
-          <h3>Your Listings</h3>
+        <div className="col-md-12 mb-2">
+          <h3>Listings</h3>
         </div>
         <div className="col-md-12">
           <table className="table table-bordered">

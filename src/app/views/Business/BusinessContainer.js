@@ -11,13 +11,15 @@ const mapStateToProps = (state) => {
         business,
         gettingBusiness,
         listings,
-        gettingListings
+        gettingListings,
+        totalPages
     } = state.businesses;
     return {
         business,
         gettingBusiness,
         listings,
-        gettingListings
+        gettingListings,
+        totalPages
     };
 };
 
@@ -25,8 +27,8 @@ const mapDispatchToProps = (dispatch) => {
     const getBusiness = (id) => {
         dispatch(businessesOperations.getBusiness(id));
     };
-    const getBusinessListings = (id) => {
-        dispatch(businessesOperations.getBusinessListings(id));
+    const getBusinessListings = (id, page) => {
+        dispatch(businessesOperations.getBusinessListings(id, page));
     };
     return {
         getBusiness,
