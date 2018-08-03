@@ -151,7 +151,7 @@ const createListing = (newListing) => {
         dispatch(createListingSuccessAction(newListing));
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response);
         // dispatch(createListingFailureAction(error.response.data.errors));
         // dispatch(authenticateFailureAction(error.response.data.error.user_authentication[0]));
       });
