@@ -126,11 +126,6 @@ class Dashboard extends Component {
     return (
       <div>
         <div className="row">
-          <div className="col-md-12 mb-2">
-            <h3>Listings</h3>
-          </div>
-        </div>
-        <div className="row">
           <div className="col-md-12">
             <table className="table table-bordered">
               <thead>

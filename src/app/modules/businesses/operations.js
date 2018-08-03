@@ -27,6 +27,8 @@ const getBusinesses = () => {
           const childData = {
             id: child.id,
             name: child.name,
+            logo: child.logo,
+            coverImage: child.cover_image,
             address: child.address,
           };
           businesses.push(childData);
@@ -50,6 +52,7 @@ const getBusiness = (id) => {
         const business = {
           id: responseData.id,
           name: responseData.name,
+          logo: responseData.logo.url,
           address: responseData.address
         }
         dispatch(getBusinessSuccessAction(business));

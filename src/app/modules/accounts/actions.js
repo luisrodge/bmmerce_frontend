@@ -23,10 +23,38 @@ const updateAccountFailure = (errors) => ({
     errors: errors
 });
 
+const getBusiness = () => ({
+    type: types.GET_BUSINESS
+});
+
+const getBusinessSuccess = (json) => ({
+    type: types.GET_BUSINESS_SUCCESS,
+    business: json
+});
+
+const updateBusiness = () => ({
+    type: types.UPDATE_BUSINESS
+});
+
+const updateBusinessSuccess = (json) => ({
+    type: types.UPDATE_BUSINESS_SUCCESS,
+    business: json
+});
+
+const updateBusinessFailure = (errors) => ({
+    type: types.UPDATE_BUSINESS_FAILURE,
+    businessErrors: errors
+});
+
 export default {
     getAccount,
     getAccountSuccess,
     updateAccount,
     updateAccountSuccess,
-    updateAccountFailure
+    updateAccountFailure,
+    getBusiness,
+    getBusinessSuccess,
+    updateBusiness,
+    updateBusinessSuccess,
+    updateBusinessFailure
 };

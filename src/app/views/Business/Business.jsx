@@ -53,9 +53,11 @@ class Business extends Component {
       <div>
         <nav className="navbar navbar-expand-md navbar-dark">
           <div className="container">
-            <Link to="/">
-              <img src="https://scontent-mia3-1.xx.fbcdn.net/v/t1.0-1/p200x200/20620823_1641300702608341_3197949282608884166_n.png?_nc_cat=0&oh=8892fdc529068e3cc8ccbd01681521ca&oe=5C090038" className="business-page-logo" />
-            </Link>
+            {this.props.business.logo &&
+              <Link to="/">
+                <img src={this.props.business.logo} className="business-page-logo" />
+              </Link>
+            }
             <Link to="/" className="navbar-brand">{this.props.business.name}</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
@@ -67,8 +69,11 @@ class Business extends Component {
             <div className="collapse navbar-collapse" id="navbarCollapse">
 
               <ul className="navbar-nav ml-auto">
-                <li className="nav-item active">
+                <li className="nav-item active mr-4">
                   <Link to="/" className="nav-link">Home</Link>
+                </li>
+                <li className="nav-item active">
+                  <Link to="/businesses" className="nav-link">Businesses</Link>
                 </li>
               </ul>
             </div>
@@ -78,37 +83,38 @@ class Business extends Component {
           {this.props.gettingListings ? (
             <p className="text-center">Loading listings....</p>
           ) : (
-            <Listings 
-              listings={this.props.listings} 
-              onOpenModal={this.openModal}  
-            />
-          )}
-
-          <div className="row mt-4">
-            <div className="col-md-3 mx-auto">
-              <div className="row pt-5">
-                <div className="col-md-2">
-                  {this.state.page === 1 ? (
-                    <i className="fas fa-chevron-left text-muted"></i>
-                  ) : (
-                    <i className="fas fa-chevron-left pointer" onClick={this.onPrevious}></i>
-                  )}
-                </div>
-                <div className="col-md-8 text-center">
-                  Page {this.state.page} of {this.props.totalPages}
-                </div>
-                <div className="col-md-2 text-right">
-                  {this.state.page === this.props.totalPages ? (
-                    <i className="fas fa-chevron-right text-muted"></i>
-                  ) : (
-                    <i className="fas fa-chevron-right pointer" onClick={this.onNext}></i>
-                  )}
+              <Listings
+                listings={this.props.listings}
+                onOpenModal={this.openModal}
+              />
+            )}
+          {this.props.totalPages > 0 &&
+            <div className="row mt-4">
+              <div className="col-md-3 mx-auto">
+                <div className="row pt-5">
+                  <div className="col-md-2">
+                    {this.state.page === 1 ? (
+                      <i className="fas fa-chevron-left text-muted"></i>
+                    ) : (
+                        <i className="fas fa-chevron-left pointer" onClick={this.onPrevious}></i>
+                      )}
+                  </div>
+                  <div className="col-md-8 text-center">
+                    Page {this.state.page} of {this.props.totalPages}
+                  </div>
+                  <div className="col-md-2 text-right">
+                    {this.state.page === this.props.totalPages ? (
+                      <i className="fas fa-chevron-right text-muted"></i>
+                    ) : (
+                        <i className="fas fa-chevron-right pointer" onClick={this.onNext}></i>
+                      )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          }
         </div>
-        
+
         {this.state.modalIsOpen &&
           <ListingModal
             modalIsOpen={this.state.modalIsOpen}

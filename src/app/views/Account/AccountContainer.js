@@ -10,12 +10,19 @@ const mapStateToProps = (state) => {
     const {
         account,
         gettingAccount,
-        updatingAccount
+        updatingAccount,
+        business,
+        gettingBusiness,
+        updatingBusiness
     } = state.accounts;
     return {
         account,
         gettingAccount,
-        updatingAccount
+        updatingAccount,
+        business,
+        gettingBusiness,
+        updatingBusiness,
+        authType: state.auth.account.type
     };
 };
 
@@ -26,9 +33,17 @@ const mapDispatchToProps = (dispatch) => {
     const updateAccount = (updatedAccount, avatarImage) => {
         dispatch(accountsOperations.updateAccount(updatedAccount, avatarImage));
     };
+    const getBusiness = () => {
+        dispatch(accountsOperations.getBusiness());
+    };
+    const updateBusiness = (updatedBusiness, logo, coverImage) => {
+        dispatch(accountsOperations.updateBusiness(updatedBusiness, logo, coverImage));
+    };
     return {
         getAccount,
-        updateAccount
+        updateAccount,
+        getBusiness,
+        updateBusiness
     };
 };
 
