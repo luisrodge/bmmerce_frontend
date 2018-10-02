@@ -35,10 +35,10 @@ const ListingModal = (props) => {
             <div className="text-center app-notice">
                 <p className="py-1 px-2">
                     <i className="fas fa-exclamation-circle pr-2"></i>
-                    Install our app to engage in conversation with this poster</p>
+                    Install our app to engage in conversation with this seller</p>
             </div>
             <div className="row mb-4">
-                <div className="col-md-8">
+                <div className="col-md-7">
                     <h3 className="m-0">{props.selectedListing.title}</h3>
                     <p className="text-muted">
                         <i className="fas fa-map-marker-alt mr-1"></i>
@@ -46,7 +46,7 @@ const ListingModal = (props) => {
                     </p>
                 </div>
                 {!props.business && 
-                <div className="col-md-4 text-right">
+                <div className="col-md-5 text-right">
                     <h4 className="text-success m-0">$<FormattedNumber value={props.selectedListing.price} /></h4>
                     {props.selectedListing.listedBy.business ? (
                         <Link to={`/businesses/${props.selectedListing.listedBy.account.id}`} className="text-muted">

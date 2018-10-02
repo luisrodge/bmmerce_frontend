@@ -13,7 +13,9 @@ import {
     Search,
     Businesses,
     Business,
-    Account
+    Account,
+    PrivacyPolicy,
+    TermsService
 } from '../views';
 
 import { 
@@ -43,6 +45,8 @@ export default (props) => (
                 )}
             />
             <Route exact path="/search" render={() => <DefaultLayout><Listings /></DefaultLayout>}/>
+            <Route exact path="/privacy_policy" render={() => <DefaultLayout><PrivacyPolicy /></DefaultLayout>}/>
+            <Route exact path="/terms_of_service" render={() => <DefaultLayout><TermsService /></DefaultLayout>}/>
             <Route exact path="/rentals" render={() => <DefaultLayout><Rentals /></DefaultLayout>}/>
             <Route exact path="/businesses" render={() => <DefaultLayout><Businesses /></DefaultLayout>}/>
             <Route exact path="/businesses/:id" render={({match}) => <BusinessLayout><Business id={match.params.id} /></BusinessLayout>}/>

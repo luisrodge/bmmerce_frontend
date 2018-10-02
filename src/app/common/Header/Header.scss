@@ -1,6 +1,7 @@
 header {
-    background: #FFF;
-    padding-bottom: 10px;
+    background: #24963e;
+    padding-bottom: 14px;
+    margin-bottom: 60px;
     .search-wrapper,
     .new-post-wrapper {
         padding-top: 21px;
@@ -8,19 +9,16 @@ header {
 }
 
 .logo-wrapper {
-    padding-top: 12px;
+    padding-top: 10px;
 }
 
 .logo {
-    font-family: 'Acme', sans-serif;
-    color: #1c7831;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #FFF;
     font-size: 44px;
-    span {
-        color: #24963e;
-    }
     &:hover,
     &:focus {
-        color: #1c7831;
+        color: #FFF;
         text-decoration: none;
     }
 }

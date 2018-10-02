@@ -11,8 +11,16 @@ body {
   margin-bottom: 50px;
 }
 
+.default-layout {
+  @media (min-width: 1200px) {
+    .container{
+        max-width: 940px;
+    }
+}
+}
+
 .img-fh {
-  height: 150px;
+  height: 180px;
   width: 100%;
   object-fit: cover;
   background: #FAFAFA;
@@ -162,7 +170,7 @@ table.table-bordered > tbody > tr > td{
 
 .search-form {
   border-radius: 0 !important;
-  border: 1px solid #f7f7f7;
+  border: 1px solid #f7f7f7!important;
   background: #FFF;
 }
 
@@ -179,7 +187,7 @@ textarea {
   color: #2B2B2B;
   outline: none;
   box-shadow: none !important;
-  border: 1px solid #d5d8db !important;
+  border: 1px solid #F2F2F2 !important;
   &:focus {
     border: 1px solid #B8B8B8 !important;
   }

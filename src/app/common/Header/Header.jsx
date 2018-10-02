@@ -26,18 +26,18 @@ class Header extends Component {
                   <span>b</span>mmerce
                 </Link>
               </div>
-              <div className="col-md-7  search-wrapper">
+              <div className="col-md-9  search-wrapper ml-auto">
                 <SearchForm />
               </div>
-              <div className="col-md-3 new-post-wrapper">
+              {/* <div className="col-md-3 new-post-wrapper">
                 <button onClick={this.openNewListingModal} className="btn btn-green btn-block btn-lg">
                   <i className="fas fa-camera mr-1"></i> Post New Listing
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </header>
-        <nav className="navbar navbar-expand-md navbar-light" id="main-nav">
+        {/* <nav className="navbar navbar-expand-md navbar-light" id="main-nav">
           <div className="container">
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
@@ -74,7 +74,7 @@ class Header extends Component {
                 )}
             </div>
           </div>
-        </nav>
+        </nav> */}
       </div>
     );
   }

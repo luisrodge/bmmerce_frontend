@@ -6,6 +6,8 @@ import Search from './Search';
 import Businesses from './Businesses';
 import Business from './Business';
 import Account from './Account';
+import PrivacyPolicy from './PrivacyPolicy';
+import TermsService from './TermsService';
 
 export {
     About,
@@ -15,5 +17,7 @@ export {
     Search,
     Businesses,
     Business,
-    Account
+    Account,
+    PrivacyPolicy,
+    TermsService
 }

@@ -40,6 +40,7 @@ const search = (query, page = null) => {
               price: child.price,
               address: child.address,
               description: child.description,
+              listedBy: child.business ? {account: child.business, business: true} : {account: child.account},
               contactName: child.contact_name,
               contactEmail: child.contact_email,
               userId: child.user_id,
